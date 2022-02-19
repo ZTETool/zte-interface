@@ -1,0 +1,43 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/traffic/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="traffic_adjust"></h1>
+</div>
+<div data-role="main" class="ui-content">
+    <form id="frmAdjust">
+        <div id="adjustByTime" class="ui-field-contain hide">
+            <label style="margin-top: 15px;" for="timeAdjust" data-trans="adjust_used_time"></label>
+            <div class="ui-grid-a">
+                <div style="width: 70%;" class="ui-block-a">
+                    <input id="timeAdjust" name="timeAdjust" type="text" class="required" minlength='1' maxlength='5'/>
+                </div>
+                <div style="width: 30%; margin-top: 2px;" class="ui-block-b">
+                    <select name="usedTimeUnit" id="usedTimeUnit" data-mini="true">
+                        <option value="60">Hours</option>
+                        <option value="1">Minutes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div id="adjustByData" class="ui-field-contain hide">
+            <label style="margin-top: 15px;" for="dataAdjust" data-trans="adjust_used_data"></label>
+            <div class="ui-grid-a">
+                <div style="width: 70%;" class="ui-block-a">
+                    <input id="dataAdjust" name="dataAdjust" type="text" class="required" minlength='1' maxlength='5'/>
+                </div>
+                <div style="width: 30%; margin-top: 2px;" class="ui-block-b">
+                    <select name="dataUnit" id="dataUnit" data-mini="true">
+                        <option value="1">MB</option>
+                        <option value="1024">GB</option>
+                        <option value="1048576">TB</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="margin-top-10em">
+            <a id="adjustSave" type="button" data-trans="apply" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>
+
+
+

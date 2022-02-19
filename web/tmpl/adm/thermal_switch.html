@@ -1,0 +1,63 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="Thermal Switch Page"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<form id="thermalSwitchForm" >
+				<div class="form-body margin-top-20">
+					<div class="row meun-nav-new">
+						<a href="#home">
+							<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+						</a>
+					</div>
+					 <!--div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="Thermal Switch"></label>
+						<div class="col-xs-6">
+							<div class="row">
+								<div class="col-xs-4">
+									<input type="radio" name="thermalControlGrp" id="thermalControlEnable" data-bind="checked: thermalControlSetting" value="1"/>
+									<label for="thermalControlEnable" data-trans="enable"></label>
+								</div>
+								<div class="col-xs-4">
+									<input type="radio" name="thermalControlGrp" id="thermalControlDisable" data-bind="checked: thermalControlSetting" value="0"/>
+									<label for="thermalControlDisable" data-trans="disable"></label>
+								</div>
+							</div>
+						</div>
+					</div-->
+					 <div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="LED Switch"></label>
+						<div class="col-xs-6">
+							<div class="row">
+								<!--div class="col-xs-4">
+									<input type="radio" name="thermalLedGrp" id="thermalLedEnable" data-bind="checked: thermalLedSetting" value="1"/>
+									<label for="thermalLedEnable" data-trans="enable"></label>
+								</div>
+								<div class="col-xs-4">
+									<input type="radio" name="thermalLedGrp" id="thermalLedDisable" data-bind="checked: thermalLedSetting" value="0"/>
+									<label for="thermalLedDisable" data-trans="disable"></label>
+								</div-->
+								<input id="thermalLed" name="thermalLed" type="text" data-bind="value: thermalLedSetting" class="required form-control" maxlength="3">
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans="apply"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/home" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="traffic_statistics"></h1>
+    <form class="ui-btn-right">
+        <label for="flowSwitch"></label>
+        <select id="flowSwitch" name="flip-select" data-role="flipswitch">
+            <option value="0" data-trans="off"></option>
+            <option value="1" data-trans="on"></option>
+        </select>
+    </form>
+</div>
+<div id="trafficSwitchOff" data-role="main" class="ui-content">
+    <div class="side-center margin-top-10em">
+        <h3 data-trans="traffic_off"></h3>
+        <span data-trans="traffic_off_detail"></span>
+    </div>
+</div>
+<div id="trafficSwitchOn" data-role="main" class="ui-content margin-top-20">
+    <div id="trafficGraph" style="width: 200px; height: 200px; visibility: visible;margin: 0 auto;">
+    </div>
+    <div class="ui-grid-b margin-top-20">
+        <div class="ui-block-a side-center">
+            <h3 id="usedInfo"></h3>
+            <span class="color-block" style="background-color: #8CC916;"></span>
+            <span data-trans="used_title"></span>
+        </div>
+        <div class="ui-block-b side-center traffic-border">
+            <h3 id="leftInfo"></h3>
+            <span class="color-block" style="background-color: #D8D8D8;"></span>
+            <span data-trans="left_title"></span>
+        </div>
+        <div class="ui-block-c side-center">
+            <h3 id="packageInfo"></h3>
+            <span data-trans="package_title"></span>
+        </div>
+    </div>
+    <div class="ui-grid-a margin-top-20">
+        <div class="ui-block-a"><a href="#/traffic/traffic_adjust" data-trans="traffic_adjust" class="ui-shadow ui-btn ui-corner-all"></a></div>
+        <div class="ui-block-b"><a href="#/traffic/traffic_setting" data-trans="traffic_setting" class="ui-shadow ui-btn ui-corner-all"></a></div>
+    </div>
+</div>
+
+
+

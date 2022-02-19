@@ -1,0 +1,102 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#vxlan_menu">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='vpn_client'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body margin-top-20">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+					</a>
+				</div>
+				<form id="VPNClientForm" class="margin-top-20">
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vpn_client"></label>
+						<div class="col-xs-5">
+								<select class="form-control" data-transid="vpn_type" data-bind="options: types, value: selectedType, optionsText: transOption('vpn_type'), optionsValue: 'value'">
+								</select>
+							</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" for="txtIpAddress" data-trans="vpn_server_ip"></label>
+						<div class="col-xs-5">
+							<input id="txtIpAddress" name="txtIpAddress" type="text" data-bind="value: vpnServiceIp, valueUpdate: 'keypress'" class="required form-control" maxlength="512"/>
+						</div>
+					</div>
+					<div class="row form-group" data-bind="visible:selectedType()=='L2TP'">
+						<label class="col-xs-3 side-right" for="txtPassword" data-trans="vpn_l2tp_password"></label>
+						<div class="col-xs-5">
+							<input id="l2tpPassword" name="l2tpPassword" type="text" data-bind="value: vpnL2TPPassword, valueUpdate: 'keypress'" class="form-control" maxlength="15"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" for="txtUserName" data-trans="vpn_username"></label>
+						<div class="col-xs-5">
+							<input id="txtUserName" name="txtUserName" type="text" data-bind="value: vpnUserName, valueUpdate: 'keypress'" class="form-control" maxlength="15"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" for="txtPassword" data-trans="vpn_password"></label>
+						<div class="col-xs-5">
+							<input id="txtPassword" name="txtPassword" type="text" data-bind="value: vpnPassword, valueUpdate: 'keypress'" class="form-control" maxlength="15"/>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vpn_auto_connect"></label>
+						<div class="col-xs-6">
+							<p id="vpnAutoBtn" class="checkbox floatleft margintop5 margin-left-10 checkboxToggle" data-bind="css:{'checkbox_selected': vpnAutoSettings()=='1'}, click: selectVPNAuto" manualControl="true">
+								<input type="checkbox" id="AllowVPNAuto" value="1" data-bind="checked:vpnAutoSettings()=='1'"/>
+							</p>
+						</div>
+					</div>			
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans="apply"/>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vpn_connect_status"></label>
+						<div class="col-xs-6">
+							<label data-bind="text:vpnConnectStatusText"></label>
+						</div>
+					</div>	
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vpn_remote_ip"></label>
+						<div class="col-xs-6">
+							<label data-bind="text:vpnRemoteIp"></label>
+						</div>
+					</div>	
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vpn_local_ip"></label>
+						<div class="col-xs-6">
+							<label data-bind="text:vpnLocalIp"></label>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="button" class="btn btn-primary" data-bind="attr:{'data-trans':transText,'value':connectStatusText},click:connectHandler,enable: enableFlag, css: {disabled: !enableFlag()}"/>
+					</div>	
+					<div>
+						<label class="colorRed" data-trans="vpn_connected_note"></label>
+					</div>
+				
+				</form>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content" style="overflow: hidden;">
+						<li data-trans="vpn_note"></li>               
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

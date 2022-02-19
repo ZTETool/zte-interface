@@ -1,0 +1,84 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="antenna_module"></h1>
+            </div>
+        </div>
+    </div>	
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<form id="rfMMWForm" >
+				<div class="form-body margin-top-20">
+					<div class="row meun-nav-new">
+						<a href="#home">
+							<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+						</a>
+					</div>
+					
+						
+					<ul class="nav nav-tabs nav-justified margin-top-20 margin-bottom-20" role="tablist">
+						<li class="active"><a href="#rf_mmw" data-trans="antenna_module_debug"></a></li>
+						<li><a href="#" data-trans="antenna_module_infor"></a></li>
+					</ul>
+					
+					 <div class="row form-group">
+						<div class="form-title">
+							<span data-trans="antenna_module_debug_note"></span>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-1"></label>						
+							<div class="col-xs-10">
+								<div class="row">
+									<div class="col-xs-3">
+										<input type="checkbox" name="antennaModule" id="antennaModule1" data-bind="checked: module0()==1" value="1"/>
+										<label for="antennaModule1" data-trans="antenna_module_1"></label>
+									</div>
+									<div class="col-xs-3">
+										<input type="checkbox" name="antennaModule" id="antennaModule2" data-bind="checked: module1()==1" value="1"/>
+										<label for="antennaModule2" data-trans="antenna_module_2"></label>
+									</div>
+									<div class="col-xs-3">
+										<input type="checkbox" name="antennaModule" id="antennaModule3" data-bind="checked: module2()==1" value="1"/>
+										<label for="antennaModule3" data-trans="antenna_module_3"></label>
+									</div>
+									<div class="col-xs-3">
+										<input type="checkbox" name="antennaModule" id="antennaModule4" data-bind="checked: module3()==1" value="1"/>
+										<label for="antennaModule3" data-trans="antenna_module_4"></label>
+									</div>
+								</div>
+							</div>							
+						</div>
+						<div class="row form-group">
+							<div style="background:url('./img/antenna_module_bg.png?v=1622612890852') repeat-x scroll 0 0  transparent;width:830px;min-height:325px;margin-left:-90px">
+								<div style="margin-left:450px;padding-top:90px;">
+									<div data-trans="antenna_module_4"></div>
+									<div data-trans="antenna_module_3" style="padding-top:30px;"></div>
+									<div data-trans="antenna_module_2" style="padding-top:30px;"></div>
+									<div data-trans="antenna_module_1" style="padding-top:30px;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveAntennaModule' data-trans='apply'/>
+						</div>
+					</div>
+					
+					<div class="form-note">
+                        <div class="notes-title">&nbsp;</div>
+                        <ul class="notes-content">
+                            <li data-trans="antenna_module_debug_note2"></li>                           
+                        </ul>
+                    </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

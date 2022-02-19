@@ -1,0 +1,85 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home" data-bind="visible: !isHomePage()">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='no_sim_card_title'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="div-network-lock">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+    <form id="frmNetworkLock">
+        <div class="form-body">
+            <div class="content">
+                <p class="colorRed font18" data-trans="network_locked"></p>
+                <div data-bind="visible:supportUnlock && times()>0">
+                    <p data-trans="network_locked_explain"></p>
+                    <p>
+                        <span data-trans="network_locked_times_explain"></span>
+                        <span data-bind="text:times"></span>
+                    </p>
+                    <div class="row form-group">
+                        <label class="col-xs-3" for="txtLockNumber" data-trans="network_locked_enter_explain"></label>
+                        <div class="col-xs-6">
+                            <input type="text" class="required form-control" maxlength="16" id="txtLockNumber" name="txtLockNumber"
+                                   data-bind="value:unlockCode,valueUpdate: 'keypress'"/>
+                        </div>
+                    </div>
+                </div>
+                <p data-bind="visible:supportUnlock && times()==0" data-trans="network_locked_zero_times"></p>
+            </div>
+            <div class="form-buttons" data-bind="visible:supportUnlock && times()>0">
+                <input type="submit" data-trans="ok" class="btn btn-primary"/>
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+<div data-bind="visible: isHomePage" class="row margin-top-50">
+    <div data-bind="visible: !showQRCode" class="col-xs-1 text-center">
+    </div>
+    <a href="#station_info">
+        <div class="col-xs-2 text-center">
+            <img src="img/ic_home_devices.png?v=1622612890852" alt=""/>
+            <span class="center-block margin-top-5 icon-content-2" data-trans="station_info"></span>
+        </div>
+    </a>
+    <a href="#wifi">
+        <div class="col-xs-2 text-center icon-position">
+            <img src="img/ic_home_wifi.png?v=1622612890852" alt=""/>
+            <span class="center-block margin-top-5 icon-content" data-trans="wifi_wireless_settings"></span>
+        </div>
+    </a>
+    <a href="#sms" data-bind="visible:oom_temp_pro==0">
+        <div class="col-xs-2 text-center icon-position">
+            <img src="img/ic_home_sms.png?v=1622612890852" alt=""/>
+            <span class="center-block margin-top-5 icon-content" data-trans="sms"></span>
+        </div>
+    </a>
+    <a href="#phonebook" data-bind="visible:oom_temp_pro==0">
+        <div class="col-xs-2 text-center icon-position">
+            <img src="img/ic_home_phonebook.png?v=1622612890852" alt=""/>
+            <span class="center-block margin-top-5 icon-content" data-trans="phonebook"></span>
+        </div>
+    </a>
+    <a href="#sleep_mode">
+        <div class="col-xs-2 text-center icon-position">
+            <img src="img/ic_home_set.png?v=1622612890852" alt=""/>
+            <span class="center-block margin-top-5 icon-content" data-trans="advanced_settings"></span>
+        </div>
+    </a>
+    <div data-bind="visible: !showQRCode" class="col-xs-1 text-center">
+    </div>
+    <div class="col-xs-2 text-center" id="h_qrcode" data-bind="visible: showQRCode">
+        <img src="./img/blacktrans.png?v=1622612890852" width="111" id="qrcode_img" data-bind="attr: {src: qrcodeSrc}"/>
+    </div>
+</div>
+</div>

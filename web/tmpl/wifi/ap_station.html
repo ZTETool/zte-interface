@@ -1,0 +1,295 @@
+<div id="innerContainer">
+<div class="row header-row">
+    <div class="col-xs-1">
+        <a href="#home">
+            <img alt="" src="img/ic_back.png?v=1622612890852">
+        </a>
+    </div>
+    <div class="col-xs-9">
+        <div class="form-title form-title-multi">
+            <h1 data-trans='wifi_wireless_settings'></h1>
+            <p data-trans="wifi_main_sub_title"></p>
+        </div>
+    </div>
+</div>
+<div class="row">
+<div class="col-xs-1 margin-top-15">
+</div>
+<div class="col-xs-11">
+
+<div class="form-body">
+	<div class="row meun-nav-new">
+        <a href="#home">
+            <img alt="" src="img/ic_settings_wifi_blue.png?v=1622612890852">
+        </a>
+    </div>
+    <form id="frmWifiSwitch" role="form">
+        <div class="content margin-top-20">
+            <div class="row form-group" data-bind="visible: hasWifiSwitch">
+                <label class="col-xs-4 side-right" data-trans="wifi_switch"></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                       <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '1'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_enable"
+									   data-bind="checked: wifi_enable" value="1"/>
+							</p>
+                            <label for="wifi_switch_enable" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '0'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_disable"
+									   data-bind="checked: wifi_enable" value="0"/>
+							</p>
+                            <label for="wifi_switch_disable" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group hide" data-bind="visible: wifi_enable() == '1' && hasMultiSSID && hasGuestSSIDControl">
+				<label class="col-xs-4 side-right" data-trans=""></label>
+				<div class="col-xs-6">
+                    <p class="checkbox" data-bind="css:{'checkbox_selected': lan_sec_ssid_control() == '0'}">
+						<input id="allowAccessCheckbox" name="allowAccessCheckbox" type="checkbox" data-bind="checked: lan_sec_ssid_control() == '0'" value="1"/>
+					</p>
+					<label data-trans="allow_guest_ssid"></label>
+				</div>
+			</div>
+
+            <div class="form-buttons">
+                <input id="wifi_switch_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+                <!--input id="wifi_switch_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("switch");}' data-trans='cancel'/-->
+            </div>
+        </div>
+    </form>
+
+                <ul class="nav nav-tabs nav-justified margin-top-20 margin-bottom-20" role="tablist" data-bind="visible: isShowSSIDInfoDiv">
+                    <li><a href="#wifi_main" data-trans="wifi_main_ssid" data-bind="attr:{'data-trans': hasMultiSSID ? 'wifi_main_ssid':'ssid_title'}"></a></li>
+                    <li data-bind="visible: hasMultiSSID"><a href="#wifi_guest" data-trans="multi_ssid_2"></a></li>
+                    <li><a href="#wps" data-trans="wps"></a></li>
+                    <li><a href="#wifi_advance" data-trans="wifi_advance"></a></li>
+                    <li class="active"><a href="#ap_station" data-trans="ap_station"></a></li>                    
+                    <!--li><a href="#wifi_mac_filter" data-trans="wifi_mac_filter"></a></li-->
+                </ul>
+
+
+<div data-bind="visible: isShowSSIDInfoDiv">
+    <div data-bind="visible:pageState() == page.list">
+        <h3 class="form-title" data-trans="ap_station"></h3>
+        <div class="content">
+            <div class="row form-group">
+                <label class="col-xs-4 side-left" data-trans='ap_station_switch'></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+							<p class="radiobox" for="ap_station_switch" data-bind="css:{'radiobox_selected': ap_station_enable() == '1'}">
+								<input type="radio" name="ap_station_switch" id="ap_station_switch_enable"
+									   data-bind="checked: ap_station_enable" value="1"/>
+							</p>
+                            <label for="ap_station_switch_enable" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="ap_station_switch" data-bind="css:{'radiobox_selected': ap_station_enable() == '0'}">
+								<input type="radio" name="ap_station_switch" id="ap_station_switch_disable"
+									   data-bind="checked: ap_station_enable" value="0"/>
+							</p>
+                            <label for="ap_station_switch_disable" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" data-bind="visible:ap_station_enable_show()=='1' && false">
+                <label class="col-xs-4 side-right" data-trans='ap_station_wlan_mode'></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+						<p class="radiobox" for="ap_station_mode" data-bind="css:{'radiobox_selected': ap_station_mode() == 'wifi_pref'}">
+                            <input type="radio" name="ap_station_mode" id="ap_station_mode_wifi"
+                                   data-bind="checked: ap_station_mode" value="wifi_pref"/>
+						</p>
+                            <label for="ap_station_mode_wifi" data-trans="ap_station_wifi_prior"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="ap_station_mode" data-bind="css:{'radiobox_selected': ap_station_mode() == 'dial_pref'}">
+								<input type="radio" name="ap_station_mode" id="ap_station_mode_3g"
+									   data-bind="checked: ap_station_mode" value="dial_pref"/>
+							</p>
+                            <label for="ap_station_mode_3g" data-trans="ap_station_3g_prior"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <input id="btnApply" type="button" class="btn btn-primary" data-trans="apply" data-bind="click:apply"/>
+        </div>
+		<div class="form-note">
+			<div class="notes-title">&nbsp;</div>
+			<ul class="notes-content">
+				<li data-trans="ap_station_note"></li>                       
+			</ul>
+		</div>
+        <div data-bind="visible:ap_station_enable_show()=='1'">
+            <h3 class="form-title" data-trans="ap_station_hotspot_list"></h3>
+            <div>
+                <input id="btnScan" type="button" class="btn btn-primary" data-trans="ap_scan" data-bind="click:searchHotspot"/>
+                <input id="btnAddNetwork" type="button" class="btn btn-primary" data-trans="ap_add_network" data-bind="click:openAddPage"/>
+                <input id="btnEdit" type="button" class="btn btn-primary" data-trans="ap_edit_network" data-bind="click:openAddListPage"/>
+            </div>
+            <div class="ko-grid-container" style="overflow:auto;margin-right: 10px;">
+                <table cellPadding="0" cellSpacing="0" id="scanList" class="margin-top-15 table table-striped table-hover ko-grid colorHoverTable table-fixed" >
+                    <thead></thead>
+                    <tbody data-bind="foreach:apSearchList">
+                    <tr data-bind="css:{odd:$index()%2==0,even:$index()%2==1},attr:{id:'scanlist_tr'+index}">
+                        <td >
+                            <label data-bind="text:ssid"></label><br/>
+                            <label data-bind="text:authMode_show"></label>
+                        </td>
+                        <td >
+                            <img data-bind="attr:{src:imgSignal}"/>
+                        </td>
+                        <td style="padding-right: 10px;text-align: right" data-bind="visible:$root.ipPassthroughEnabled()!=1">
+                            <input type="button" class="btn btn-primary" data-trans="connect" data-bind="attr:{id:'scanBtnConnect'+index},visible:connectStatus=='0'" onclick="connectAction(this)"/>
+                            <input type="button" class="btn btn-primary" data-trans="disconnect" data-bind="attr:{id:'scanBtnDisconnect'+index},visible:connectStatus=='1'" onclick="disconnectAction(this)"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <form id="frmAdd" data-bind="visible:pageState() == page.add || pageState() == page.edit">
+        <h3 class="form-title" data-trans="ap_station_add_hotspot" data-bind="visible:pageState() == page.add"></h3>
+        <h3 class="form-title" data-trans="ap_station_edit_hotspot" data-bind="visible:pageState() == page.edit"></h3>
+        <div class="content">
+            <div class="row form-group">
+                <label class="col-xs-4 side-left" for="txtSSID" data-trans='ssid_name'></label>
+                <div class="col-xs-6">
+                    <input type="text" name="txtSSID" id="txtSSID" class="required form-control" data-bind="value:ssid"  maxlength="32"/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-xs-4 side-left" for='mode' data-trans='security_mode'></label>
+                <div class="col-xs-6">
+                    <select class="form-control" data-transid='ap_station_security_mode' id="mode"
+                            data-bind="options: modes, value: authMode, optionsText: transOption('ap_station_security_mode'), optionsValue: 'value'"></select>
+                </div>
+            </div>
+            <div class="row form-group" data-bind='visible: authMode() == "OPEN"'>
+                <label class="col-xs-4 side-left" for='selEncryptType' data-trans='ap_station_encrypt_type'></label>
+                <div class="col-xs-6">
+                    <select class="form-control" id="selEncryptType" data-bind="value: selectedencryptType, optionsValue: 'value'">
+                        <option value="NONE" data-trans="ap_station_encrypt_type_none"></option>
+                        <option value="WEP" data-trans="ap_station_encrypt_type_wep"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group"
+                 data-bind='visible:  (authMode() == "OPEN" && selectedencryptType() == "WEP") || authMode() == "SHARED"'>
+                <label class="col-xs-4 side-left" for='selWepKeyType' data-trans='ap_station_wep_default_key'></label>
+                <div class="col-xs-6">
+                    <select class="form-control" id="selWepKeyType" data-transid='ap_station_wep_key' data-bind="options: keyIDMode, value: keyID,optionsText: transOption('ap_station_wep_key'), optionsValue: 'value'">
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group" data-bind='visible: (authMode() == "OPEN" && selectedencryptType() == "WEP") || authMode() == "SHARED"'>
+                <label class="col-xs-4 side-left" for='txtWepKey' data-trans='ap_station_wep_key'></label>
+                <div class="col-xs-6">
+                    <input id='pwdWepKey' name="pwdWepKey" type="password" class="required form-control"
+                           data-bind="value: password,visible:!showPassword()" maxlength='26'/>
+                    <input id='txtWepKey' name="txtWepKey" type="text" class="required form-control"
+                           data-bind="value: password,visible:showPassword()" maxlength='26'/>
+                    <div class="margin-top-10">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': showPassword()}, click: showPasswordHandler" manualControl="true">
+                            <input id="showPassword" name="showPassword" type="checkbox" data-bind="checked: showPassword"/>
+                        </p>
+                        <label data-trans="display_password"></label>
+                    </div>
+                    <div id="lblshowWEPPassword" class="clear"></div>
+                </div>
+            </div>
+            <div class="row form-group" data-bind='visible: authMode() == "WPAPSK" || authMode() == "WPA2PSK" || authMode() == "WPAPSKWPA2PSK" '>
+                <label class="col-xs-4 side-left" data-trans='ap_station_cipher'></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <input name="cipher" id="cipher_TKIP" value="TKIP" type="radio"
+                                   data-bind="checked: encryptType_WPA">
+                            <label for="cipher_TKIP" data-trans="ap_station_cipher_TKIP"></label>
+                        </div>
+                        <div class="col-xs-4">
+                            <input name="cipher" id="cipher_AES" value="CCMP" type="radio"
+                                   data-bind="checked: encryptType_WPA">
+                            <label for="cipher_AES" data-trans="ap_station_cipher_AES"></label>
+                        </div>
+                        <div class="col-xs-4">
+                            <input name="cipher" id="cipher_AUTO" value="TKIPCCMP" type="radio"
+                                   data-bind="checked: encryptType_WPA">
+                            <label for="cipher_AUTO" data-trans="ap_station_cipher_AUTO"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group" data-bind='visible: authMode() == "WPAPSK" || authMode() == "WPA2PSK" || authMode() == "WPAPSKWPA2PSK" '>
+                <label class="col-xs-4 side-left" for='txtWPAKey' data-trans='pass_phrase'></label>
+                <div class="col-xs-6">
+                    <input id='pwdWPAKey' name="pwdWPAKey" type="password" class="required form-control"
+                           data-bind="value: password,visible:!showPassword()" maxlength='64'/>
+                    <input id='txtWPAKey' name="txtWPAKey" type="text" class="required form-control"
+                           data-bind="value: password,visible:showPassword()" maxlength='64'/>
+                    <div class="margin-top-10">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': showPassword()}, click: showPasswordHandler" manualControl="true">
+                            <input id="showWPAPassword" name="showWPAPassword" type="checkbox" data-bind="checked: showPassword"/>
+                        </p>
+                        <label data-trans="display_password"></label>
+                    </div>
+                    <div id="lblshowWPAPassword" class="clear"></div>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <input id="btnCancel" type="button" class="btn btn-primary" data-trans="cancel" data-bind="click:openListPage"/>
+                <input id="btnAdd" type="submit" class="btn btn-primary" data-trans="apply"/>
+            </div>
+        </div>
+    </form>
+
+    <div id="addListDiv" data-bind="visible:pageState() == page.addlist">
+        <h3 class="form-title" data-trans="edit_internet_wifi_access_points"></h3>
+        <div class="content">
+            <!--<div data-trans="ap_station_note2" class="font13" style="line-height:20px"></div>-->
+            <div class="form-buttons">
+                <input id="btnnext_step" type="button" class="btn btn-primary" data-trans="next_step_sort" onClick="wifiSpotSortNext('previous')" />
+                <input id="btnPrevious"  type="button" class="btn btn-primary" data-trans="prev_step_sort" onClick="wifiSpotSortNext('next')" />
+            </div>
+            <div class="ko-grid-container" style="overflow:auto;margin-right: 20px;">
+                <table cellPadding="0" cellSpacing="0" id="addList" class=" margin-top-15 table table-striped table-hover ko-grid colorHoverTable table-fixed">
+                    <thead></thead>
+                    <tbody data-bind="foreach:apAddList">
+                        <tr data-bind="css:{odd:$index()%2==0,even:$index()%2==1},attr:{id:'scanlist_tr'+index}">
+                            <td >
+                                <input type="radio" name="addListRadio" data-bind="attr:{id:'addListRadio'+index}"></label>
+                            </td>
+                            <td >
+                                <label data-bind="text:ssid"></label><br/>
+                                <label data-bind="text:authMode_show"></label>
+                            </td>
+                            <td style="padding-right: 0px;text-align: right">
+                                <input type="button" class="btn btn-primary" data-trans="edit" data-bind="attr:{id:'addListBtnEdit'+index}" onclick="openAddListEditPage(this)"/>
+                                <input type="button" class="btn btn-primary" data-trans="delete" data-bind="attr:{id:'addListBtnDel'+index}" onclick="deleteHotspot()"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-buttons">
+                <input id="addCancel" type="button" class="btn btn-primary" data-trans="back" data-bind="click:openListPage"/>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+</div>
+</div>

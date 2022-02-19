@@ -1,0 +1,28 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/network/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="connect_mode"></h1>
+</div>
+
+<div role="main" class="ui-content jqm-content">
+    <form>
+        <div data-role="controlgroup">
+            <label for="manual_mode" data-iconpos="right" data-trans="manual_select"></label>
+            <input class="widget-state" type="radio" name="modeGroup" id='manual_mode' value="manual_dial" data-bind="checked: selectMode, enable: enableFlag" >
+            <label for="auto_mode" data-iconpos="right" data-trans='auto_select'></label>
+            <input class="widget-state" type="radio" name="modeGroup" id='auto_mode' value="auto_dial" data-bind="checked: selectMode, enable: enableFlag" >
+        </div>
+        <!--<div class="ui-corner-all custom-corners" data-bind="visible: selectMode() == 'auto_dial'">-->
+            <!--<div class="ui-bar ui-bar-a">-->
+                <!--<h3 data-trans="connect_when_auto_check"></h3>-->
+            <!--</div>-->
+            <div data-bind="visible: selectMode() == 'auto_dial'">
+                <label for="isAllowedRoaming" data-iconpos="right" data-trans="connect_allow_roaming"></label>
+                <input class="widget-state" type="checkbox" id="isAllowedRoaming" value="on" data-bind="checked:isAllowedRoaming"/>
+            </div>
+        <!--</div>-->
+        <div class="margin-top-10em">
+            <a id="modeApply" type="button" data-bind='click: save, enable: enableFlag' data-trans="apply" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>
+

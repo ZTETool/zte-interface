@@ -1,0 +1,71 @@
+<form id='macFilterForm'>
+<div class="form-body">
+    <div class="form-title" data-trans='black_list'></div>
+    <div class="content">        
+		<div class="row-fluid">
+            <label class="span4 side-right" data-trans='black_list_switch'></label>
+            <div class="span8">
+               <input type="radio" name="mac_filter_switch" id="mac_filter_switch_enable" data-bind="checked: macFilterEnable" value="2"/>
+               <label for="mac_filter_switch_enable" data-trans="enable"></label>
+               <input type="radio" name="mac_filter_switch" id="mac_filter_switch_disable" data-bind="checked: macFilterEnable" value="0"/>
+               <label for="mac_filter_switch_disable" data-trans="disable"></label>
+            </div>
+        </div>
+		<div class="form-buttons">
+            <input type="submit" class="btn-1 " data-trans='apply' />
+        </div>
+	</div>
+	<div data-bind="visible: blackListEnabled">
+		<div class="content">
+			<div class="ko-grid-container marginnone">
+				<table cellPadding="0" cellSpacing="0" class="ko-grid colorHoverTable marginnone">
+					<thead>
+						<tr>
+							<th data-trans="station_number"></th>
+							<th data-trans="host_name"></th>
+							<th data-trans="mac_address"></th>								
+							<th data-trans=""></th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach:blackList" id="blacklist">
+						<tr data-bind="css:{odd:$index()%2==1, even:$index()%2==0}">
+							<td data-bind="text:$index()+1"></td>
+							<td data-bind="text:hostName"></td>
+							<td data-bind="text:macAddress"></td>
+							<td>
+								<input type="button" class="btn-1 btn-ex" data-trans='delete' onClick="removeFromBlackList($(this).attr('id'))" data-bind="attr:{id:$index()}" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="content">
+			<div class="form-title" data-trans="station_info"></div>
+			<div class="ko-grid-container marginnone">
+				<table cellPadding="0" cellSpacing="0" id="tabStation" class="ko-grid colorHoverTable marginnone">
+					<thead>
+						<tr>
+							<th data-trans="station_number"></th>
+							<th data-trans="host_name"></th>
+							<th data-trans="mac_address"></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach:deviceInfo" id="deviceInfo">
+						<tr data-bind="css:{odd:$index()%2==1, even:$index()%2==0}">
+							<td data-bind="text:$index()+1"></td>
+							<td data-bind="text:hostName"></td>
+							<td data-bind="text:macAddress"></td>
+							<td>
+								<input type="button" class="btn-1 btn-ex" data-trans='block' onClick="addToBlackList($(this).attr('hostName'),$(this).attr('mac'),$(this).attr('ip'),$(this).attr('id'))" data-bind="enable:enabled,attr:{hostName:hostName,mac:macAddress,ip:ipAddress,id:'block'+$index()}"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>		
+		</div>
+	</div>
+	
+</div>
+</form>

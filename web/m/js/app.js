@@ -1,0 +1,2 @@
+define(["language","router","service","status_check","login"],function(t,n,o,s){function a(){t.init(),o.timerUpdater(function(){n.init(),s.init()}),$(document).on("click",".show-password",function(t){var n=$(this);n.toggleClass("show-password-on");var o=$("#"+n.attr("data-for"),"#container");n.hasClass("show-password-on")?o.attr("type","text"):o.attr("type","password")})}return{init:a}});
+//# sourceMappingURL=../../sourcemaps/m/app.js.map

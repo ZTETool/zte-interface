@@ -1,0 +1,65 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="configuragtion"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+<div class="form-body margin-top-20">
+    <div class="row meun-nav-new">
+        <a href="#home">
+            <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+        </a>
+    </div>
+    <form method="post" name="ExportSettings" id="ExportSettings" action="/cgi-bin/ExportSettings.sh">
+        <div class="form-title">
+            <h2 data-trans="config_export_settings"></h2>
+        </div>
+        <div class="content">
+            <div class="row form-group">
+                <label class="col-xs-3 side-right" data-trans="config_export"></label>
+            </div>
+			<iframe id="downloadfileFrame" src='' scrolling="no" frameborder="0" width="0" height="0" style="height:0px;width:0px;"/>
+            <div class="form-buttons">
+				<input type="button" data-trans ="export" class="btn btn-primary" id="backup" />
+            </div>
+        </div>
+    </form>
+    <div id="importDiv">
+        <div class="form-title">
+            <h2 data-trans="config_import_settings"></h2>
+        </div>
+        <div class="content">
+            <iframe id="fileUploadIframe" name="fileUploadIframe" scrolling="no" frameborder="0" width="0" height="0" style="height:0px;width:0px;"></iframe>
+            <form method="post" name="fileUploadForm" id="fileUploadForm" action="" enctype="multipart/form-data" target="fileUploadIframe">
+                <input id="fileField" name="filename" maxlength="200" type="file"/>
+                <div class="form-buttons">
+                    <input data-trans="import_btn" type="button" class="btn btn-primary" onclick="fileUploadSubmitClickHandler();" />
+                </div>
+                <div class="clear"></div>
+            </form>
+
+        </div>
+
+    </div>
+    <div class="form-note" style="margin-top: 50px">
+        <div class="notes-title">&nbsp;</div>
+        <ul class="notes-content">
+            <li data-trans="configuragtion_note_help"></li>
+        </ul>
+    </div>
+</div>
+    </div>
+</div>
+</div>

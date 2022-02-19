@@ -1,0 +1,26 @@
+<form id='securityForm'>
+<div class="form-body">
+    <a id='helplink' class="help"></a>
+    <div class="form-title" data-trans='security_policy'></div>
+   
+    <div class="content">
+        <div class="field-group">
+            <label class="label" for='mode' data-trans='security_mode'></label>
+            <select data-transid='security_mode' id="mode" data-bind="options: modes, value: selectedMode, optionsText: transOption('security_mode'), optionsValue: 'value'"></select>
+        </div>
+       
+        <div data-bind='visible: selectedMode() != "OPEN"'>
+	        <div class="form-title" data-trans='wpa'></div>
+	         <br/>
+	        <div class="field-group">
+	            <label class="label" for='pass' data-trans='pass_phrase'></label>
+	            <input id='pass' name="pass" type="text" data-bind="value: passPhrase" class="required" minlength='8' maxlength='64'/>
+	        </div>
+        </div>
+    </div>
+    <div class="form-buttons">
+        <input type="submit" class="btn-1 " data-trans='apply'/>
+        <input type="button" class="btn-1 " data-bind='click: clear' data-trans='cancel'/>
+    </div>
+</div>
+</form>

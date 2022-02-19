@@ -1,0 +1,68 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='temp_status_title'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="dialog_div">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body">
+				<div class="form-title" data-trans='temp_status_title'></div>
+				<div class="content">
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_status_wifi_chip"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: wifi_chip_temp"></span><span data-bind="visible: wifi_chip_temp() != ''">&#8451;</span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_pm_sensor_pa1"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: pm_sensor_pa1"></span><span data-bind="visible: pm_sensor_pa1() != ''">&#8451;</span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_pm_sensor_mdm"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: pm_sensor_mdm"></span><span data-bind="visible: pm_sensor_mdm() != ''">&#8451;</span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_pm_modem_5g"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: pm_modem_5g"></span><span data-bind="visible: pm_modem_5g() != ''">&#8451;</span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_therm_pa_level"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: therm_pa_level"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_therm_pa_frl_level"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: therm_pa_frl_level"></span>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-6 side-right" data-trans="temp_therm_tj_level"></label>
+						<div class="col-xs-6">
+							<span data-bind="text: therm_tj_level"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

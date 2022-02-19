@@ -1,0 +1,35 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/wifi/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="wifi_guest_ssid"></h1>
+</div>
+
+<div data-role="main" class="ui-content">	
+	* <span class="break-word" data-trans="modify_need_login"></span>
+	<form id="frmSSID2">
+		<div class="form-title">
+			<h2 data-trans="wifi_guest_24g"></h2>
+		</div>
+
+		<div class="ui-field-contain">
+			<label for="m_ssid" data-trans="network_name"></label>
+			<input type="text" name="m_ssid" data-bind="value: m_ssid" id="m_ssid" class="required form-control" maxlength="32"/>
+		</div>
+		<div class="ui-field-contain">
+			<label for='m_mode' data-trans='security_mode'></label>
+			<select data-transid='security_mode' id="m_mode" class="form-control"
+						data-bind="options: m_modes, value: m_selectedMode, optionsText: transOption('security_mode'), optionsValue: 'value', event:{change: securityModeChangeHandler}"></select>
+
+		</div>
+		<div id="passwordContainer" class="ui-field-contain" data-bind='visible: m_selectedMode() != "OPEN"'>			
+			<label for="m_pass" data-trans="pass_phrase"></label>
+            <div class="show-password-container">
+                <input id="m_pass" name="m_pass" type="password" class="required" data-bind="value: m_passPhrase" minlength='8' maxlength='63'/>
+                <div data-for="m_pass" class="show-password show-password-off"></div>
+            </div>
+		</div>
+		<div class="form-buttons">
+			<input id="ssid2_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+			<!--input id="ssid2_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("ssid2");}' data-trans='cancel'/-->
+		</div>
+	</form>
+</div>

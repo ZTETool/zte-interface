@@ -1,0 +1,81 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='advanced_settings'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+        
+
+        <div class="form-body">
+            <div class="content margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                    </a>
+                </div>
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li><a href="#sleep_mode" data-trans="sleep_mode"></a></li>
+                    <li><a href="#router_setting" data-trans="router_setting"></a></li>
+                    <li class="active"><a href="#firewall" data-trans="firewall"></a></li>
+                    <li><a href="#ota_update" data-trans="update_settings"></a></li>
+                    <li><a href="#others" data-trans="others"></a></li>
+                </ul>
+                <div class="col-xs-4 margin-top-20">
+                    <div class="row">
+                        <a href="#port_filter">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="port_filter"></div>
+                        </a>
+                    </div>
+                    <div class="row" data-bind="visible: !isCPE">
+                        <a href="#port_map">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="port_map"></div>
+                        </a>
+                    </div>
+                    <div class="row" data-bind="visible: isCPE">
+                        <a href="#port_forward">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="port_forward"></div>
+                        </a>
+                    </div>
+					<div class="row" data-bind="visible: isCPE">
+                        <a href="#port_map">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="port_map"></div>
+                        </a>
+                    </div>
+                    <div class="row" data-bind="visible: isCPE && wanMode != 'LTE_BRIDGE'">
+                        <a href="#url_filter">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="url_filter"></div>
+                        </a>
+                    </div>
+                    <div class="row" data-bind="visible: wanMode != 'LTE_BRIDGE'">
+                        <a href="#upnp">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="upnp"></div>
+                        </a>
+                    </div>
+                    <div class="row" data-bind="visible: wanMode != 'LTE_BRIDGE'">
+                        <a href="#dmz">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="dmz"></div>
+                        </a>
+                    </div>
+					<div class="row" data-bind="visible: wanMode != 'LTE_BRIDGE'">
+                        <a href="#system_security">
+                            <div class="line-height-40 arrow-right cursorhand" data-trans="system_security"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+

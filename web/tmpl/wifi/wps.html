@@ -1,0 +1,183 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title form-title-multi">
+                <h1 data-trans='wifi_wireless_settings'></h1>
+                <p data-trans="wifi_main_sub_title"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+<div class="form-body">
+	<div class="row meun-nav-new">
+        <a href="#home">
+            <img alt="" src="img/ic_settings_wifi_blue.png?v=1622612890852">
+        </a>
+    </div>
+	<form id="frmWifiSwitch" role="form">
+        <div class="content margin-top-20">
+            <div class="row form-group" data-bind="visible: hasWifiSwitch">
+                <label class="col-xs-4 side-right" data-trans="wifi_switch"></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '1'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_enable"
+									   data-bind="checked: wifi_enable" value="1"/>
+							</p>
+                            <label for="wifi_switch_enable" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '0'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_disable"
+									   data-bind="checked: wifi_enable" value="0"/>
+							</p>
+                            <label for="wifi_switch_disable" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group hide" data-bind="visible: wifi_enable() == '1' && hasMultiSSID && hasGuestSSIDControl">
+                <label class="col-xs-4 side-right" data-trans=""></label>
+                <div class="col-xs-6">
+                    <p class="checkbox" data-bind="css:{'checkbox_selected': lan_sec_ssid_control() == '0'}">
+                        <input id="allowAccessCheckbox" name="allowAccessCheckbox" type="checkbox" data-bind="checked: lan_sec_ssid_control() == '0'" value="1"/>
+                    </p>
+                    <label data-trans="allow_guest_ssid"></label>
+                </div>
+            </div>
+            
+            <div class="form-buttons">
+                <input id="wifi_switch_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+                <!--input id="wifi_switch_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("switch");}' data-trans='cancel'/-->
+            </div>
+        </div>
+    </form>
+
+    <ul class="nav nav-tabs nav-justified margin-top-20 margin-bottom-20" role="tablist" data-bind="visible: isShowSSIDInfoDiv">
+        <li><a href="#wifi_main" data-trans="wifi_main_ssid"></a></li>
+		<li data-bind="visible: hasMultiSSID"><a href="#wifi_guest" data-trans="wifi_guest_ssid"></a></li>
+        <li class="active"><a href="#wps" data-trans="wps"></a></li>
+        <li><a href="#wifi_advance" data-trans="wifi_advance"></a></li>
+        <li><a href="#ap_station" data-trans="ap_station"></a></li>
+        <!--li><a href="#wifi_mac_filter" data-trans="wifi_mac_filter"></a></li-->
+    </ul>
+<div data-bind="visible:origin_main_ssid_enable == '1'">
+    <form id='wpsFormMain' role="form" data-bind="visible: isShowSSIDInfoDiv && ssid_chip1_enable">
+        <div class="form-title">
+            <h2 data-trans="wps_main_ssid"></h2>
+        </div>
+        <div class="content">
+
+        <div class="row form-group" data-bind="visible: hasMultiSSID">
+            <label class="col-xs-4 side-right" data-trans='wifi_main_ssid' for="multiSSID"></label>
+            <div class="col-xs-4">
+                <select id="multiSSID" class="valid form-control" data-bind="options: mulOption_Main, value: wpsSSID_Main, optionsValue: 'value', optionsText: 'text'">
+				</select>
+            </div>
+        </div>
+		<div class="row form-group">
+            <label class="col-xs-4 side-right" data-trans="wps"></label>
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-4">
+						<p class="radiobox" for="wpsMode" data-bind="css:{'radiobox_selected': wpsType_Main() == 'PIN'}">
+							<input type="radio" name="wpsMode" id="pinMode" data-bind="checked: wpsType_Main" value="PIN"/>
+						</p>
+                        <label for="pinMode" data-trans="wps_pin"></label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input type="text" name="txtPin" id="txtPin" data-bind="value: wpsPin_Main, enable: wpsType_Main() == 'PIN', valueUpdate: 'keypress'" class="required margin-left-5  form-control" maxlength="9"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <label class="col-xs-4 side-right"></label>
+            <div class="col-xs-6">
+				<p class="radiobox" for="wpsMode" data-bind="css:{'radiobox_selected': wpsType_Main() == 'PBC'}">
+					<input type="radio" name="wpsMode" id="pbcMode" data-bind="checked: wpsType_Main" value="PBC"/>
+				</p>
+                <label for="pbcMode" data-trans="wps_pbc"></label>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" data-bind="enable: wpsType_Main() != '', css:{disabled: wpsType_Main() == ''}" class="btn btn-primary" data-trans='apply'/>
+        </div>
+        <div class="form-note">
+            <div class="notes-title">&nbsp;</div>
+            <ul class="notes-content">
+                <li data-trans="wps_note_all"></li>
+                <li data-trans="wps_note_pin"></li>
+                <li data-trans="wps_note_pbc"></li>
+                <li data-trans="wps_note_wait"></li>
+            </ul>
+        </div>
+        </div>
+    </form>
+    <form id='wpsFormGuest' role="form" data-bind="visible: hasWifiDoubleChip && isShowSSIDInfoDiv && ssid_chip2_enable">
+        <div class="form-title">
+            <h2 data-trans="wps_guest_ssid"></h2>
+        </div>
+        <div class="content">
+            <div class="row form-group" data-bind="visible: hasMultiSSID">
+                <label class="col-xs-4 side-right" data-trans='wifi_guest_ssid' for="multiSSID"></label>
+                <div class="col-xs-4">
+                    <select id="multiSSID_Guest" class="valid form-control" data-bind="options: mulOption_Guest, value: wpsSSID_Guest, optionsValue: 'value', optionsText: 'text'">
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-xs-4 side-right" data-trans="wps"></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wpsMode_Guest" data-bind="css:{'radiobox_selected': wpsType_Guest() == 'PIN'}">
+								<input type="radio" name="wpsMode_Guest" id="pinMode_Chip2" data-bind="checked: wpsType_Guest" value="PIN"/>
+							</p>
+                            <label for="pinMode_Chip2" data-trans="wps_pin"></label>
+                        </div>
+                        <div class="col-xs-6">
+                            <input type="text" name="txtPin_Chip2" id="txtPin_Chip2" data-bind="value: wpsPin_Guest, enable: wpsType_Guest() == 'PIN', valueUpdate: 'keypress'" class="required margin-left-5  form-control" maxlength="9"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-xs-4 side-right"></label>
+                <div class="col-xs-6">
+					<p class="radiobox" for="wpsMode_Guest" data-bind="css:{'radiobox_selected': wpsType_Guest() == 'PBC'}">
+						<input type="radio" name="wpsMode_Guest" id="pbcMode_Chip2" data-bind="checked: wpsType_Guest" value="PBC"/>
+					</p>
+                    <label for="pbcMode_Chip2" data-trans="wps_pbc"></label>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <input type="submit" data-bind="enable: wpsType_Guest() != '', css:{disabled: wpsType_Guest() == ''}" class="btn btn-primary" data-trans='apply'/>
+            </div>
+            <div class="form-note">
+                <div class="notes-title">&nbsp;</div>
+                <ul class="notes-content">
+                    <li data-trans="wps_note_all"></li>
+                    <li data-trans="wps_note_pin"></li>
+                    <li data-trans="wps_note_pbc"></li>
+                    <li data-trans="wps_note_wait"></li>
+                </ul>
+            </div>
+        </div>
+    </form>
+	</div>
+</div>
+    </div>
+</div>
+</div>

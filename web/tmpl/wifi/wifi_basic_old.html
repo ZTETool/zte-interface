@@ -1,0 +1,41 @@
+<form id="wifi_basic_form">
+<div class="form-body">
+	<div class="form-title" data-trans="wifi_basic"></div>
+	<div class="content">
+		<div class="field-group">
+			<label class="label" for="mode" data-trans="network_mode"></label> 
+			<select name="mode" id="mode" data-transid="network_mode" data-bind="options: modes, value: selectedMode, optionsText: transOption('network_mode'), optionsValue: 'value', event:{ change: modeChangeHandler}" required="true"></select>
+		</div>
+		<div class="field-group">
+			<label class="label" for="ssid" data-trans="network_name"></label> 
+			<input type="text" name="ssid" data-bind="value: ssid" id="ssid" class="required" maxlength="32"/>
+		</div>
+		<div class="field-group">
+			<label class="label" data-trans="broadcast_network_name"></label> 
+			<input type="radio" name="broadcast" id="broadcastEnable" data-bind="checked: broadcast" value="true"/><label for="broadcastEnable" data-trans="enable"></label>
+			<input type="radio" name="broadcast" id="broadcastDisable" data-bind="checked: broadcast" value="false"/><label for="broadcastDisable" data-trans="disable"></label>
+		</div>
+		<div class="field-group">
+			<label class="label" for="country" data-trans="country_region_code"></label> 
+			<select name="country" id="country" data-bind="options: countries, value: selectedCountry, optionsText: 'text', optionsValue: 'value', event:{ change: countryChangeHandler}"></select>
+		</div>
+		<div class="field-group">
+			<label class="label" for="channel" data-trans="frequency_channel"></label> 
+			<select name="channel" id="channel" data-transid="frequency_channel" data-bind="options: channels, value: selectedChannel, optionsText: transOption('frequency_channel'), optionsValue: 'value'"></select>
+		</div>
+		<div class="field-group">
+			<label class="label" for="rate" data-trans="rate"></label>
+			<select name="rate" id="rate" data-transid="rate" data-bind="options: rates, value: selectedRate, optionsText: transOption('rate'), optionsValue: 'value'"></select>
+		</div>
+		<div class="field-group">
+			<label class="label" for="maxStation" data-trans="max_station_number"></label> 
+			<select name="maxStation" id="maxStation" data-bind="options: maxStations, value: selectedStation, optionsText: 'text', optionsValue: 'value'"></select>
+		</div>
+	</div>
+	<div class="form-buttons">
+		<input type="submit" class="btn-1 " data-trans="apply"/>
+		<input type="button" data-bind="click: clear" class="btn-1 " data-trans="cancel"/>
+	</div>
+	<div class="form-note" data-trans="wifi_basic_note"></div>
+</div>
+</form>

@@ -1,0 +1,89 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='sim_messages'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11 margin-top-20">
+
+            <div class="row meun-nav-new">
+                <a href="#home">
+                    <img alt="" src="img/ic_settings_sms_blue.png?v=1622612890852">
+                </a>
+            </div>
+<div id="simMsglist-main">
+    <form id="simMsgListForm">
+        <div class="simMsgList-btns smslist-btns">
+            <div class="row">
+                <div class="col-xs-9">
+                    <input type="button" id="simMsgList-delete" onclick="deleteSelectedSimMsgClickHandler()" class="btn btn-primary disabled" disabled="disabled" data-trans="delete"/>
+                </div>
+                <div class="col-xs-3">
+                    <select class="form-control" onchange="smsUtil.changeLocationHandler(this);">
+                        <option data-trans="smslist" value="device"></option>
+                        <option data-trans="sim_messages" value="sim" selected="selected"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="width100p overflow-only-y" id="simMsgTableContainer">
+            <table class="table table-striped table-hover ko-grid table-fixed">
+                <thead>
+                <tr>
+                    <th width="20" class="text-center">
+                        <p class="checkbox checkboxToggle" target="simMsgList_container" id="simMsgList-checkAll">
+                            <input type="checkbox" id="checkbox-all"/>
+                        </p>
+                    </th>
+                    <th data-trans="phone_number" class="text-center"></th>
+                    <th width="450" data-trans="content" class="text-center"></th>
+                    <th width="150" data-trans="time" class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody id="simMsgList_container">
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+    </div>
+</div>
+</div>
+<script type="text/x-jquery-tmpl" id="simMsgListTmpl">
+{{each(i, sms) data }}
+    <tr class="smslist-item simMsgList-item-class-${id}" id="simMsgList-item-${itemId}">
+        <td>
+            <div class="smslist-item-checkbox">
+                <p class="checkbox" id="${id}">
+                    <input type="checkbox" target="simMsgList-checkAll" name="msgId" id="checkbox${id}" value="${id}" number="${number}" number="${number}" />
+                </p>
+            </div>
+        </td>
+        <td>
+            {{if name.length == 0}}
+                {{if number.length > 15}}
+                    <div class="smslist-item-name pull-left">${number.substring(0,15)+"..."}</div>
+                {{else}}
+                     <div class="smslist-item-name pull-left">${number}</div>
+                {{/if}}
+            {{else}}
+                <div class="smslist-item-name pull-left">${name}</div>
+            {{/if}}
+        </td>
+        <td class="cursorhand" title="${content}">
+            <div class="sms-table-content smslist-item-msg">${content}</div>
+        </td>
+        <td><span class="clock-time ${tag==2||tag==3?'hide':''}">${time}</span></td>
+    </tr>
+{{/each}}
+</script>

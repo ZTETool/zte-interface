@@ -1,0 +1,64 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/arrow-back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="upgrade_url"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <div class="form-body margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/setting.png?v=1622612890852">
+                    </a>
+                </div>
+				<form id="updateUrlSettingForm">
+					<div class="form-body">
+						<div class="content">	
+							<div class="row form-group">
+								<label class="col-xs-3 side-right" for="txtPingUrl" data-trans="ftp_http_url"></label>
+								<div class="col-xs-4">
+									<input id="txtfotadownUrl" name="txtfotadownUrl" type="text" data-bind="value: fota_download_url, valueUpdate: 'keypress'" class="form-control" maxlength="128"/>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-xs-3">
+									<span data-trans="upgrade_time"></span>
+								</div>
+								<div class="col-xs-4">
+									<div>
+										<input class="required" type="text" style="width: 30px;" name="startTime" id="startTime" data-bind="value: startTime" min="0" max="24" maxlength="2">
+										 — 
+										<input class="required" type="text" style="width: 30px;" name="endTime" id="endTime" data-bind="value: endTime" min="0" max="24" maxlength="2">
+									</div>
+									<div class="col-xs-12" id="openErrorDiv" style="margin-left:-15px">		
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="submit" class="btn btn-primary" data-trans="apply"/>
+						</div>						
+					</div>
+					<div class="form-note">
+						<div class="notes-title">&nbsp;</div>
+						<ul class="notes-content">
+							<li data-trans="fota_down_url_note_1"></li>               
+							<li data-trans="fota_down_url_note_2"></li>               
+							<li data-trans="fota_down_url_note_3"></li>               
+						</ul>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

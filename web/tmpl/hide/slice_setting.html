@@ -1,0 +1,296 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="slice_setting"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			
+				<div class="form-body margin-top-20">
+					<div class="row meun-nav-new">
+						<a href="#home">
+							<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+						</a>
+					</div>
+					<!----- Slice2 ------>
+					<form id="slice2Form">
+						<h3 class="form-title" data-trans="slice_title_2"></h3>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_pdp_type_2" data-trans="apn_pdp_type"></label>
+							<div class="col-xs-6">
+								<select name="apn_pdp_type_2" id="apn_pdp_type_2" class="form-control" data-bind="options: pdpTypes, value: selectedPdpType_2, optionsText: 'text', optionsValue: 'value'"></select>&nbsp;
+							</div>
+						</div>								
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_2" data-trans="apn"></label>
+							<div class="col-xs-6">
+								<input type="text" name="apn_2" data-bind="value: apn_2" id="apn_2" class="required form-control" maxlength="64"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_authentication_2" data-trans="apn_authentication"></label>
+							<div class="col-xs-6">
+								<select name="apn_authentication_2" id="apn_authentication_2" class="form-control" data-bind="options: authModes, value: selectedAuthentication_2, optionsText: 'text', optionsValue: 'value'"></select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_user_name_2" data-trans="apn_user_name"></label>
+							<div class="col-xs-6">
+								<input type="text" name="apn_user_name_2" class="form-control" data-bind="value: username_2" id="apn_user_name_2" maxlength="127"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_password_2" data-trans="apn_password"></label>
+							<div class="col-xs-6">
+								<input type="password" name="apn_password_2" class="form-control" data-bind="value: password_2" id="apn_password_2" maxlength="127"/>
+							</div>
+						</div>	
+						<div class="row form-group hide">
+							<label class="col-xs-3 side-right" for="vlan_id_2" data-trans="vlan_id"></label>
+							<div class="col-xs-6">
+								<input type="text" name="vlan_id_2" class="form-control" data-bind="value: vlan_id_2,disable:vlan_id_2_status()=='0'" id="vlan_id_2" maxlength="4"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtSourceIpAddress_2" data-trans="source_ip_address"></label>
+							<div class="col-xs-6">
+								<input type="text" name="txtSourceIpAddress_2" id="txtSourceIpAddress_2" data-bind="value: sourceIpAddress_2"  maxlength="39" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtDestIpAddress_2" data-trans="dest_ip_address"></label>
+							<div class="col-xs-6">
+								<input type="text" name="txtDestIpAddress_2" id="txtDestIpAddress_2" data-bind="value: destIpAddress_2"  maxlength="39" class="form-control"/>
+							</div>
+						</div>	
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtSourcePortStart_2" data-trans='source_port_range'></label>
+							<div class="col-xs-9">
+								<div class="row">
+									<div class="col-xs-3">
+										<input id='txtSourcePortStart_2' name="txtSourcePortStart_2" type="text" data-bind="value: sourcePortStart_2"
+											   class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<div class="col-xs-2 text-center">
+										-
+									</div>
+									<div class="col-xs-3">
+										<input id='txtSourcePortEnd_2' name="txtSourcePortEnd_2" type="text" data-bind="value: sourcePortEnd_2"
+											   class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<label class="col-xs-4" id='sourceRangeLabel_2'>(1~65535)</label>
+								</div>
+							</div>
+							<div class="col-xs-9 col-md-offset-3" id="sourcePortErrorDiv_2"></div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtDestPortStart_2" data-trans='dest_port_range'></label>
+							<div class="col-xs-9">
+								<div class="row">
+									<div class="col-xs-3">
+										<input id='txtDestPortStart_2' name="txtDestPortStart_2" type="text" data-bind="value: destPortStart_2"  class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<div class="col-xs-2 text-center">
+										-
+									</div>
+									<div class="col-xs-3">
+										<input id='txtDestPortEnd_2' name="txtDestPortEnd_2" type="text" data-bind="value: destPortEnd_2"
+											   class="rangeInput form-control" maxlength="5"/>
+
+									</div>
+									<label class="col-xs-4" id='destRangeLabel_2'>(1~65535)</label>
+								</div>
+							</div>
+							<div class="col-xs-9 col-md-offset-3" id="destPortErrorDiv_2"></div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="protocol_2" data-trans="protocol"></label>
+							<div class="col-xs-6">
+								<select id="protocol_2" data-bind="value: protocol_2" class="form-control">
+									<option value="1">TCP</option>
+									<option value="2">UDP</option>
+									<option value="3">TCP+UDP</option>									
+								</select>
+							</div>
+						</div>						
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="pdn_switch"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="pdnSwitchGrp_2" id="pdnSwitchEnable_2" data-bind="checked: pdnSwitchSetting_2" value="1"/>
+										<label for="pdnSwitchEnable_2" data-trans="on"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="pdnSwitchGrp_2" id="pdnSwitchDisable_2" data-bind="checked: pdnSwitchSetting_2" value="0"/>
+										<label for="pdnSwitchDisable_2" data-trans="off"></label>
+									</div>
+								</div>
+							</div>
+						</div>							
+						<div class="row form-group" data-bind="visible:pdnSwitchSetting_2()=='1'">
+							<label class="col-xs-3 side-right" data-trans="wan_ip_address"></label>
+							<div class="col-xs-6">	
+								<label data-bind="text:ipAddr_2"></label>			
+							</div>
+						</div>		
+						<div class="row form-group" data-bind="visible:pdnSwitchSetting_2()=='1'">
+							<label class="col-xs-3 side-right" data-trans="ipv6_wan_ip_address"></label>
+							<div class="col-xs-6">	
+								<label data-bind="text:ipv6Addr_2"></label>			
+							</div>
+						</div>					
+						<div class="form-buttons">
+							<input type="submit" class="btn btn-primary" data-trans="apply"/>
+						</div>
+					</form>
+					<!----- Slice2 End ------>
+					
+					<!----- Slice3 ------>
+					<form id="slice3Form">
+						<h3 class="form-title" data-trans="slice_title_3"></h3>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_pdp_type_3" data-trans="apn_pdp_type"></label>
+							<div class="col-xs-6">
+								<select name="apn_pdp_type_3" id="apn_pdp_type_3" class="form-control" data-bind="options: pdpTypes, value: selectedPdpType_3, optionsText: 'text', optionsValue: 'value'"></select>&nbsp;
+							</div>
+						</div>								
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_3" data-trans="apn"></label>
+							<div class="col-xs-6">
+								<input type="text" name="apn_3" data-bind="value: apn_3" id="apn_3" class="required form-control" maxlength="64"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_authentication_3" data-trans="apn_authentication"></label>
+							<div class="col-xs-6">
+								<select name="apn_authentication_3" id="apn_authentication_3" class="form-control" data-bind="options: authModes, value: selectedAuthentication_3, optionsText: 'text', optionsValue: 'value'"></select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_user_name_3" data-trans="apn_user_name"></label>
+							<div class="col-xs-6">
+								<input type="text" name="apn_user_name_3" class="form-control" data-bind="value: username_3" id="apn_user_name_3" maxlength="127"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="apn_password_3" data-trans="apn_password"></label>
+							<div class="col-xs-6">
+								<input type="password" name="apn_password_3" class="form-control" data-bind="value: password_3" id="apn_password_3" maxlength="127"/>
+							</div>
+						</div>	
+						<div class="row form-group hide">
+							<label class="col-xs-3 side-right" for="vlan_id_3" data-trans="vlan_id"></label>
+							<div class="col-xs-6">
+								<input type="text" name="vlan_id_3" class="form-control" data-bind="value: vlan_id_3,disable:vlan_id_3_status()=='0'" id="vlan_id_3" maxlength="4"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtSourceIpAddress_3" data-trans="source_ip_address"></label>
+							<div class="col-xs-6">
+								<input type="text" name="txtSourceIpAddress_3" id="txtSourceIpAddress_3" data-bind="value: sourceIpAddress_3"  maxlength="39" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtDestIpAddress_3" data-trans="dest_ip_address"></label>
+							<div class="col-xs-6">
+								<input type="text" name="txtDestIpAddress_3" id="txtDestIpAddress_3" data-bind="value: destIpAddress_3"  maxlength="39" class="form-control"/>
+							</div>
+						</div>	
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtSourcePortStart_3" data-trans='source_port_range'></label>
+							<div class="col-xs-9">
+								<div class="row">
+									<div class="col-xs-3">
+										<input id='txtSourcePortStart_3' name="txtSourcePortStart_3" type="text" data-bind="value: sourcePortStart_3"
+											   class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<div class="col-xs-2 text-center">
+										-
+									</div>
+									<div class="col-xs-3">
+										<input id='txtSourcePortEnd_3' name="txtSourcePortEnd_3" type="text" data-bind="value: sourcePortEnd_3"
+											   class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<label class="col-xs-4" id='sourceRangeLabel_3'>(1~65535)</label>
+								</div>
+							</div>
+							<div class="col-xs-9 col-md-offset-3" id="sourcePortErrorDiv_3"></div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtDestPortStart_3" data-trans='dest_port_range'></label>
+							<div class="col-xs-9">
+								<div class="row">
+									<div class="col-xs-3">
+										<input id='txtDestPortStart_3' name="txtDestPortStart_3" type="text" data-bind="value: destPortStart_3"  class="rangeInput form-control" maxlength="5"/>
+									</div>
+									<div class="col-xs-2 text-center">
+										-
+									</div>
+									<div class="col-xs-3">
+										<input id='txtDestPortEnd_3' name="txtDestPortEnd_3" type="text" data-bind="value: destPortEnd_3"
+											   class="rangeInput form-control" maxlength="5"/>
+
+									</div>
+									<label class="col-xs-4" id='destRangeLabel_3'>(1~65535)</label>
+								</div>
+							</div>
+							<div class="col-xs-9 col-md-offset-3" id="destPortErrorDiv_3"></div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="protocol_3" data-trans="protocol"></label>
+							<div class="col-xs-6">
+								<select id="protocol_3" data-bind="value: protocol_3" class="form-control">
+									<option value="1">TCP</option>
+									<option value="2">UDP</option>
+									<option value="3">TCP+UDP</option>									
+								</select>
+							</div>
+						</div>						
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="pdn_switch"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="pdnSwitchGrp_3" id="pdnSwitchEnable_3" data-bind="checked: pdnSwitchSetting_3" value="1"/>
+										<label for="pdnSwitchEnable_3" data-trans="on"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="pdnSwitchGrp_3" id="pdnSwitchDisable_3" data-bind="checked: pdnSwitchSetting_3" value="0"/>
+										<label for="pdnSwitchDisable_3" data-trans="off"></label>
+									</div>
+								</div>
+							</div>
+						</div>							
+						<div class="row form-group" data-bind="visible:pdnSwitchSetting_3()=='1'">
+							<label class="col-xs-3 side-right" data-trans="wan_ip_address"></label>
+							<div class="col-xs-6">	
+								<label data-bind="text:ipAddr_3"></label>			
+							</div>
+						</div>		
+						<div class="row form-group" data-bind="visible:pdnSwitchSetting_3()=='1'">
+							<label class="col-xs-3 side-right" data-trans="ipv6_wan_ip_address"></label>
+							<div class="col-xs-6">	
+								<label data-bind="text:ipv6Addr_3"></label>			
+							</div>
+						</div>								
+						<div class="form-buttons">
+							<input type="submit" class="btn btn-primary" data-trans="apply"/>
+						</div>
+					</form>
+					<!----- Slice3 End ------>
+				</div>
+			
+		</div>
+	</div>
+</div>

@@ -1,0 +1,112 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/arrow-back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="watch_dog_setting"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <div class="form-body margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/setting.png?v=1622612890852">
+                    </a>
+                </div>
+				<form id="watchDogSettingForm" data-bind="css: {'margin-top-20': isDataCard}">
+    <div class="form-body">
+			<div class="content">
+				<div class="row form-group">
+					<label class="col-xs-3 side-right" data-trans="watch_dog"></label>
+					<div class="col-xs-5">
+						<div class="row">
+							<div class="col-xs-5">
+								<p class="radiobox" for="watchDogGrp" data-bind="css:{'radiobox_selected': watchDogSetting() == '1'}">
+									<input type="radio" name="watchDogGrp" id="watchDogEnable" data-bind="checked: watchDogSetting" value="1"/>
+								</p>
+								<label for="watchDogEnable" data-trans="enable"></label>
+							</div>
+							<div class="col-xs-5">
+								<p class="radiobox" for="watchDogGrp" data-bind="css:{'radiobox_selected': watchDogSetting() == '0'}">
+									<input type="radio" name="watchDogGrp" id="watchDogDisable" data-bind="checked: watchDogSetting" value="0"/>
+								</p>
+								<label for="watchDogDisable" data-trans="disable"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+					<label class="col-xs-3 side-right" for="txtDetectTimeout" data-trans="detectTimeout"></label>
+					<div class="col-xs-4">					
+						<div class="input-group">
+							<input id="txtDetectTimeout" name="txtDetectTimeout" type="text" data-bind="value: net_link_detect_timeout, valueUpdate: 'keypress'" class="required form-control" maxlength="2" min="1" max="30"/>
+							<div data-trans="second" id="timeoutLabel" class="input-group-addon"></div>
+						</div>
+					</div>
+					<div class="col-xs-9 col-md-offset-3" id="errorTimeout"></div>
+				</div>
+				<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+					<label class="col-xs-3 side-right" for="txtPingUrl" data-trans="pingURL"></label>
+					<div class="col-xs-4">
+						<input id="txtPingUrl" name="txtPingUrl" type="text" data-bind="value: pingUrl, valueUpdate: 'keypress'" class="required form-control" maxlength="32"/>
+					</div>
+				</div>
+				<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+					<label class="col-xs-3 side-right" for="txtRebootThreshold" data-trans="reboot_threshold"></label>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<input id="txtRebootThreshold" name="txtRebootThreshold" type="text" data-bind="value: rebootThreshold, valueUpdate: 'keypress'" class="required form-control" maxlength="4"/>
+							<div data-trans="watch_dog_times" id="rebootThresholdLabel" class="input-group-addon"></div>
+						</div>
+					</div>
+					<div class="col-xs-9 col-md-offset-3" id="errorThreshold"></div>
+				</div>
+				<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+					<label class="col-xs-3 side-right" for="txtTimeInterval" data-trans="time_interval"></label>
+					<div class="col-xs-4">
+						<div class="input-group">
+							<input id="txtTimeInterval" name="txtTimeInterval"  type="text" data-bind="value: timeInterval" class="required form-control" maxlength="8"/>
+							<div data-trans="second" id="leaseLabel" class="input-group-addon"></div>
+						</div>
+					</div>
+					<div class="col-xs-9 col-md-offset-3" id="errorHolder"></div>
+				</div>
+				<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+					<label class="col-xs-3 side-right" for="rebootEnableCheckbox" data-trans="rebootEnable"></label>
+					<div class="col-xs-4">
+						<p class="checkbox checkbox_selected" data-bind="css:{'checkbox_selected': watch_dog_reboot_enable() == '1'}">
+							<input id="rebootEnableCheckbox" name="rebootEnableCheckbox" type="checkbox" data-bind="checked: watch_dog_reboot_enable() == '1'" value="1">
+						</p>
+					</div>
+				</div>
+			</div>
+        <div class="form-buttons">
+            <input type="submit" class="btn btn-primary" data-trans="apply"/>
+        </div>
+        <div class="form-note">
+            <div class="notes-title">&nbsp;</div>
+            <ul class="notes-content">
+                <li data-trans="watch_dog_note_switch"></li>
+				<li data-trans="watch_dog_note_alert" style="color: red"></li>
+				<li data-trans="watch_dog_reboot_too_much_warning" style="color: red"></li>
+                <li data-trans="watch_dog_note_url"></li>
+                <li data-trans="watch_dog_note_reboot"></li>
+				<li data-trans="watch_dog_note_times"></li>
+				<li data-trans="watch_dog_note_detect_timeout"></li>
+				<li data-trans="watch_dog_note_reboot_enable"></li>
+            </ul>
+        </div>
+    </div>
+</form>
+    </div>
+</div>
+</div>

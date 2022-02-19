@@ -1,0 +1,257 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title form-title-multi">
+                <h1 data-trans='wifi_wireless_settings'></h1>
+                <p data-trans="wifi_main_sub_title"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_wifi_blue.png?v=1622612890852">
+					</a>
+				</div>
+				<form id="frmWifiSwitch" role="form">
+					<div class="content margin-top-20">
+						<div class="row form-group" data-bind="visible: hasWifiSwitch">
+							<label class="col-xs-4 side-right" data-trans="wifi_switch"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="wifi_switch" id="wifi_switch_enable"
+											data-bind="checked: wifi_enable" value="1"/>
+										<label for="wifi_switch_enable" data-trans="enable"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="wifi_switch" id="wifi_switch_disable"
+											data-bind="checked: wifi_enable" value="0"/>
+										<label for="wifi_switch_disable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row form-group hide" data-bind="visible: wifi_enable() == '1' && hasMultiSSID && hasGuestSSIDControl">
+							<label class="col-xs-4 side-right" data-trans=""></label>
+							<div class="col-xs-6">
+								<p class="checkbox" data-bind="css:{'checkbox_selected': lan_sec_ssid_control() == '0'}">
+									<input id="allowAccessCheckbox" name="allowAccessCheckbox" type="checkbox" data-bind="checked: lan_sec_ssid_control() == '0'" value="1"/>
+								</p>
+								<label data-trans="allow_guest_ssid"></label>
+							</div>
+						</div>
+						
+						<div class="form-buttons">
+							<input id="wifi_switch_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+							<!--input id="wifi_switch_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("switch");}' data-trans='cancel'/-->
+						</div>
+					</div>
+				</form>
+
+				<ul class="nav nav-tabs nav-justified margin-top-20 margin-bottom-20" role="tablist" data-bind="visible: isShowSSIDInfoDiv">
+					<li><a href="#wifi_main" data-trans="wifi_main_ssid"></a></li>
+					<li data-bind="visible: hasMultiSSID"><a href="#wifi_guest" data-trans="wifi_guest_ssid"></a></li>
+					<li><a href="#wps" data-trans="wps"></a></li>
+					<li><a href="#wifi_advance" data-trans="wifi_advance"></a></li>
+					<li><a href="#ap_station" data-trans="ap_station"></a></li>
+					<li class="active"><a href="#wifi_mac_filter" data-trans="wifi_mac_filter"></a></li>
+				</ul>
+			
+
+			<div data-bind="visible:origin_main_ssid_enable == '1'">					
+				<div class="form-body">
+					<form id='macFilterForm'>
+						<div class="content">
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans='mac_filter_switch'></label>
+								<div class="col-xs-8">
+									<div class="col-xs-4">
+										<input type="radio" name="mac_filter_switch" id="mac_filter_switch_black" data-bind="checked: macFilterEnable" value="2"/>
+										<label for="mac_filter_switch_black" data-trans="black_list"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="mac_filter_switch" id="mac_filter_switch_white"data-bind="checked: macFilterEnable" value="1"/>
+										<label for="mac_filter_switch_white" data-trans="white_list"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="mac_filter_switch" id="mac_filter_switch_disable" data-bind="checked: macFilterEnable" value="0"/>
+										<label for="mac_filter_switch_disable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+							<div class="form-buttons">
+								<input type="submit" class="btn btn-primary" data-trans='apply' />
+							</div>
+						</div>
+					</form>
+					<div data-bind="visible: macFilterEnable()==2&macFilterEnableOri()==2">
+						<form id="setBlackListFrm">
+							<div class="content">
+								<div class="row form-group hide">
+									<label class="col-xs-4 side-right" for="txtNewHostNameBlackList" data-trans="host_name"></label>
+									<div class="col-xs-6">
+										<input type="text" name="txtNewHostNameBlackList" id="txtNewHostNameBlackList" class="required form-control" data-bind="value: newHostNameBlackList"  maxlength="20"/>
+									</div>
+								</div>
+								<div class="row form-group">
+									<label class="col-xs-4 side-right" for="txtNewMacAddressBlackList" data-trans="mac_address"></label>
+									<div class="col-xs-6">
+										<input type="text" name="txtNewMacAddressBlackList" id="txtNewMacAddressBlackList" class="required form-control" data-bind="value: newMacAddressBlackList"  maxlength="17"/>
+										<label data-trans="macExam" id="macExamLabel"></label>
+									</div>
+								</div>
+							</div>
+							<div class="form-buttons">
+								<input type="submit" class="btn btn-primary" data-trans="apply"  id="MAC_input_apply_id"/>
+							</div>
+							<div class="cut_off_title_blue"></div>
+						</form>
+
+						<div class="content">
+							<h2 data-trans="black_list"></h2>
+							<div class="ko-grid-container marginnone">
+								<table cellPadding="0" cellSpacing="0" class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th width="60" data-trans="station_number"></th>
+											<th width="200" data-trans="host_name"></th>
+											<th width="200" data-trans="mac_address"></th>
+											<th width="100" data-trans=""></th>
+										</tr>
+									</thead>
+									<tbody data-bind="foreach:blackList" id="blacklist">
+										<tr data-bind="css:{odd:$index()%2==1, even:$index()%2==0}">
+											<td data-bind="text:$index()+1"></td>
+											<td data-bind="text:hostName"></td>
+											<td data-bind="text:macAddress"></td>
+											<td>
+												<input type="button" class="btn btn-primary" data-trans='delete' data-bind="click: $root.removeFromBlackList,attr:{id:$index()}" />
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="cut_off_title_blue"></div>
+						</div>
+						<div class="content">
+							<h2 data-trans="station_info"></h2>
+							<div class="ko-grid-container marginnone">
+								<table cellPadding="0" cellSpacing="0" id="tabStation" class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th width="60" data-trans="station_number"></th>
+											<th width="200" data-trans="host_name"></th>
+											<th width="200" data-trans="mac_address"></th>
+											<th width="100"></th>
+										</tr>
+									</thead>
+									<tbody data-bind="foreach:deviceInfo" id="deviceInfo">
+										<tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+											<td data-bind="text:$index()+1"></td>
+											<td data-bind="text:hostName"></td>
+											<td data-bind="text:macAddress"></td>
+											<td name="whiteInput">
+												<input type="button" class="btn btn-primary" data-trans='block' data-bind="click:$root.addToBlackList,enable:enabled,attr:{hostName:hostName,mac:macAddress,ip:ipAddress,id:'block'+$index()}"/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div data-bind="visible: macFilterEnable()==1&macFilterEnableOri()==1">
+						<form id="setWhiteListFrm">
+							<div class="content">
+								<div class="row form-group">
+									<label class="col-xs-4 side-right" for="texNewMacAddressWhiteList" data-trans="mac_address"></label>
+									<div class="col-xs-6">
+										<input type="text" name="texNewMacAddressWhiteList" id="texNewMacAddressWhiteList" class="required form-control" data-bind="value: newMacAddressWhiteList"  maxlength="17"/>
+										<label data-trans="macExam" id="macExamLabel2"></label>
+									</div>
+								</div>
+							</div>
+							<div class="form-buttons">
+								<input type="submit" class="btn btn-primary" data-trans="apply"/>
+							</div>
+							<div class="cut_off_title_blue"></div>
+						</form>
+
+						<div class="content">
+							<h2 data-trans="white_list"></h2>
+							<div class="ko-grid-container marginnone">
+								<table cellPadding="0" cellSpacing="0" class="table table-striped table-hover">
+									<thead>
+									<tr>
+										<th width="60" data-trans="station_number"></th>
+										<th width="200" data-trans="host_name"></th>
+										<th width="200" data-trans="mac_address"></th>
+										<th width="100" data-trans=""></th>
+									</tr>
+									</thead>
+									<tbody data-bind="foreach:whiteList" id="whitelist">
+										<tr data-bind="css:{odd:$index()%2==1, even:$index()%2==0}">
+										<td data-bind="text:$index()+1"></td>
+										<td data-bind="text:hostName"></td>
+										<td data-bind="text:macAddress"></td>
+										<td>
+											<input type="button" class="btn btn-primary"value="delete" data-trans='delete' data-bind="click: $root.removeFromWhiteList,attr:{id:macAddress}" />
+										</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="cut_off_title_blue"></div>
+						</div>
+
+						<div class="content">
+							<h2 data-trans="station_info"></h2>
+							<div class="ko-grid-container marginnone">
+								<table cellPadding="0" cellSpacing="0" id="tabStation" class="table table-striped table-hover">
+									<thead>
+										<tr>
+											<th width="60" data-trans="station_number"></th>
+											<th width="200" data-trans="host_name"></th>
+											<th width="200" data-trans="mac_address"></th>
+											<th width="100"></th>
+										</tr>
+									</thead>
+									<tbody data-bind="foreach:deviceInfo" id="deviceInfoWhite">
+										<tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+											<td data-bind="text:$index()+1"></td>
+											<td data-bind="text:hostName"></td>
+											<td data-bind="text:macAddress"></td>
+											<td name="whiteInput">
+												<input type="button" class="btn btn-primary" data-trans='add' data-bind="click:$root.addToWhiteListFromDeviceInfoWhite,enable:enabledWhite,attr:{hostName:hostName,mac:macAddress,ip:ipAddress,id:'white'+$index()}"/>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content">
+						<li data-trans="mac_filter_help_1"></li>
+						<li data-trans="mac_filter_help_2"></li>
+						<li data-trans="mac_filter_help_3"></li>
+						<li data-trans="mac_filter_help_4"></li>
+					</ul>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

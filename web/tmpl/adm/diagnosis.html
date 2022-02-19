@@ -1,0 +1,306 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='diagnosis'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="dialog_div">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <div class="form-body margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                    </a>
+                </div>
+                <form id="frmDiagnosis" role="form">
+                    <div class="row form-group">
+                        <label class="col-xs-2 side-right hide" data-trans='diagnosis'></label>
+                        <div class="col-xs-4">
+                            <input type="submit" class="btn btn-primary" data-trans="diagnosis_button"/>
+                        </div>
+                    </div>
+                    <div class="cut_off_rule">
+                    </div>
+                    <div class="row form-group hide">
+                        <label class="col-xs-2 side-right" data-trans='diagnosis_result'></label>
+                        <label class="col-xs-4 side-left" data-bind='text:diagnosisResult'></label>
+                    </div>
+                    <!--Network Part-->
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_network_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='diag_sim'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': simCardStatus()== 1, 'diagnosis_error': simCardStatus() === 0}"></div>
+                            </div>
+                            <div class="row form-group colorRed" data-bind="visible:simCardStatus() === 0">
+                                <label class="col-xs-12 diagError" id="sim_card_error_alert"></label>
+                            </div>
+                            <!--network相关-->
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='network_register_result'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': network_register_result()==1, 'diagnosis_error': network_register_result() === 0}"></div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='connect_network_fail'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': connectFailCount() ==1, 'diagnosis_error': connectFailCount()===0}"></div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='dhcp_server_open'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': dhcpServer()== 1, 'diagnosis_error': dhcpServer() === 0}"></div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='dns_data_normal'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': dnsData()== 1, 'diagnosis_error': dnsData() === 0}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Wifi Part-->
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_wifi_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_switch'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': wifiSwitch()== '1', 'diagnosis_error': wifiSwitch() == '0'}"></div>
+                            </div>
+                            <div class="row form-group" data-bind="visible:show24MainWifi">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_show_ssid1'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': MainWifi24ShowSsid()== '1', 'diagnosis_error': MainWifi24ShowSsid() === '0'}"></div>
+                            </div>
+                            <!--div class="row form-group" data-bind="visible:show24GuestWifi">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_show_ssid2'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': GuestWifi24ShowSsid()== 1, 'diagnosis_error': GuestWifi24ShowSsid() === 0}"></div>
+                            </div-->
+                            <div class="row form-group" data-bind="visible:show5MainWifi && wifi5GIsOn">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_show_ssid3'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': MainWifi5ShowSsid()== '1', 'diagnosis_error': MainWifi5ShowSsid() === '0'}"></div>
+                            </div>
+                            <!--div class="row form-group" data-bind="visible:show5GuestWifi">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_show_ssid4'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': GuestWifi5ShowSsid()== 1, 'diagnosis_error': GuestWifi5ShowSsid() === 0}"></div>
+                            </div-->
+                            <div class="row form-group hide">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_driver'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': wifiDriverNormal()== '1', 'diagnosis_error': wifiDriverNormal() === '0'}"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--div class="row form-group">
+                        <label class="col-xs-4 side-right" data-trans='diag_wifi_coverage_short'></label>
+                        <div class="col-xs-4" data-bind="css: {'diagnosis_ok': wifiCoverage()== 1, 'diagnosis_error': wifiCoverage() === 0}"></div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-4 side-right" data-trans='diag_wifi_isolated'></label>
+                        <div class="col-xs-4" data-bind="css: {'diagnosis_ok': wifiSwitch()== 1, 'diagnosis_error': wifiSwitch() === 0}"></div>
+                    </div-->
+                    <!--div class="row form-group">
+                        <label class="col-xs-4 side-right" data-trans='wifi_awake_close'></label>
+                        <div class="col-xs-4" data-bind="css: {'diagnosis_ok': wifiAwake()== 1, 'diagnosis_error': wifiAwake() === 0}"></div>
+                    </div-->
+
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_security_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group hide">
+                                <label class="col-xs-4 side-right" data-trans='remote_man_close'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': remoteMan()== 1, 'diagnosis_error': remoteMan() === 0}"></div>
+                            </div>
+                            <div class="row form-group hide">
+                                <label class="col-xs-4 side-right" data-trans='ping_wan_close'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': pingWan()== 1, 'diagnosis_error': pingWan() === 0}"></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='upnp_close'></label>
+                                <div class="col-xs-4" data-bind="css: {'diagnosis_ok': upnpSwitch()== 1, 'diagnosis_error': upnpSwitch() === 0}"></div>
+                            </div>
+
+                            <div class="row form-group hide">
+                                <label class="col-xs-4 side-right" data-trans='anit_vio_ack_open'></label>
+                                <div class="col-xs-6" data-bind="css: {'diagnosis_ok': antiVioCra()=== 0, 'diagnosis_error': antiVioCra() == 1}"></div>
+                                <div data-bind="visible:clickDiag() && antiVioCra()==1" class="col-xs-6 hide">
+                                    <span style="line-height: 25px" data-trans="anti_violence_crach_close"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--firewall相关-->
+
+                    <!--div class="row form-group">
+                        <label class="col-xs-4 side-right" data-trans='diag_network'></label>
+                        <div class="col-xs-4" data-bind="css: {'diagnosis_ok': networkStatus()== 1, 'diagnosis_error': networkStatus() === 0}"></div>
+                    </div-->
+                    <div class="cut_off_title_blue">
+                    </div>
+                    <h3 data-trans="diag_reference_part"></h3>
+                    <div class="cut_off_rule">
+                    </div>
+                    <!--Network Part-->
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_network_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='curr_work_mode'></label>
+                                <label id="curr_work_mode_val" class="col-xs-6" ></label>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='APN'></label>
+                                <label class="col-xs-6" data-bind="text:currentApn"></label>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='curr_data'></label>
+                                <label class="col-xs-6" data-bind="text:currData"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Wifi Part-->
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_wifi_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='wifi_range'></label>
+                                <label id="wifi_range_val" data-bind="visible:clickDiag() && wifiCoverage()==1" class="col-xs-6"></label>
+                                <div data-bind="visible:clickDiag() && wifiCoverage()!=1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="wifiCoverageAlert"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='diag_wifi_isolated'></label>
+                                <label data-bind="visible:clickDiag() && showApIsolation()!=1" class="col-xs-6" data-trans="diagIsolatedClose"></label>
+                                <div data-bind="visible:clickDiag() && showApIsolation()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="diagIsolatedOpen"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='wifi_awake_close'></label>
+                                <label data-bind="visible:clickDiag() && wifiAwakeSwitch()!=1" class="col-xs-4" data-trans="diagIsolatedClose"></label>
+                                <div data-bind="visible:clickDiag() && wifiAwakeSwitch()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="diagIsolatedOpen"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='curr_wifi_access'></label>
+                                <label class="col-xs-6" data-bind="text:currWifiAccess"></label>
+                            </div>
+
+                            <div class="row form-group hide">
+                                <label class="col-xs-4 side-right" data-trans='diag_guest_router_switch'></label>
+                                <label class="col-xs-6" data-bind="visible:clickDiag() && guestRouterOpen" data-trans="guest_router_open"></label>
+                                <label class="col-xs-6" data-bind="visible:clickDiag() && !guestRouterOpen()" data-trans="guest_router_close"></label>
+                            </div>
+                            <div class="row form-group" data-bind="visible:mainWifi24Switch">
+                                <label class="col-xs-4 side-right" data-trans='main_wifi_is_encr'></label>
+                                <label data-bind="visible:clickDiag() && mainWifi24AuthMode()!=1" class="col-xs-4" data-trans="has_encr"></label>
+                                <div data-bind="visible:clickDiag() && mainWifi24AuthMode()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="no_encr"></span>
+                                </div>
+                            </div>
+                            <!--div class="row form-group" data-bind="visible:guestWifi24Switch">
+                                <label class="col-xs-4 side-right" data-trans='guest_wifi_is_encr'></label>
+                                <label data-bind="visible:clickDiag() && guestWifi24AuthMode()!=1" class="col-xs-4" data-trans="has_encr"></label>
+                                <div data-bind="visible:clickDiag() && guestWifi24AuthMode()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="no_encr"></span>
+                                </div>
+                            </div-->
+                            <div class="row form-group" data-bind="visible:mainWifi5Switch">
+                                <label class="col-xs-4 side-right" data-trans='main_wifi_is_encr_5'></label>
+                                <label data-bind="visible:clickDiag() && mainWifi5AuthMode()!=1" class="col-xs-4" data-trans="has_encr"></label>
+                                <div data-bind="visible:clickDiag() && mainWifi5AuthMode()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="no_encr"></span>
+                                </div>
+                            </div>
+                            <!--div class="row form-group" data-bind="visible:guestWifi5Switch">
+                                <label class="col-xs-4 side-right" data-trans='guest_wifi_is_encr_5'></label>
+                                <label data-bind="visible:clickDiag() && guestWifi5AuthMode()!=1" class="col-xs-4" data-trans="has_encr"></label>
+                                <div data-bind="visible:clickDiag() && guestWifi5AuthMode()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="no_encr"></span>
+                                </div>
+                            </div-->
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='black_list'></label>
+                                <label data-bind="visible:!showBlackList()&&clickDiag" class="col-xs-4 colorLightBlue" data-trans='black_list_not_open'></label>
+                                <div id="arrow_black" data-bind="visible:showBlackList" class="col-xs-4 smartListDisplay smartImg downArrowOpen downArrowClose" style="vertical-align: middle;align-content: center;">
+                                </div>
+                            </div>
+                            <div id="black_div" class="smart-content arrowHide">
+                                <table class="table table-striped table-hover" style="width: 65%">
+                                    <thead>
+                                    <tr>
+                                        <th width="60" data-trans="station_number"></th>
+                                        <th width="200" data-trans="host_name"></th>
+                                        <th width="200" data-trans="mac_address"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach:blackDevices">
+                                        <tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+                                            <td data-bind="text: $index()+1"></td>
+                                            <td>
+                                                <span data-bind="text: hostName, attr: {id: 'hostname_txt_'+idx}"></span>
+                                            </td>
+                                            <td data-bind="text: macAddress"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+							
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='white_list'></label>
+                                <label data-bind="visible:!showWhiteList()&&clickDiag" class="col-xs-4 colorLightBlue" data-trans='white_list_not_open'></label>
+                                <div id="arrow_white" data-bind="visible:showWhiteList" class="col-xs-4 smartListDisplay smartImg downArrowOpen downArrowClose" style="vertical-align: middle;align-content: center;">
+                                </div>
+                            </div>
+                            <div id="white_div" class="smart-content arrowHide">
+                                <table class="table table-striped table-hover" style="width: 65%">
+                                    <thead>
+                                    <tr>
+                                        <th width="60" data-trans="station_number"></th>
+                                        <th width="200" data-trans="host_name"></th>
+                                        <th width="200" data-trans="mac_address"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody data-bind="foreach:whiteDevices">
+                                        <tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+                                            <td data-bind="text: $index()+1"></td>
+                                            <td>
+                                                <span data-bind="text: hostName, attr: {id: 'hostname_txt_'+idx}"></span>
+                                            </td>
+                                            <td data-bind="text: macAddress"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-2 diagTitlePart"  data-trans="diag_security_part"></div>
+                        <div class="col-xs-10">
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='port_filter'></label>
+                                <label data-bind="visible:clickDiag() && portFilter()!=1" class="col-xs-4" data-trans="portFilterDropAccepted"></label>
+                                <div data-bind="visible:clickDiag() && portFilter()==1" class="col-xs-8">
+                                    <div class="diagnosis_alert"></div><span style="line-height: 25px" data-trans="portFilterDrop"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-4 side-right" data-trans='port_forward'></label>
+                                <label data-bind="visible:clickDiag() && portForwarding()!=1" class="col-xs-4" data-trans="portForwardingClose"></label>
+                                <label data-bind="visible:clickDiag() && portForwarding()==1" class="col-xs-4" data-trans="portForwardingOpen"></label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

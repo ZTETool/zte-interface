@@ -1,0 +1,25 @@
+<form id="frmUserImorv">
+    <div class="form-body">
+       <div class="form-title" data-trans='user_improv'></div>
+       <div class="content" style="padding: 5px 10px;">         
+            <div style="text-indent: 2em;">
+                <p data-trans="user_improv_note_1"></p>
+            </div>
+            <div style="text-indent: 2em;">
+                <p data-trans="user_improv_note_2"></p>
+            </div>
+            <div style="text-indent: 2em;">
+                <p data-trans="user_improv_note_3"></p>
+            </div>
+			<div style="text-indent: 2em;">
+			<p id="userImprovBtn" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected': tr069_user_improv_flag()=='1'}, click: setAllowedUserImprov" manualcontrol="true">
+				<input type="checkbox" id="isAllowedUserImprov" value="1" data-bind="checked:tr069_user_improv_flag()=='1'">
+			</p>
+			<label for="isAllowedUserImprov" style="display: inline" data-trans="user_improv_note_4" class="update_inline floatleft lineheight25"></label>
+			</div>
+			<div class="form-buttons">
+				<input id="btnConfirm" type="submit" class="btn btn-primary" data-trans="user_improv_confirm"/>
+			</div>
+        </div>       
+    </div>
+</form>

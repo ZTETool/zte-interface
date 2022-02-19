@@ -1,0 +1,115 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='advanced_settings'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+        <form id="frmOTAUpdate" role="form">
+            <div class="form-body margin-top-20">
+            <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                    </a>
+                </div>
+                 <ul class="nav nav-tabs nav-justified" role="tablist">
+					<li><a href="#sleep_mode" data-trans="sleep_mode"></a></li>
+					<li><a href="#router_setting" data-trans="router_setting"></a></li>
+					<li><a href="#firewall" data-trans="firewall"></a></li>
+					<li class="active"><a href="#ota_update" data-trans="update_settings"></a></li>
+					<li><a href="#others" data-trans="others"></a></li>
+				</ul>
+                <h3 class="form-title" data-trans="ota_update_manual"></h3>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <span data-trans="ota_last_update_check"></span>
+                            <span data-bind="text: lastCheckTime"></span>
+                        </div>
+                        <div class="col-xs-6 align-right">
+                            <input id="btnCheckNewVersion" type="button" class="btn btn-primary margin-right-20" data-trans="ota_check_new_version"
+                                   data-bind="click:checkNewVersion"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--div class="form-title" data-trans='ota_update_manual'></div>
+                <div class="content">
+                    <span class="paddingleft25" data-trans="ota_check_new_version_desc"></span>
+                </div>
+                <div class="form-buttons">
+                    <input id="btnCheckNewVersion" type="button" class="btn btn-primary" data-trans="ota_check_new_version"
+                           data-bind="click:checkNewVersion"/>
+                </div-->
+                <!--div class="form-title" data-trans='ota_update_setting'></div-->
+                <div class="content">
+                    <h3 class="form-title" data-trans="ota_update_setting"></h3>
+                    <div class="row">
+                        <label class="col-xs-4 side-right" data-trans="ota_auto_update_switch"></label>
+
+                        <div class="col-xs-8">
+                            <div class="row form-group">
+                                <div class="col-xs-3">
+									<p class="radiobox" for="updateMode" data-bind="css:{'radiobox_selected': updateMode() == '1'}">
+										<input type="radio" name="updateMode" id="auto_update_enable"
+											   data-bind="checked: updateMode" value="1"/>
+									</p>
+                                    <label for="auto_update_enable" data-trans="enable"></label>
+                                </div>
+                                <div class="col-xs-3">
+									<p class="radiobox" for="updateMode" data-bind="css:{'radiobox_selected': updateMode() == '0'}">
+										<input type="radio" name="updateMode" id="auto_update_disable"
+											   data-bind="checked: updateMode" value="0"/>
+									</p>
+                                    <label for="auto_update_disable" data-trans="disable"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible: updateMode()=='1' && false">
+                        <label class="col-xs-4 side-right" data-trans="ota_update_interval_day" for="selInterValDay"></label>
+
+                        <div class="col-xs-3">
+                            <select id="selInterValDay" name="selInterValDay" data-bind="value: updateIntervalDay" class="form-control">
+                                <option value="1" data-trans="ota_update_every_day"></option>
+                                <option value="15" data-trans="ota_update_15_day"></option>
+                                <option value="30" data-trans="ota_update_30_day"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible: updateMode()=='1'">
+                        <div class="col-xs-12 padding-top-10">
+                            <p class="checkbox" data-bind="css:{'checkbox_selected': allowRoamingUpdate()=='1'}, click: clickAllowRoamingUpdate"
+                               manualControl="true">
+                                <input type="checkbox" id="chkUpdateRoamPermission" name="chkUpdateRoamPermission" value="1"
+                                       data-bind="checked:allowRoamingUpdate()=='1'"/>
+                            </p>
+                            <label data-trans="ota_update_roaming_remind" class="update_inline floatleft"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <input id="btnApply" type="submit" class="btn btn-primary" data-trans="apply"/>
+                    </div>
+                </div>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content">
+						<li data-trans="ota_update_note"></li>               
+					</ul>
+				</div>
+            </div>
+        </form>		
+    </div>
+</div>
+</div>

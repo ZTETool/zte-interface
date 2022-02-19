@@ -1,0 +1,40 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/wifi/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="configure_hotspot"></h1>
+</div>
+
+<div data-role="main" class="ui-content">
+    <form id="frmWifi">
+        * <span class="break-word" data-trans="modify_need_login"></span>
+        <div id="ssidTypeContainer" class="ui-field-contain">
+            <label for="ssidType" data-trans="ssid_type"></label>
+            <select id="ssidType" >
+            </select>
+        </div>
+        <div class="ui-field-contain">
+            <label for="ssid" data-trans="ssid_name"></label>
+            <input id="ssid" name="ssid" type="text" class="required" maxlength="32"/>
+        </div>
+        <div class="ui-field-contain">
+            <label for="securityMode" data-trans="security_mode"></label>
+            <select id="securityMode">
+                <option value="OPEN">OPEN</option>
+                <option value="WPA2PSK">WPA2(AES)-PSK</option>
+                <option value="WPAPSKWPA2PSK">WPA-PSK/WPA2-PSK</option>
+            </select>
+        </div>
+        <div class="ui-field-contain" id="passContainer">
+            <label for="pass" data-trans="pass_phrase"></label>
+            <div class="show-password-container">
+                <input id="pass" name="pass" type="password" class="required" minlength='8' maxlength='63'/>
+                <div data-for="pass" class="show-password show-password-off"></div>
+            </div>
+        </div>
+        <div id="openInfo">
+            <span class="break-word sms-draft-tag" data-trans="security_open_info"></span>
+        </div>
+        <div class="margin-top-10em">
+            <a id="wifiSave" type="button" data-trans="apply" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>

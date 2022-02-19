@@ -1,0 +1,196 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a data-bind = "click:backToMainHandler">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+				<h1 data-trans='parental_control' data-bind="visible:currentPage() == pages.MAIN"></h1>
+                <h1 data-trans='restricted_time' data-bind="visible:currentPage() != pages.MAIN"></h1>
+            </div>
+        </div>
+    </div>
+<div id="pc_page" class="row margin-top-50">
+    <div class="row meun-nav-new">
+        <a href="#home">
+            <img alt="" src="img/ic_settings_safe_blue.png?v=1622612890852">
+        </a>
+    </div>
+    <div class="col-xs-1 margin-top-15">
+
+    </div>
+    <div id="pc_page1" class="col-xs-11 form-body" data-bind="visible: currentPage() == pages.MAIN">
+        <form id="pc_children_group_form">
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 data-trans="pc_children_group" style="margin-top: 6px;"></h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <div>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th width="60" data-trans="station_number"></th>
+                                <th data-trans="host_name"></th>
+                                <th width="100"></th>
+                                <th width="200" data-trans="mac_address"></th>
+                                <th width="150" data-trans="pc_action"></th>
+                            </tr>
+                            </thead>
+                            <tbody data-bind="foreach: childGroupList">
+								<tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+									<td data-bind="text: $index()+1"></td>
+									<td>
+										<span data-bind="text: hostname, attr: {id: 'hostname_txt_'+$index()}"></span>
+										<input type="text" data-bind="attr: {id: 'hostname_input_'+$index()}" maxlength="32" class="form-control" style="display: none;">
+									</td>
+									<td>
+										<div data-bind="click: $root.editHostNameHandler, attr: {id: 'edit_btn_'+$index()}" class="cursorhand stationInfoEdit"></div>
+										<a data-bind="click: $root.saveHostNameHandler, attr: {id: 'save_btn_'+$index()}" class="cursorhand" style="display: none;"><img src="./img/save.png?v=1622612890852" height="25"></a>
+										<a data-bind="click: $root.cancelEditHostNameHandler, attr: {id: 'cancel_btn_'+$index()}" class="cursorhand" style="display: none;"><img src="./img/cancel.png?v=1622612890852" height="25"></a>
+									</td>
+									<td data-bind="text: mac"></td>
+									<td style="white-space:nowrap;">
+										<a class="btn btn-primary btn-sm" data-trans="pc_manage" data-bind="visible: $root.currentUserInChildGroup() == false,click: $root.manageHandler"></a>
+										<a class="btn btn-primary btn-sm" data-trans="pc_remove" data-bind="visible: $root.currentUserInChildGroup() == false,click: $root.removeChildGroupHandler"></a>
+									</td>
+								</tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="expend-desc" data-trans="pc_no_children_device" data-bind="visible: childGroupList().length == 0"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 data-trans="pc_current_attached_devices"></h2>
+                    </div>
+                </div>
+                <div class="content">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th width="60" data-trans="station_number"></th>
+                            <th data-trans="host_name"></th>
+                            <th width="200" data-trans="mac_address"></th>
+                            <th width="150" data-trans="pc_action"></th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach: attachedDevices">
+                        <tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+                            <td data-bind="text: $index()+1"></td>
+                            <td data-bind="text: hostName"></td>
+                            <td data-bind="text: macAddress"></td>
+                            <td>
+                                <div data-bind="visible: inChildGroup" data-trans="pc_in_child_group"></div>
+                                <div data-bind="visible: !inChildGroup"><a class="btn btn-primary btn-sm" data-trans="pc_add" data-bind="visible: $root.currentUserInChildGroup() == false,click: $root.addChildGroupHandler"></a></div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="expend-desc" trans="no_data" data-bind="visible: attachedDevices().length == 0"></div>
+                </div>
+            </div>
+			<div class="form-note">
+				<div class="notes-title">&nbsp;</div>
+				<ul class="notes-content">
+					<li data-trans="parent_control_note_kids"></li>                       
+				</ul>
+			</div>
+        </form>
+    </div>
+	
+	<div id="pc_page2" class="col-xs-11" data-bind="visible: currentPage() == pages.MANAGE">
+		<div class="form-body">
+			<div class="row">
+				<div class="col-md-6">
+					<h2 data-trans="restricted_time_list" style="margin-top: 6px;"></h2>
+				</div>
+			</div>
+			<div class="content">
+				<form id="childAccessTimeFrm">
+				<div>
+					<table class="table table-striped table-hover">
+						<thead>
+						<tr>
+							<!--th width="60" data-trans="station_number"></th-->
+							<th data-trans="restricted_access_time"></th>
+							<th width="220" data-trans="restricted_access_time_repeat"></th>
+							<th width="130" data-trans="restricted_time_status"></th>
+							<th width="150" data-trans="pc_action"></th>
+						</tr>
+						</thead>
+						<tbody data-bind="foreach: childAccessTimeList">
+							<tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+								<!--td data-bind="text: $index()+1"></td-->
+								<td style="white-space:nowrap;">
+									<span data-bind="text: timeRange, attr: {id: 'access_time_txt_'+$index()}"></span>
+									<div data-bind="attr: {id: 'access_time_inputDiv_'+$index()}" name="access_time_inputDiv" style="display:none;">
+										<input type="text" data-bind="attr: {id: 'access_time_startHour_'+$index(),'value':startHour,name: 'access_time_startHour'}" maxlength="2" class="required  form-control inputWidth2chars">										
+										:
+										<input type="text" data-bind="attr: {id: 'access_time_startMinute_'+$index(),'value':startMinute,name: 'access_time_startMinute'}" maxlength="2" class="required form-control inputWidth2chars">
+										-
+										<input type="text" data-bind="attr: {id: 'access_time_endHour_'+$index(),'value':endHour,name: 'access_time_endHour'}" maxlength="2" class="required form-control inputWidth2chars">
+										:
+										<input type="text" data-bind="attr: {id: 'access_time_endMinute_'+$index(),'value':endMinute,name: 'access_time_endMinute'}" maxlength="2" class="required form-control inputWidth2chars">
+									</div>
+									<div data-bind="attr: {id: 'access_time_startHour_'+$index()+'_error'}"></div>
+									<div data-bind="attr: {id: 'access_time_startMinute_'+$index()+'_error'}"></div>
+									<div data-bind="attr: {id: 'access_time_endHour_'+$index()+'_error'}"></div>
+									<div data-bind="attr: {id: 'access_time_endMinute_'+$index()+'_error'}"></div>
+									<div data-bind="attr: {id: 'accessTime_'+$index()+'_error'}" class="accessTime_error"></div>
+								</td>
+								<td>
+									<label data-bind="text:weekText,attr: {id: 'access_week_txt_'+$index()}"></label>
+									<div data-bind="attr: {id: 'access_week_edit_'+$index()}" style="display:none;">
+										<table id="weekTableChild">
+											<tbody>
+											<tr data-bind="attr:{id: 'access_week_tr_'+$index()}">
+												<td data-val="1" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_1_'+$index(),'class':week[1]?'wmSelectedChild':''}"><a data-trans="mon" href="javascript:void(0);">Mon</a></td>
+												<td data-val="2" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_2_'+$index(),'class':week[2]?'wmSelectedChild':''}"><a data-trans="tues" href="javascript:void(0);">Tue</a></td>
+												<td data-val="3" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_3_'+$index(),'class':week[3]?'wmSelectedChild':''}"><a data-trans="wed" href="javascript:void(0);">Wed</a></td>
+												<td data-val="4" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_4_'+$index(),'class':week[4]?'wmSelectedChild':''}"><a data-trans="thur" href="javascript:void(0);">Thu</a></td>
+												<td data-val="5" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_5_'+$index(),'class':week[5]?'wmSelectedChild':''}"><a data-trans="fri" href="javascript:void(0);">Fri</a></td>
+												<td data-val="6" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_6_'+$index(),'class':week[6]?'wmSelectedChild':''}"><a data-trans="sat" href="javascript:void(0);">Sat</a></td>
+												<td data-val="0" onclick="clickWeekHandler(this)" data-bind="attr:{id: 'access_week_0_'+$index(),'class':week[0]?'wmSelectedChild':''}"><a data-trans="sun" href="javascript:void(0);">Sun</a></td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</td>	
+								<td style="white-space:nowrap;">								
+									<a href="javascript: void(0)" class="restricted_time_active_btn" style="margin-left:20px;" data-bind="click: $root.activeChildAccessTimeHandler , css: {'active_btn_on': enableStatus== 1, 'active_btn_off': enableStatus != 1},attr: {id: 'restricted_time_active_btn_'+$index()}"></a>								
+								</td>
+								<td style="white-space:nowrap;">
+									<div data-bind="attr: {id: 'access_time_txtBtnDiv_'+$index()}">
+										<a class="btn btn-primary btn-sm" data-trans="edit" data-bind="click: $root.editChildAccessTimeHandler"></a>
+										<a class="btn btn-primary btn-sm" data-trans="pc_remove" data-bind="click: $root.removeChildAccessTimeHandler"></a>
+									</div>
+									<div data-bind="attr: {id: 'access_time_editBtnDiv_'+$index()}" style="display:none;">
+										<a class="btn btn-primary btn-sm" data-trans="discard" data-bind="click: $root.discardChildAccessTimeHandler"></a>
+										<a class="btn btn-primary btn-sm" data-trans="save" data-bind="click: $root.saveChildAccessTimeHandler"></a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="form-buttons">
+						<input type="button" class="btn btn-primary" data-bind='click: addNewAccessTimeRule' data-trans='add_new'/>                            
+					</div>
+				</div>
+				<div class="form-note">
+                    <div class="notes-title">&nbsp;</div>
+                    <ul class="notes-content">
+                        <li data-trans="parent_control_note_time"></li>
+                    </ul>
+                </div>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

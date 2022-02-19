@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.css?v=1622612890850"/>
+    <link rel="stylesheet" href="css/common.css?v=1622612890850"/>
+</head>
+<body>
+    <div data-role="page" id="main" class="hide">
+
+        <div id='container'></div>
+
+        <div id='progress' data-role="popup" data-dismissible="false"
+             style="max-width:400px;" class="ui-corner-all">
+            <div>
+                <h1 id="barMsg"></h1>
+            </div>
+            <hr/>
+            <div class="progress-content" data-role="content">
+                <div id="progress_container" class="progress-prompt"></div>
+                <div class="progress-bar-container">
+                    <div id="bar" class="progress-bar"></div>
+                    <div id="barValue" class="progress-bar-value"></div>
+                </div>
+                <div id="progress_downloadSize" class="progress-prompt side-right"></div>
+            </div>
+        </div>
+
+        <div data-role="popup" id="dialog" data-dismissible="false"
+             style="max-width:400px;" class="ui-corner-all">
+            <div>
+                <h1 id="title"></h1>
+            </div>
+            <hr/>
+            <div data-role="content">
+                <p id="dialog_message"></p>
+                <div class="hide promptDiv">
+                    <input type="text" id="promptInput" />
+                </div>
+            </div>
+            <div class="ui-grid-a" id="dialog_buttons">
+                <div class="ui-block-a" id="nobtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="no" data-inline="true" class="ui-btn"></a>
+                </div>
+                <div class="ui-block-b" id="yesbtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="yes" data-inline="true" class="ui-btn"></a>
+                </div>
+                <div class="ui-block-a" id="cancelbtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="cancel" data-inline="true" class="ui-btn"></a>
+                </div>
+                <div class="ui-block-b" id="continuebtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="continue" data-inline="true" class="ui-btn"></a>
+                </div>
+                <div style="width: 100%" id="okbtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="ok" data-inline="true" class="ui-btn"></a>
+                </div>
+                <div style="width: 100%" id="uploadbtn">
+                    <a href="javascript:void(0);" data-role="button"
+                       data-trans="upload" data-inline="true" class="ui-btn"></a>
+                </div>
+            </div>
+        </div>
+		
+		<div data-role="popup" id="privacy_policy" data-dismissible="false"
+             style="max-width:400px; padding: 10px;" class="ui-corner-all hide">
+			<div>
+                <h3 data-trans="privacy_policy"></h3>
+				<hr/>
+				<div class="content" style="padding: 5px 10px;">          
+					<div>
+						<label data-trans="privacy_policy_note_1"></label>
+					</div>
+					<div>
+						<label data-trans="privacy_policy_note_2"></label>
+					</div>
+					<div>
+						<label data-trans="privacy_policy_note_3"></label>
+					</div>
+					<div style="word-wrap:break-word;word-break:normal">
+						<span data-trans="privacy_policy_url"></span>
+					</div>
+					<div class="form-buttons">
+						<a id="rejectBtn" type="button" class="ui-btn ui-corner-all ui-shadow" data-trans="reject"></a>
+						<a id="finishBtn" type="button" class="ui-btn ui-corner-all ui-shadow" data-trans="finish"></a>
+					</div>
+				</div> 
+            </div>
+		</div>
+		
+		<div data-role="popup" id="user_improv" data-dismissible="false"
+             style="max-width:450px; padding: 10px;" class="ui-corner-all hide">
+			<div>
+                <h3 data-trans="user_improv"></h3>
+				<hr/>
+				<div class="content" style="padding: 5px 10px;">          
+					<div>
+						<label data-trans="user_improv_note_1"></label>
+					</div>
+					<div>
+						<label data-trans="user_improv_note_2"></label>
+					</div>
+					<div>
+						<label data-trans="user_improv_note_3"></label>
+					</div>
+					<div style="word-wrap:break-word;word-break:normal">					
+						<div class="ui-checkbox">
+							<label for="isAllowedUserImprov" data-iconpos="left" data-trans="user_improv_note_4" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off"></label>
+							<input class="widget-state" type="checkbox" id="isAllowedUserImprov" value="1">
+						</div>
+					</div>
+					<div class="form-buttons">
+						<a id="confirmBtn" type="button" class="ui-btn ui-corner-all ui-shadow" data-trans="user_improv_confirm"></a>
+					</div>
+				</div> 
+            </div>
+		</div>		
+		<div data-role="popup" id="user_grant" data-dismissible="false"
+             style="max-width:450px; padding: 10px;" class="ui-corner-all hide">
+			<div>
+                <h3 data-trans="user_grant"></h3>
+				<hr/>
+				<div class="content" style="padding: 5px 10px;">          
+					<div>
+						<label data-trans="user_grant_note"></label>
+					</div>					
+					<div class="form-buttons">
+						<a id="userGrantRejectBtn" type="button" class="ui-btn ui-corner-all ui-shadow" data-trans="reject"></a>
+						<a id="userGrantAcceptBtn" type="button" class="ui-btn ui-corner-all ui-shadow" data-trans="finish"></a>
+					</div>
+				</div> 
+            </div>
+		</div>
+        <div id="loadingBackground"></div>
+    </div><!-- /page -->
+    <script src="js/lib/require/require.js?v=1622612890851" data-main="js/main"></script>
+</body>
+</html>

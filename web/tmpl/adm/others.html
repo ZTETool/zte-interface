@@ -1,0 +1,171 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='advanced_settings'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+        <div class="form-body margin-top-20">
+            <div class="row meun-nav-new">
+                <a href="#home">
+                    <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                </a>
+            </div>
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li><a href="#sleep_mode" data-trans="sleep_mode"></a></li>
+            <li><a href="#router_setting" data-trans="router_setting"></a></li>
+            <li><a href="#firewall" data-trans="firewall"></a></li>
+            <li><a href="#ota_update" data-trans="update_settings"></a></li>
+            <li class="active"><a href="#others" data-trans="others"></a></li>
+        </ul>
+        <div class="form-body">
+            <div class="content margin-top-20 line-height-30">
+                <div class="row margin-top-10"  data-bind="visible: currentUserInChildGroup() == false">
+                    <a href="#restore">
+                        <div class="col-xs-4 arrow-right" data-trans="restore">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#restart">
+                        <div class="col-xs-4 arrow-right" data-trans="restart">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10" data-bind="visible: (wanMode == 'PPP' || wanMode == 'AUTO_LTE_GATEWAY' || wanMode == 'LTE_BRIDGE')">
+                    <a href="#pin_management">
+                        <div class="col-xs-4 arrow-right" data-trans="pin_management">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10" data-bind="visible: isUFI">
+                    <a href="#fastboot">
+                        <div class="col-xs-4 arrow-right" data-trans="fastboot">
+                        </div>
+                    </a>
+                </div>
+
+                <div class="row margin-top-10">
+                    <a href="#stk">
+                        <div class="col-xs-4 arrow-right" data-trans="stk_info">
+                        </div>
+                    </a>
+                </div>
+				<div class="row margin-top-10" data-bind="visible: currentUserInChildGroup() == false">
+                    <a href="#SNTP">
+                        <div class="col-xs-4 arrow-right" data-trans="sntp">
+                        </div>
+                    </a>
+                </div>
+				<div class="row margin-top-10" data-bind="visible: hastr069">
+                    <a href="#tr069config">
+                        <div class="col-xs-4 arrow-right" data-trans="tr069config">
+                        </div>
+                    </a>
+                </div>
+                <div class="row">
+					<a href="#network_info">
+						<div class="line-height-40 col-xs-4 arrow-right" data-trans="network_info">
+						</div>
+					</a>
+				</div>
+				<div class="row">
+					<a href="#diagnosis">
+						<div class="line-height-40 col-xs-4 arrow-right" data-trans="diagnosis">
+						</div>
+					</a>
+				</div>
+                <div class="row">
+                    <a href="#ping_log">
+                        <div class="line-height-40 col-xs-4 arrow-right" data-trans="ping_log">
+                        </div>
+                    </a>
+                </div>
+                <div class="row"  data-bind="visible: IS_SUPORT_NIGHT_MODE">
+					<a href="#sleep_protection_mode">
+						<div class="line-height-40 col-xs-4 arrow-right" data-trans="sleep_protection_mode">
+						</div>
+					</a>
+				</div>
+                <div class="row">
+                    <a href="#restart_schedule">
+                        <div class="line-height-40 col-xs-4 arrow-right" data-trans="restart_schedule">
+                        </div>
+                    </a>
+                </div>
+				<div class="row" >
+					<a href="#vxlan_menu">
+						<div class="line-height-40 col-xs-4 arrow-right" data-trans="tunnel_configuration">
+						</div>
+					</a>
+				</div>
+                    <div class="row margin-top-10">
+						<a href="#voip_setting">
+							<div class="col-xs-4 arrow-right" data-trans="voip_settings">
+							</div>
+						</a>
+					</div>
+				<div class="row margin-top-10">
+                    <a href="#watch_dog_setting">
+                        <div class="col-xs-4 arrow-right" data-trans="watch_dog_setting">
+                        </div>
+                    </a>
+                </div>
+				<div class="row margin-top-10" data-bind="visible:hasUserImprov">
+                    <a href="#user_improv_switch">
+                        <div class="col-xs-4 arrow-right" data-trans="user_improv_switch">
+                        </div>
+                    </a>
+                </div>
+				<div class="row margin-top-10">
+                    <a href="#upgrade_url">
+                        <div class="col-xs-4 arrow-right" data-trans="upgrade_url">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#mec_coordination_menu">
+                        <div class="col-xs-4 arrow-right" data-trans="mqtt_mec_aes_set">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#slice_setting">
+                        <div class="col-xs-4 arrow-right" data-trans="slice_setting">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#sys_log">
+                        <div class="col-xs-4 arrow-right" data-trans="sys_log">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#network_debug">
+                        <div class="col-xs-4 arrow-right" data-trans="network_debug">
+                        </div>
+                    </a>
+                </div>
+                <div class="row margin-top-10">
+                    <a href="#debug_page">
+                        <div class="col-xs-4 arrow-right" data-trans="debug_page">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+            </div>
+    </div>
+</div>
+</div>

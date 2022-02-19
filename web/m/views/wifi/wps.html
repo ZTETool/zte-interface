@@ -1,0 +1,59 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/wifi/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="wps"></h1>
+</div>
+
+<div data-role="main" class="ui-content">
+    <form id="frmWps">
+        <div id="ssidTypeContainer" class="ui-field-contain">
+            <label for="ssidType" data-trans="ssid_type"></label>
+            <select id="ssidType" >
+            </select>
+        </div>
+        <div id="wpsSetting24g" class="show">
+            <div id="multiSSIDContainer" class="ui-field-contain">
+                <label for="multiSSID" data-trans="ssid_title"></label>
+                <select id="multiSSID" >
+                </select>
+            </div>
+            <div class="ui-field-contain">
+                <label for="wpsMode" data-trans="wps"></label>
+                <select id="wpsMode">
+                    <option value="PIN">PIN</option>
+                    <option value="PBC">PBC</option>
+                </select>
+            </div>
+            <div class="ui-field-contain" id="pinContainer">
+                <label for="txtPin">PIN</label>
+                <div class="show-password-container">
+                    <input class="required" name="txtPin" id="txtPin" autocomplete="off" type="password" maxlength="9">
+                    <div data-for="txtPin" class="show-password show-password-off"></div>
+                </div>
+            </div>
+        </div>
+        <div id="wpsSetting5g" class="hide">
+            <div id="multiSSIDContainer_5g" class="ui-field-contain">
+                <label for="multiSSID_5g" data-trans="ssid_title"></label>
+                <select id="multiSSID_5g" >
+                </select>
+            </div>
+            <div class="ui-field-contain">
+                <label for="wpsMode_5g" data-trans="wps"></label>
+                <select id="wpsMode_5g">
+                    <option value="PIN">PIN</option>
+                    <option value="PBC">PBC</option>
+                </select>
+            </div>
+            <div class="ui-field-contain" id="pinContainer_5g">
+                <label for="txtPin_5g">PIN</label>
+                <div class="show-password-container">
+                    <input class="required" name="txtPin" id="txtPin_5g" autocomplete="off" type="password" maxlength="9">
+                    <div data-for="txtPin_5g" class="show-password show-password-off"></div>
+                </div>
+            </div>
+        </div>
+        <div class="margin-top-10em">
+            <a id="wpsSave" type="button" data-trans="apply" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>

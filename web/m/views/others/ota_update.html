@@ -1,0 +1,24 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/others/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="ota_update"></h1>
+</div>
+
+<div data-role="main" class="ui-content">
+    <form id="frmPassword">
+        <div class="ui-field-contain">
+            <label data-trans="ota_current_version"></label>
+            <label id="currentVersionSpan"></label>
+        </div>
+
+        <div class="ui-field-contain" id="newVersionInfoDiv">
+            <label data-trans="ota_new_version_num"></label>
+            <label id="newVersionSpan"></label>
+        </div>
+
+        <div class="margin-top-10em">
+            <a id="btnCheckNewVersion" type="button" data-trans="ota_check_new_version" data-bind='enable: enableFlag' class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>
+
+<!--------------------------------------------i am splitters------------------------------------>

@@ -1,0 +1,112 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='tr069config'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body">
+				<form id="tr069ModuleForm" style="margin-bottom: 35px" data-bind="visible:tr069_Webui_DataModuleSupport()=='1'">
+					<div class="content">
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans='tr069_module'></label>
+							<div class="col-xs-6">
+								<select name="tr069ModuleSelect" id="tr069ModuleSelect" class="form-control" data-bind="value: tr069_DataModule">
+									<option value="TR181" data-trans="tr181"></option>
+									<option value="TR098" data-trans="tr098"></option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="submit" id="tr069ModuleBtn" class="btn btn-primary" data-trans="apply" />
+					</div>
+				</form>
+				<form id="tr069Form">
+					<div class="content">
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans='server_url'></label>
+							<div class="col-xs-6">
+								<input type="text" id="serverURL" name="serverURL" data-bind="value: serverUrl" class="form-control" maxlength="256">
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans='server_user_name'></label>
+							<div class="col-xs-6">
+								<input type="text" id="serverusername" name="serverusername" data-bind="value: serverUserName" class="form-control" maxlength="256">
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans='server_password'></label>
+							<div class="col-xs-6">
+								<input type="password" id="serveruserpassword" name="serveruserpassword"  data-bind="value: serverPassword" class="form-control" maxlength="256">
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans='connection_request_url'></label>
+							<div class="col-xs-6">
+								<input class="form-control" type="text" data-bind="value: requestUrl" maxlength="256" disabled />
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="connection_request_uname"></label>
+							<div class="col-xs-6">
+								<input type="text" id="connrequestname" name="connrequestname" data-bind="value: requestUserName" class="form-control" maxlength="256">
+							</div>
+						</div>		
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="connection_request_password"></label>
+							<div class="col-xs-6">
+								<input type="password" id="connrequestpassword" name="connrequestpassword" data-bind="value: requestPassword" class="form-control" maxlength="256" />
+							</div>
+						</div>
+						<!--<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="port"></label>
+							<div class="col-xs-6">
+								<input type="text" id="port" name="port" data-bind="value: requestPort" class="required" maxlength="256">
+							</div>
+						</div>-->
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="periodic_inform"></label>
+							<div class="col-xs-6">
+								<p class="radiobox" for="informGrp" data-bind="css:{'radiobox_selected': informSetting() == '1'}">
+									<input type="radio" name="informGrp" id="informEnable" data-bind="checked: informSetting" value="1"/>
+								</p>
+								<label for="informEnable" data-trans="enable"></label>
+								<p class="radiobox" for="informGrp" data-bind="css:{'radiobox_selected': informSetting() == '0'}">
+									<input type="radio" name="informGrp" id="informDisable" data-bind="checked: informSetting" value="0"/>
+								</p>
+								<label for="informDisable" data-trans="disable"></label>
+							</div>
+						</div>
+						<div class="row form-group" data-bind='visible: informSetting() == "1"'>
+							<label class="col-xs-4 side-right" for="txtInformInterval" data-trans="periodic_inform_interval"></label>
+							<div class="col-xs-6">
+								<input id="txtInformInterval" name="txtInformInterval"  type="text" data-bind="value: informInterval, valueUpdate: 'keypress'" class="form-control" maxlength="15"/>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="submit" id="submitBtn069" class="btn btn-primary" data-trans="apply" />
+						</div>
+					</div>
+				</form>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content">
+						<li data-trans="tr069_note"></li>               
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

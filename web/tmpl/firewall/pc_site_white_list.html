@@ -1,0 +1,93 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#parental_control">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='pc_site_white_list'></h1>
+            </div>
+        </div>
+    </div>
+<div class="row">
+<div class="col-xs-1 margin-top-15">
+
+</div>
+<div id="pc_page" class="col-xs-11 margin-top-20">
+    <div class="row meun-nav-new">
+        <a href="#parental_control">
+            <img alt="" src="img/ic_settings_safe_blue.png?v=1622612890852">
+        </a>
+    </div>
+<div id="pc_page4">
+    <form id="pc_site_white_list_form">
+        <div class="form-body">
+            <div class="content">
+                <div data-bind="visible: currentUserInChildGroup() == false">
+                    <input type="button" class="btn btn-primary" data-trans="add" id="openAddSiteBtn" data-bind="disable: disableAdd, click: openAddSitePopoverHandler">
+                    <input type="button" class="btn btn-primary" data-trans="pc_remove" id="deleteSelectedBtn" data-bind="disable: selectedIds().length == 0, click: removeSelectedWhiteSite">
+                    <input type="button" class="btn btn-primary" data-trans="pc_remove_all" data-bind="disable: siteList().length == 0, click: removeAllWhiteSite">
+                </div>
+                <div class="">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th width="40" align="center" data-bind="visible: currentUserInChildGroup() == false">
+                                <p class="checkbox checkboxToggle" id="pc_white_list_check_all" target="pb_white_list" data-bind="click: checkboxClickHandler">
+                                    <input type="checkbox" name="siteId" value="1" />
+                                </p>
+                            </th>
+                            <th width="170" data-trans="pc_name"></th>
+                            <th data-trans="pc_keyword"></th>
+                            <th width="150" data-trans="pc_action" data-bind="visible: currentUserInChildGroup() == false"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="pb_white_list" data-bind="foreach: siteList">
+                        <tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+                            <td data-bind="visible: $root.currentUserInChildGroup() == false">
+                                <p class="checkbox" data-bind="click: $root.checkboxClickHandler">
+                                    <input type="checkbox" target="pc_white_list_check_all" name="siteId" data-bind="value: id, checked: $root.selectedIds"/>
+                                </p>
+                            </td>
+                            <td data-bind="text: name"></td>
+                            <td data-bind="text: site"></td>
+                            <td data-bind="visible: $root.currentUserInChildGroup() == false"><a class="btn btn-primary btn-sm" data-trans="pc_remove" data-bind="click: $root.removeWhiteSite"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="expend-desc" data-trans="no_data" data-bind="visible: siteList().length == 0"></div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+</div>
+<script type="text/x-jquery-tmpl" id="addNewSiteTmpl">
+<div>
+    <div class="popover_title" data-trans="pc_add_white_site"></div>
+    <div class="popover_content content">
+        <form id="whiteSiteAddForm" role="form" class="form-horizontal">
+            <div class="popover_row form-group">
+                <label class="col-xs-5 control-label" data-trans="pc_name" for="siteName"></label>
+                <div class="col-xs-7">
+                    <input type="text" name="siteName" id="siteName" maxlength="20" class="form-control required nameparent">
+                </div>
+            </div>
+            <div class="popover_row form-group">
+                <label class="col-xs-5 control-label" data-trans="pc_keyword" for="siteLink"></label>
+                <div class="col-xs-7">
+                    <input type="text" name="siteLink" id="siteLink" class="form-control required keyword_rule" maxlength="50">
+                </div>
+            </div>
+            <div class="popover_row text-right">
+                <input type="submit" class="btn btn-primary" data-trans="save"/>
+                <a class="btn btn-primary popover-close" data-trans="pc_leave"></a>
+            </div>
+        </form>
+    </div>
+</div>
+</script>

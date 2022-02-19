@@ -1,0 +1,61 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='user_improv_switch'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+
+<form id="userImorvForm">
+    <div class="form-body margin-top-20">
+        <div class="row meun-nav-new">
+            <a href="#home">
+                <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="content">
+            <div class="row form-group">
+                <label class="col-xs-4 side-right" data-trans="user_improv_switch"></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+							<p class="radiobox" for="userImprovGrp" data-bind="css:{'radiobox_selected': tr069_user_improv_flag() == '1'}">
+								<input type="radio" name="userImprovGrp" id="userImprovEnable" data-bind="checked: tr069_user_improv_flag" value="1"/>
+							</p>
+                            <label for="userImprovEnable" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="userImprovGrp" data-bind="css:{'radiobox_selected': tr069_user_improv_flag() == '0'}">
+								<input type="radio" name="userImprovGrp" id="userImprovDisable" data-bind="checked: tr069_user_improv_flag" value="0"/>
+							</p>
+                            <label for="userImprovDisable" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" class="btn btn-primary" data-trans="apply"/>
+        </div>
+        <div class="form-note">
+            <div class="notes-title">&nbsp;</div>
+            <ul class="notes-content">
+                <li data-trans="user_improv_note_1"></li>
+            </ul>
+        </div>
+    </div>
+</form>
+    </div>
+</div>
+</div>

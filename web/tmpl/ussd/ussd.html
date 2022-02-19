@@ -1,0 +1,63 @@
+<div id="innerContainer">
+	<div class="row header-row">
+		<div class="col-xs-1">
+			<a href="#others">
+				<img alt="" src="img/ic_back.png?v=1622612890852">
+			</a>
+		</div>
+		<div class="col-xs-11">
+			<div class="form-title">
+				<h1 data-trans='USSD'></h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-1 margin-top-15">
+		</div>
+		<div class="col-xs-11">	
+
+		<div class="form-body">
+			<form id="frmUSSD">
+				<div id="USSD_send_div"  data-bind="visible: USSDLocation()==0">
+					<div class="content">
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="ussd_send_to"></label>
+							<div class="col-xs-4">
+								<input  class="required form-control" type="text" size="20" id="USSD_send" data-bind="value:USSDSend,valueUpdate:'afterkeydown'">
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" data-trans='ussd_send' data-bind="disable:USSDSend().length<=0,css:{disabled:USSDSend().length<=0},click:sendToNet" id="sendToNet" class="btn  btn-primary" />
+							<input type="reset"  data-trans='ussd_cancel' data-bind="disable:USSDSend().length<=0,css:{disabled:USSDSend().length<=0},click:resetUSSD" id="cancelToNet" class="btn  btn-primary"/>
+						</div>
+					</div>
+				</div>
+				<div id="USSD_reply_div" data-bind="visible: USSDLocation()==1">					
+					<div class="content">
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="ussd_contents"></label>
+							<div class="col-xs-4">
+								<textarea name="USSD_Content" id="USSD_Content" rows="8" cols="50" readonly="readonly"></textarea>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" data-trans='ussd_cancel' class="btn btn-primary" data-bind="click:noReplyCancel"/>
+						</div>
+						<div id="ussd_action" data-bind="visible: ussd_action()!=0">
+							<div class="row form-group">
+								<label class="col-xs-3 side-right" data-trans="ussd_reply_to"></label>
+								<div class="col-xs-4">
+									<input type="text" name="USSD_reply" id="USSD_reply" size="20" data-bind="value:USSDReply">
+								</div>
+							</div>
+							<div class="form-buttons">
+								<input type="button" data-trans='ussd_reply' data-bind="click:replyToNet" class="btn btn-primary"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+	</div>
+</div>

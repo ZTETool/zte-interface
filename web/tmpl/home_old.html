@@ -1,0 +1,52 @@
+<div class="row-fluid floatleft" id="div-connection">
+    <div class="span3 paddingtop20 paddingbottom20" data-bind="visible: isShowHomeConnect">
+        <form id="frmHome">
+            <div class="row-fluid">
+                <div class="span12 table paddingtop20 paddingbottom20">
+                    <div class="row-fluid side-center marginbottom10">
+                        <img id="imgState" data-bind="attr:{src: imagePath }" />
+                    </div>
+                    <div class="row-fluid">
+                        <label data-trans="current_flux" class="span7 side-right"></label>
+                        <label class="span5" id="tdCurrentFlux" data-bind='text: current_Flux'></label>
+                    </div>
+                    <!-- div class="row-fluid">
+                        <label data-trans="total_flux" class="span7 side-right"></label>
+                        <label class="span5" id="tdTotalFlux" data-bind='text: total_Flux'></label>
+                    </div -->
+                    <div class="row-fluid">
+                        <label data-trans="connected_time" class="span7 side-right"></label>
+                        <label class="span5" id="tdConnectedTime" data-bind='text: connected_Time'></label>
+                    </div>
+                    <div class="row-fluid">
+                        <label data-trans="flux_up" class="span7 side-right"></label>
+                        <label class="span5" id="tdUpSpeed" data-bind='text: up_Speed'></label>
+                    </div>
+                    <div class="row-fluid">
+                        <label data-trans="flux_down" class="span7 side-right"></label>
+                        <label class="span5" id="tdDownSpeed" data-bind='text: down_Speed'></label>
+                    </div>
+                    <div class="row-fluid side-center margintop20 marginbottom30">
+                        <input type="submit" class="btn-1 btn_connect" data-bind='enable:canConnect(),css:{"disabled":!canConnect()},attr:{"data-trans":transText}, value: connectStatusText,click: connectHandler'/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+	<div id="div-station" class="span9 form-body" data-bind="visible: hasWifi">
+		<div class="form-title" data-trans="station_info"></div>
+        <div class="content">
+			<div data-bind="simpleGrid: gridTemplate"></div>
+		</div>
+		<div class="form-note clear">
+			<div class="notes-title">&nbsp;</div>
+			<ul class="notes-content">
+				<li data-trans="home_note"></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id="div-homeimg" class="span9 marginTop15 paddingtop15" data-bind="visible: !hasWifi()">
+		<img src="./img/home.png?v=1622612890852" alt="">
+	</div>
+</div>    

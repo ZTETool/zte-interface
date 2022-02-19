@@ -1,0 +1,51 @@
+<div class="form-body">
+	<div class="form-title" data-trans='update_info'></div>
+	<div class="content">
+		<div data-bind="visible: updateInfo()==0">
+			<div class="row-fluid">
+				<label class="span4 side-right" data-trans="update_no_info"></label>				
+			</div>		
+		</div>
+		<div data-bind="visible: updateInfo()==1">
+			<div class="row-fluid" >
+				<label class="span4 side-right" data-trans="update_new_version_found"></label>
+			</div>
+			
+			<div class="row-fluid">
+				<label class="span4 side-right" data-trans="update_current_version"></label>
+				<div class="span8" data-bind="text:currentVersion" />
+			</div>
+			<div class="row-fluid">
+				<label class="span4 side-right" data-trans="update_new_version"></label>
+				<div class="span8" data-bind="text:newVersion" />
+			</div>
+			<div class="row-fluid">
+				<label class="span4 side-right" data-trans="update_log"></label>
+				<div class="span8" data-bind="html:updateLog" />
+			</div>
+			<div class="row-fluid">
+				<label class="span4 side-right" data-trans="update_note"></label>
+				<div class="span8" data-trans="update_link_prompt" />
+			</div>
+			<div class="row-fluid">
+				<div data-bind="html:linkString" class="update_info_link" ></div>
+			</div>
+			<div class="row-fluid">
+                <p class="checkbox" data-bind="css:{'checkbox_selected': isSkipedWarning()==1}, click: setIsSkipedWarning" manualControl="true">
+				    <input type="checkbox" id="isSkipedWarning" value="1" data-bind="checked:isSkipedWarning()==1"/>
+                </p>
+				<div data-trans="update_remind" class="update_inline"/>
+			</div>
+			<div class="form-buttons">
+				<input type="button" data-trans="update_skip_btn" data-bind="click:setUpdateInfoWarning" class="btn-1 marginright10" />
+			</div>
+            <div class="form-note">
+                <div class="notes-title">&nbsp;</div>
+                <ul class="notes-content">
+                    <li data-trans="update_note_info"></li>
+                    <li data-trans="update_note_install"></li>
+                </ul>
+            </div>
+		</div>
+	</div>	   
+</div>

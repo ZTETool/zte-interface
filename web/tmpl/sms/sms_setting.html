@@ -1,0 +1,76 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#sms">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='sms_setting'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+
+<form id='smsSettingForm'>
+    <div class="form-body margin-top-20">
+        <div class="row meun-nav-new">
+            <a href="#home">
+                <img alt="" src="img/ic_settings_sms_blue.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="content">
+            <div class="row form-group">
+                <label class="col-xs-3 side-right" for='txtValidity' data-trans='sms_validity'></label>
+                <div class="col-xs-5">
+                    <select data-transid='sms_validity' id="txtValidity" class="form-control" data-bind="options: modes, value: selectedMode, optionsText: transOption('sms_validity'), optionsValue: 'value'"></select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-xs-3 side-right" for='txtCenterNumber' data-trans='center_number'></label>
+                <div class="col-xs-5">
+                    <input id='txtCenterNumber' name="txtCenterNumber" type="text" data-bind="value: centerNumber" class="required form-control" maxlength='21'/>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="col-xs-3 side-right" data-trans='delivery_report'></label>
+                <div class="col-xs-5">
+                    <div class="row">
+                        <div class="col-xs-5">
+							<p class="radiobox" for="deliveryReport" data-bind="css:{'radiobox_selected': deliveryReport() == '1'}">
+								<input type="radio" name="deliveryReport" id="reportOn" data-bind="checked: deliveryReport" value="1"/>
+							</p>
+                            <label for="reportOn" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-5">
+							<p class="radiobox" for="deliveryReport" data-bind="css:{'radiobox_selected': deliveryReport() == '0'}">
+								<input type="radio" name="deliveryReport" id="reportOff" data-bind="checked: deliveryReport" value="0"/>
+							</p>
+                            <label for="reportOff" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-buttons">
+            <input type="submit" class="btn btn-primary" data-trans='apply'/>
+            <!--input type="button" class="btn" data-bind='click: clear' data-trans='cancel'/-->
+        </div>
+        <div class="form-note">
+            <div class="notes-title">&nbsp;</div>
+            <ul class="notes-content">
+                <li data-trans="sms_setting_note_validity"></li>
+                <li data-trans="sms_setting_note_center_number"></li>
+                <li data-trans="sms_setting_note_delivery_report"></li>
+            </ul>
+        </div>
+    </div>
+</form> 
+    </div>
+</div>
+</div>

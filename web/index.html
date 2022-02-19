@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="renderer" content="webkit">
+<meta charset="utf-8" />
+<title></title>
+<link type="text/css" href="theme/chosen.css?v=1622612890850" rel="stylesheet" />
+<link type="text/css" href="theme/bootstrap.css?v=1622612890850" rel="stylesheet" />
+<link type="text/css" href="theme/app.css?v=1622612890850" rel="stylesheet" />
+<link href="favicon.ico" rel="shortcut icon" />
+<!--[if lt IE 9]>
+   <script type="text/javascript" src="js/lib/html5shiv.js?v=1622612890851"></script>
+   <script type="text/javascript" src="js/lib/respond.min.js?v=1622612890851"></script>
+<![endif]-->
+</head>
+<body>
+<div class="container" id="topContainer">
+    <div id="langLogoBar" class="row">
+        <div class="col-xs-4">
+            <a href="#home"><img src="img/logo_zte.png?v=1622612890852"/></a>
+            <!--span class="center-block" id="webui_title"></span-->
+        </div>
+        <div id="statusBar" class="col-xs-8 text-right" style="display: none;white-space:nowrap;">
+            <span class="statusItem" title="network_type" i18n="true" id="networkType" data-bind="text: networkType"></span>
+            <span class="statusItem" title="network_provider" i18n="true" id="operator" data-bind="text: networkOperator"></span>
+            <span class="statusItem" title="ota_title" i18n="true" id="OTA" data-bind="visible:OTAStatus">
+                <a onclick="return showOTAAlert();">
+                    <img class="paddingbottom6" src="./img/ic_indicator_downloading.gif"/>
+                </a>
+            </span>
+			<span class="statusItem" title="sleep_protection_mode" i18n="true" id="sleep_protection_mode_span" data-bind="visible:sleep_protection_mode_status">
+                 <img class="paddingbottom6" src="./img/ic_indicator_lightoff.png?v=1622612890852"/>
+            </span>
+            <span class="statusItem" title="signal_strength" i18n="true" id="signal_strength"><i class="signal" data-bind="attr:{'class': signalCssClass}">&nbsp;</i></span>
+            <span class="statusItem" title="connection_status" i18n="true" id="connection_status" data-bind="visible: isShowConnectionIcon"><i class="icon_connection" data-bind="attr:{'class': connectionCssClass}">&nbsp;</i></span>
+            <span class="statusItem" title="sms_unread_count" i18n="true" id="sms_unread_count" data-bind="visible: (smsUnreadCount() > 0 || showSmsDeleteConfirm())&& (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY' || cpeMode == 'LTE_BRIDGE')" style="display: none; position: relative;">
+                <a onclick="return gotoSmsList();" href="javascript: void(0)">
+                    <img data-bind="visible: smsUnreadCount() > 0 && !showSmsDeleteConfirm()" class="paddingbottom6" src="./img/ic_indicator_message.png?v=1622612890852"/>
+                    <img data-bind="visible: showSmsDeleteConfirm()" class="paddingbottom6" src="./img/sms_full.gif"/>
+                    <sup data-bind="visible: smsUnreadCount() > 0, text: smsUnreadCount" class="smsUnreadCount"></sup>
+                </a>
+            </span>
+            <span class="statusItem" title="sim_status" i18n="true" id="statusItemSimStatus" data-bind="visible:(cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY' || cpeMode == 'LTE_BRIDGE')"><img data-bind="attr: {src: simStatus}" class="paddingbottom6" /></span>
+            <span class="statusItem" title="roaming_status" i18n="true" id="roamingStatus" data-bind="visible: roamingStatus() == 'R'&& (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY' || cpeMode == 'LTE_BRIDGE')" style="display: none;"><img class="paddingbottom6" src="./img/ic_indicator_roaming.png?v=1622612890852"/></span>
+            <span class="statusItem" title="wifi_status" i18n="true" id="wifi_status" style="position: relative;" data-bind="visible: hasWifi"> 
+                <img data-bind="visible: !showAttachedDevices()" class="paddingbottom6" src="./img/ic_indicator_wifi_off.png?v=1622612890852"/>	
+				<img data-bind="visible: showAttachedDevices" class="paddingbottom6" src="./img/ic_indicator_wifi.png?v=1622612890852"/>			
+				<sup data-bind="visible: showAttachedDevices, text: attachedDevices" class="wifiAttachCount"></sup>
+            </span>
+            <span class="statusItem" title="battery_level" i18n="true" data-bind="visible: hasBattery"><b data-bind="text: batteryLevel" style="line-height: 28px; vertical-align: bottom;"></b><img class="paddingbottom6" id="batteryCharging" data-bind="attr: {src: batteryPers}"/></span>
+        </div>
+    </div>
+    <div id="languageBar" class="row">
+        <div class="col-xs-6">
+            <span id="h_ssid" i18n="false"></span>
+        </div>
+        <div id="themeContainer" class="col-xs-6 text-right">
+            <span id="logout">
+                <a class="margin-right-10" data-trans="shutdown" href="javascript:void(0)" data-bind="click:shutdown,visible:showLogout()&& isUfi()"></a>
+                <a class="margin-right-10" data-trans="modify_password" href="#password_management" data-bind="visible:showLogout()"></a>
+                <a class="margin-right-10" id="logoutlink" data-trans="logout" href="javascript:void(0)" data-bind="click:logout,visible:showLogout() " style="display: none;"></a>
+            </span>
+            <select id="language" class="marginright10" data-bind="visible:showLanguage,options: languages, value: currentLan, optionsText: 'text', optionsValue: 'value', event:{ change: langChangeHandler}"></select>
+        </div>
+    </div>
+</div>
+<div class="container" id="indexContainer">
+    <div id="mainContainer" style="min-height: 450px;">
+        <div id='container'></div>
+    </div>
+</div>
+<div id="footer" class="container">
+    <span data-trans='copyright'></span>&nbsp; <span data-trans="vertical_bar"></span> &nbsp;<a href="https://opensource.ztedevices.com" target="_blank" data-trans="open_source_licenses" class="extendLink"></a>
+    &nbsp; <span id="privacy_span" data-trans="vertical_bar"></span> &nbsp;<a id="privacy_a" href="https://www.ztedevices.com/en/Privacy-Policy/ZTESmartRouterPrivacyPolicy" target="_blank" data-trans="privacy_policy" class="extendLink"></a>
+</div>
+
+<div id='result-overlay'>
+    <div class='header'></div>
+    <br/>
+    <div class="text-center">
+        <div>
+            <div id="result-image"></div>
+        </div>
+        <div id="result_wording"></div>
+    </div>
+</div>
+
+<div id='loading'>
+    <div class='header'><span id="loadMsg"></span></div>
+    <br/>
+    <div class="text-center">
+		<div><span id="loading_wording" class="message"></span></div>
+        <img id="loadingImg" src="img/loading.gif"/>
+        <div id="loading_container"></div>
+    </div>
+</div>
+
+<div id='progress'>
+    <div class='header'><span id="barMsg"></span></div>
+     <br/>
+     <div class="progress-content">
+         <div class="progress-bar-container">
+             <div id="bar" class="progress-bar"></div>
+             <div id="barValue" class="progress-bar-value"></div>
+         </div>
+         <div id="progress_container" class="progress-prompt"></div>
+     </div>
+ </div>
+<!-- confirm content -->
+<div id='confirm'>
+    <div class='header'><span id="popTitle"></span></div>
+    <div id="confirm-message-container">
+        <div class='icon'><img id='confirmImg'/></div>
+        <div class="confirm-message">
+            <div class='message'></div>
+            <div class='promptDiv'>
+                <input name="promptInput" id="promptInput" type="text" maxlength="25" class="width190"/><br/>
+                <label class="promptErrorLabel colorRed"></label>
+            </div>
+        </div>
+    </div>
+    <div class='buttons'>
+        <input type="button" class="btn btn-default simplemodal-close" id='okbtn' data-trans='ok'/>
+        <input type="button" class="btn btn-default " id='yesbtn' data-trans='yes'/>
+        <input type="button" class="btn btn-default simplemodal-close" id='nobtn' data-trans='no'/>
+    </div>
+</div>
+<!-- confirm content for sbm -->
+<div id='confirm_sbm'>
+    <div class='header'><span id="popTitle_sbm"></span></div>
+    <div id="confirm-message-container_sbm">
+        <div class='icon'><img id='confirmImg_sbm'/></div>
+        <div class="confirm-message">
+            <div class='message'></div>
+            <div class='promptDiv hide'>
+                <input name="promptInput" id="promptInput_sbm" type="text" maxlength="25" class="width190"/><br/>
+                <label class="promptErrorLabel colorRed"></label>
+            </div>
+        </div>
+    </div>
+    <div class='buttons'>
+        <input type="button" class="btn btn-default simplemodal-close" id='okbtn_sbm' data-trans='ok'/>
+        <input type="button" class="btn btn-default" id='yesbtn_sbm' data-trans='yes'/>
+        <input type="button" class="btn btn-default simplemodal-close" id='nobtn_sbm' data-trans='no'/>
+    </div>
+</div>
+<div id='popupSettingWindow'>
+    <div class='header'>
+		<p class="tag-popup-close"><a href="javascript:hidePopupSettingWindow();"></a></p>
+	</div>
+	<div id="htmlContainer" class="modal-body"></div>
+</div>
+<div id='popupModifyFotaSetWindow'>
+    <div class='header'>
+		<p class="tag-popup-close"><a href="javascript:hidePopupModifyPwWindow();"></a></p>
+	</div>
+	<div id="fotaSetContainer" style="background: #fff;" class="modal-body"></div>
+</div>
+
+<div id="buttom-bubble">
+</div>
+<script type="text/x-jquery-tmpl" id="newMessagePopTmpl">
+    <div class="bubbleItem ${report}" id="${mark}">
+        <h3>
+			<span data-trans="${titletrans}">${title}</span> ${name} <a href="javascript:void(0);" data-targetid="${mark}" class="bubbleCloseBtn"></a>
+		</h3>
+        <div class="bubbleContainer">
+            <div class="bubbleContent">${content}</div>
+            <div class="bubbleDatetime">${datetime}</div>
+        </div>
+    </div>
+</script>
+<script type="text/javascript" data-main="js/main" src="js/lib/require/require-jquery.js?v=1622612890851"></script>
+</body>
+</html>

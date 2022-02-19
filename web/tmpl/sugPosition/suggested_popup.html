@@ -1,0 +1,37 @@
+<div id='confirmForCus' class="form-body" style="margin-top:0px">
+    <form id="suggestedPopupForm">
+        <div class='form-title' id="popTitleForCus">
+            <span data-trans="suggested_position_detect_popup_title"></span>            
+        </div>
+		<div class="content">
+			<div id="confirm-message-containerForCus" style="padding-top:24px;padding-left:35px;">
+				<div class='icon' style="display: none;"></div>
+				<div class="confirm-message">
+					<div class='message'>
+						<label data-trans="suggested_position_detect_popup_detect_result"></label>
+						<label data-bind="text:detectResult" style="color:blue"></label>				
+					</div>
+					<div class='message' style="border-bottom:1px solid #eee;margin-bottom:5px;word-wrap:break-word;">
+						<label data-bind="text:popupDetectNote"></label>
+					</div>
+					<div>
+						<div class='promptDiv'>
+							<label class="side-right" data-trans="suggested_position_detect_popup_remark"/>
+							<input name="locationInput" autocomplete="off" id="locationInput" type="text" class="width190 required" data-bind="value:locationInput, valueUpdate: 'keypress'" maxlength="32" /><br/>
+							<label id="loactionError" for="locationInput" generated="true" class="error" style="display: none;margin-left:55px"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='buttons' style="margin-top:30px;margin-bottom: 20px; margin-left: 110px;">
+				<span id="noSpanForCus">						 
+					 <input type="button" id='nobtnForCus' class="btn btn-default simplemodal-close" data-trans="suggested_position_detect_popup_discard" data-bind="click:discard"/>
+				</span> 
+				<span id="yesSpanForCus">
+					 <input type="button"  id='yesbtnForCus' class="btn btn-default simplemodal-close" data-trans="suggested_position_detect_popup_save"  data-bind="click:addRecord"/>	
+				</span>
+				 
+			</div>
+		</div>
+    </form>
+</div>

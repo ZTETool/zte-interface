@@ -1,0 +1,117 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#router_setting">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='bind_ip_mac'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <div class="form-body margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                    </a>
+                </div>
+                <form id="bindMACIPSwitchFrm">
+                    <div class="form-title">
+                        <h2 data-trans="bind_ip_mac"></h2>
+                    </div>
+                    <div class="content">
+                        <div class="row form-group">
+                            <label class="col-xs-4 side-right" data-trans="bind_ip_mac_switch"></label>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="bind_ip_mac_switch" data-bind="css:{'radiobox_selected': macIpBindEnable() == '1'}">
+											<input type="radio" name="bind_ip_mac_switch" id="bind_ip_mac_switch_enable"
+												   data-bind="checked: macIpBindEnable" value="1"/>
+										</p>
+                                        <label for="bind_ip_mac_switch_enable" data-trans="enable"></label>
+                                    </div>
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="bind_ip_mac_switch" data-bind="css:{'radiobox_selected': macIpBindEnable() == '0'}">
+											<input type="radio" name="bind_ip_mac_switch" id="bind_ip_mac_switch_disable"
+												   data-bind="checked: macIpBindEnable" value="0"/>
+										</p>
+                                        <label for="bind_ip_mac_switch_disable" data-trans="disable"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <input type="submit" class="btn btn-primary" data-trans="apply"/>
+                        </div>
+                    </div>
+                </form>
+                <div data-bind="visible: isShowStaticAddressDiv " class="margin-top-20">
+                    <form id="bindMACIPContentFrm">
+                        <div class="content">
+                            <div class="row form-group">
+                                <label class="col-xs-3 side-right" for="txtIpAddress" data-trans="mac_address"></label>
+                                <div class="col-xs-9">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <input type="text" name="txtMacAddress" id="txtMacAddress" data-bind="value: macAddress" class="required form-control" maxlength="20"/>
+                                        </div>
+                                        <label class="col-xs-4" data-trans="macExam" id="macExamLabel"></label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9 col-md-offset-3" id="macErrorDiv"></div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-xs-3 side-right" for="txtIpAddress" data-trans="ip_address"></label>
+                                <div class="col-xs-9">
+                                    <div class="row">
+                                        <div class="col-xs-8">
+                                            <input type="text" name="txtIpAddress" id="txtIpAddress" data-bind="value: ipAddress" class="required form-control" maxlength="15"/>
+                                        </div>
+                                        <label class="col-xs-4" data-trans="ipExam" id="ipExamLabel"></label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-9 col-md-offset-3" id="ipErrorDiv"></div>
+                            </div>
+                        </div>
+                        <div class="form-buttons">
+                            <input type="submit" class="btn btn-primary" data-trans="apply"/>
+                        </div>
+                        <div class="form-note">
+                            <div class="notes-title">&nbsp;</div>
+                            <ul class="notes-content">
+                                <li data-trans="bind_ip_note_all"></li>
+                                <li data-trans="bind_ip_note_switch"></li>
+                                <li data-trans="bind_ip_note_macaddr"></li>
+                                <li data-trans="bind_ip_note_ipaddr"></li>
+                            </ul>
+                        </div>
+                    </form>
+                    <form id="bindMACIPListFrm">
+                        <div class="form-title">
+                            <h2 data-trans="bind_ipMac_list"></h2>
+                        </div>
+                        <div class="content">
+                            <div id="staticAddress" class="fixTableScroll" data-bind="simpleGrid: gridTemplate"></div>
+                        </div>
+                        <div class="form-buttons">
+                            <div class="row form-group">
+                                <span class="col-xs-8 side-right bind-tips" data-trans="bind_restart_tips"></span>
+                                <div class="col-xs-4">
+                                    <input type="button" class="btn btn-primary margin-right-20" data-trans="restart_button" data-bind="click: restart"/>
+                                    <input type="submit" class="btn btn-primary" data-trans="delete" data-bind="enable: gridTemplate.checkedCount() > 0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

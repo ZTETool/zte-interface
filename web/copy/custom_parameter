@@ -1,0 +1,93 @@
+#The word of "Default" must not be removed
+Default
+must_have_it=1
+WebInit=1
+#######
+ant_switch_enable=1
+Language=zh-cn
+privacy_read_flag=0
+pctrl_white_list_enable=0
+web_attr_if_support_sha256=2
+CT_self_regist_switch=1
+voice_work_type=null
+zte_voice_ims_set_value=0
+chinamobile_DM_switch=1
+unicom_dm_regist_switch=0
+unicom_dm_start_switch=0
+unicom_dm_server_url=http://dm.wo.com.cn:18080/registerv3
+unicom_dm_history_count=100
+unicom_dm_inter_time=86400
+unicom_dm_retry_seconds=3600
+dm_user_grant_flag=1
+zte_dm_aes_test_encrypt=1
+zte_dm_aes_test_decrypt=0
+tr069_user_improv_notify_flag=0
+dm_user_grant_notify_flag=0
+zte_N79_wlan5G_priority=0
+ip_passthr_privip_net_allowed=1
+##### MEC start #####
+mec_url=10.62.89.210
+mec_port=28003
+mec_username=cpetest
+mec_password=cpetest123
+mec_msgType=Connect
+mec_alivePeriod=10
+mec_pingPeriod=5
+mec_groupid=101
+mec_aes_key=abcdefghijklmnopqrstuvwxyz123456
+mec_aes_iv=zte0123456789zte
+mec_tls_en=0
+mec_enable=0
+mec_status=DOWN
+portforward_rule_num=20
+portmap_rule_num=20
+watch_dog_delay_mode=no
+watch_dog_onoff_line_switch=1
+net_link_detect_time_gap_second=1
+udpecho_server_run=1
+bridge_wan_port_fix_enable=1
+##### MEC end #####
+#################################TR069 Module##################################
+tr069_remote_mgtPlatform=1
+tr069_Secondary_CPEPortNo=7549
+tr069_Secondary_ServerUsername=zteacs
+tr069_Secondary_ServerPassword=acspd(*)&123
+tr069_Secondary_ConnectionRequestUname=sbnfbb
+tr069_Secondary_ConnectionRequestPassword=FBB2@!4
+tr069_Secondary_FwInterface=IGD.WD1.WCD1.WCIP1
+tr069_Secondary_PeriodicInformInterval=60
+tr069_Secondary_CommonCmdKey=ZTEHOMEGATEWAY
+tr069_Secondary_BootStrap=
+tr069_Secondary_StunEnable=1
+tr069_Secondary_StunUserName=
+tr069_Secondary_StunPwd=
+tr069_Secondary_UDPConnReqAddrNotifyLimit=60
+tr069_Secondary_StunSrvPort=3478
+tr069_Secondary_StunMaxKeepAlivePer=60
+tr069_Secondary_StunMinKeepAlivePer=50
+tr069_Secondary_ServerURL=https://acscn.ztems.com/tr069/
+tr069_Secondary_StunSrvAddr=acscn.ztems.com
+##### VXLAN MEC start #####
+vxlan_mec_enable=0
+vxlan_mec_status=0
+vxlan_mec_url=
+vxlan_mec_port=
+vxlan_mec_tls_en=0
+vxlan_mec_username=
+vxlan_mec_password=
+vxlan_mec_alivePeriod=
+vxlan_mec_pingPeriod=5
+vxlan_mec_groupid=
+vxlan_mec_aes_key=
+vxlan_mec_aes_iv=
+vxlan_mec_authUsername=
+vxlan_mec_authPassword=
+vxlan_vlanid=0
+#####The End#####
+##### VXLAN default value start #####
+vxlan_enable=0
+##### VXLAN default value end #####
+dst_24h_save=1
+##### The Last #####
+nvc_reserved=1
+##### The End #####

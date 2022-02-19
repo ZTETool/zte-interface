@@ -1,0 +1,64 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#firewall">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='nat_setting'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+
+            <form id="natSettingForm">
+                <div class="form-body margin-top-20">
+                    <div class="row meun-nav-new">
+                        <a href="#home">
+                            <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                        </a>
+                    </div>
+                    <div class="content">
+                        <div class="row form-group">
+                            <label class="col-xs-3 side-right" data-trans="nat_setting"></label>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <p class="radiobox" for="natGrp"
+                                            data-bind="css:{'radiobox_selected': natSetting() == '1'}">
+                                            <input type="radio" name="natGrp" id="natEnable"
+                                                data-bind="checked: natSetting" value="1" />
+                                        </p>
+                                        <label for="natEnable" data-trans="enable"></label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <p class="radiobox" for="natGrp"
+                                            data-bind="css:{'radiobox_selected': natSetting() == '0'}">
+                                            <input type="radio" name="natGrp" id="natDisable"
+                                                data-bind="checked: natSetting" value="0" />
+                                        </p>
+                                        <label for="natDisable" data-trans="disable"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <input type="submit" class="btn btn-primary" data-trans="apply" />
+                    </div>
+                    <div class="form-note">
+                        <div class="notes-title">&nbsp;</div>
+                        <ul class="notes-content">
+                            <li data-trans="nat_info"></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

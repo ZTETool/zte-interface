@@ -1,0 +1,323 @@
+<div class="row" id="home_image">
+<div class="row" id="home_control">
+	<div id="currentOpMode" class="col-xs-5 text-left" data-bind="visible: supportModeChange" style="white-space:nowrap;">
+        <label data-trans="current_mode"></label>
+        <span id="opmode"></span>
+        <input id="change" type="button" class="btn btn-primary" data-trans="change" data-bind="click: showOpModeWindow, visible: isLoggedIn, enable: enableFlag" style="display:none;" />
+    </div>    
+    <div data-bind="style: {visibility: visibility}" class="col-xs-2 text-center line-height-30" style="white-space:nowrap;">
+        <span data-trans="pc_version"></span>
+        <span>|</span>
+        <span><a href="m/index.html" data-trans="mobile_version" class="mobile_version_link"></a></span>
+    </div>	
+	<div class="col-xs-5" style="position: relative;">
+    </div>
+   
+</div>
+<div class="row">
+    <div style="position: relative">
+		<div data-trans="access_device" class="accessDevice"></div>
+        <div class="connected_devices_container" onclick="window.location.hash='#station_info'">
+            <div id="h_wire_device" data-bind="visible: isCPE">
+                <span data-bind="text: wireDeviceNum">0</span><sub style="font-size: 16px;" data-trans="device_unit">台</sub>
+            </div>
+            <div id="h_wireless_device">
+                <span data-bind="text: wirelessDeviceNum">0</span><sub style="font-size: 16px;" data-trans="device_unit">台</sub>
+            </div>
+            <a href="#station_info" id="h_attached_device_link">
+            </a>
+        </div>
+		<div data-trans="my_router" class="myRouter"></div>
+        <div id="h_network_type" data-bind="text: networkType, css: {'no-btn': !(canConnect() && isShowHomeConnect())}"></div>
+        <a href="javascript: void(0)" id="h_connect_btn" data-bind="visible: canConnect() && isShowHomeConnect(), click: connectHandler , css: {'h_connect_on': cStatus()== 1, 'h_connect_off': cStatus() != 1}" style="display: none;"></a>
+        <div id="h_internet_setting_div">
+            <a href="#internet_setting" id="h_internet_setting_btn" data-trans="settings_internet"></a>
+        </div>
+		 <div id="h_wifi" data-trans="wireless_hotspot"></div>
+        <div id="h_wifi_setting_div">
+            <a href="#wifi_main" id="h_wifi_setting_btn" data-trans="settings_wireless"></a>
+        </div>
+        <div id="h_connect_status" data-bind="css: {'h_status_connected': cStatus()== 1, 'h_status_disconnected': cStatus()== 2, 'h_status_connecting': cStatus()== 3, 'h_status_disconnecting': cStatus()== 4, }">
+        </div>
+		<div data-trans="net_surfing" class="netSurfing"></div>
+        <div id="h_internet_status">
+            <div data-bind="visible: cStatus() != 1" class="line-height-40 margin-top-5" data-trans="not_connect_network"></div>
+            <div data-bind="visible: cStatus() == 1 && !isWirelessMode()" class="line-height-40 margin-top-5" data-trans="have_connect_network"></div>
+            <div data-bind="visible: cStatus() == 1  && isWirelessMode()" class="line-height-20">
+                <div data-bind="text: connected_Time"></div>
+                <div><span data-bind="text: down_Speed">0b</span><span> ↓</span></div>
+                <div><span data-bind="text: up_Speed">0b</span><span> ↑</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row margin-top-50 label-font-normal margin-bottom-20">
+    <div class="col-xs-6 text-center" data-bind="visible: (!isCPE ||(isCPE && (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY')))&&false">
+        <div class="col-xs-12 text-center margin-bottom-20">
+            <h4>
+                <span class="label label-primary info-title" data-trans="traffic_data_plan" style="border-radius: 12px;"></span>
+                <span class="arrow-down absolute-center"></span>
+            </h4>
+        </div>
+        <div class="col-xs-8">
+            <div id="traffic_graphic"  style="width: 200px; height: 200px; visibility: visible;"></div>
+        </div>
+        <div class="col-xs-4 text-left" data-bind="visible: !isCPE || (isCPE && (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY'))">
+            <div class="margin-top-20">
+                <div data-bind="text: trafficUsed"></div>
+                <div><span class="color_block" style="background-color: #8CC916;"></span><span class="color_block_desc" data-trans="traffic_used"></span></div>
+            </div>
+            <div class="line-height-40 margin-top-20 arrow-right cursorhand" style="min-height: 30px; padding-right: 0;">
+                <a href="#traffic_alert">
+                    <div data-bind="visible: trafficAlertEnable" style="padding-right: 30px;">
+                        <div class="line-height-20" data-bind="text: trafficLimited"></div>
+                        <div class="line-height-20" data-trans="traffic_limit_data"></div>
+                    </div>
+                    <div data-bind="visible: trafficAlertEnable() == false" style="padding-right: 30px;">
+                        <div class="line-height-20" data-trans="traffic_not_set_limited"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4 text-left" data-bind="visible: isCPE && cpeMode != 'PPP' && cpeMode != 'AUTO_LTE_GATEWAY'">
+            <span data-trans="traffic_not_support"></span>
+        </div>
+    </div>
+    <div class="col-xs-6 text-center margin-top-26">
+        <div class="row">
+            <div class="col-xs-1"></div>
+			<div class="col-xs-3" data-bind="visible: isCPE && cpeMode != 'AUTO_PPPOE' && cpeMode != 'AUTO_DHCP' && cpeMode != 'DHCP' && cpeMode != 'STATIC' && cpeMode != 'PPPOE'">
+                <a href="#suggested_position">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_position.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content-2" data-trans="suggested_position"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-3" data-bind="visible: isCPE && cpeMode != 'AUTO_PPPOE' && cpeMode != 'AUTO_DHCP' && cpeMode != 'DHCP' && cpeMode != 'STATIC' && cpeMode != 'PPPOE'">
+                <a href="#traffic_alert">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_datausage.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="data_usage"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-3" data-bind="visible: (isCPE && (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY' || cpeMode == 'LTE_BRIDGE')) && oom_temp_pro==0">
+                <a href="#sms">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_sms.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="sms"></span>
+                    </div>
+                </a>
+            </div>
+               		
+            <div class="col-xs-1"></div>
+        </div>
+		<div class="row margin-top-42">
+            <div class="col-xs-1"></div>			
+           
+			<div class="col-xs-3" data-bind="visible: (isCPE && (cpeMode == 'PPP' || cpeMode == 'AUTO_LTE_GATEWAY' || cpeMode == 'LTE_BRIDGE')) && oom_temp_pro==0">
+                <a href="#phonebook">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_phonebook.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="phonebook"></span>
+                    </div>
+                </a>
+            </div>	
+            <div class="col-xs-3">
+                <a href="#parental_control" data-bind="visible: isCPE">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_safe.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content-2" data-trans="parental_control"></span>
+                    </div>
+                </a>
+            </div> 
+            <div class="col-xs-3">
+                <a href="#sleep_mode">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_set.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content-2" data-trans="advanced_settings"></span>
+                    </div>
+                </a>
+            </div>       		
+            <div class="col-xs-1"></div>
+        </div>
+    </div>
+    <div class="col-xs-6" style="border-left: 1px dashed #d3d3d3">
+        <div class="col-xs-12 text-center margin-bottom-20">            
+			<span class="label label-primary info-title" data-trans="device_info" style="border-radius: 17.5px;font-size:20px"></span>
+			<span class="arrow-down absolute-center"></span>           
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="sim_serial_number"></label>
+            <label class="col-xs-6" data-bind="text: simSerialNumber"></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="imei"></label>
+            <label class="col-xs-6" data-bind="text: imei"></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="imsi"></label>
+            <label class="col-xs-6" data-bind="text: imsi"></label>
+        </div>
+        <div class="row" data-bind="visible:wifi_enable()==1">
+            <label class="col-xs-6" data-trans="wifi_range"></label>
+            <label class="col-xs-6" data-bind="attr: {'data-trans': wifiLongMode}"></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="signal_strength_label"></label>
+            <label class="col-xs-6" id="fresh_signal_strength"></label>
+        </div>
+        <div class="row">
+            <a href="javascript: void(0)" class="col-xs-5 line-height-30 arrow-right cursorhand" data-trans="detail_info" id="showDetailInfo" tabindex="0"></a>
+        </div>
+
+        <div class="row margin-top-10">            
+			<div class="col-xs-3" id="h_qrcode_dhcp" data-bind="visible: showQrCode()">
+				<div style="margin-left:-15px">
+					<img src="./img/blacktrans.png?v=1622612890852" width="111" id="qrcode_img_dhcp" data-bind="attr: {src: qrcodeSrc}"/>
+				</div>
+				<div>
+					<span data-trans="24g_wifi" style="white-space:nowrap;"></span>
+				</div>
+			</div>
+			<div class="col-xs-3" id="h_qrcode_5g_dhcp" data-bind="visible: showQrCode_5g()">
+				<div style="margin-left:-15px">
+					<img src="./img/blacktrans.png?v=1622612890852" width="111" id="qrcode_img_5g_dhcp" data-bind="attr: {src: qrcodeSrc_5g}"/>
+				</div>
+				<div>
+					<span data-trans="5g_wifi" style="white-space:nowrap;"></span>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>
+<script type="text/x-jquery-tmpl" id="detailInfoTmpl">
+<div class="row">
+    <label class="col-xs-6" data-trans="sim_serial_number"></label>
+    <label class="col-xs-6"><%= simSerialNumber %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="imei"></label>
+    <label class="col-xs-6"><%= imei %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="imsi"></label>
+    <label class="col-xs-6"><%= imsi %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="signal_strength_label"></label>
+    <label class="col-xs-6" id="popoverSignalTxt"><%= signal %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="lte_frequency_bands"></label>
+    <label class="col-xs-6" id="popoverFrequency"><%= lte_frequency_bands %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="ca_status"></label>
+    <label class="col-xs-6" id="popoverCaStatus"><%= ca_status %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="5g_snr_label"></label>
+    <label class="col-xs-6" id="popover5gSnrTxt"><%= Z5g_snr %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="5g_rsrp_label"></label>
+    <label class="col-xs-6" id="popover5gRsrpTxt"><%= Z5g_rsrp %></label>
+</div>
+<% if(hasWifi){ %>
+    <% if(show24GMainSsid){ %>
+        <div class="row">
+            <label class="col-xs-6" data-trans="max_access_num"></label>
+            <label class="col-xs-6"><%= max_access_num %></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="network_name_ssid1"></label>
+            <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= ssid %></label>
+        </div>
+        <% if(show24GMultiSsid){ %>
+            <div class="row">
+                <label class="col-xs-6" data-trans="network_name_ssid2"></label>
+                <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= m_ssid %></label>
+            </div>
+            <div class="row">
+                <label class="col-xs-6" data-trans="max_access_num_ssid2"></label>
+                <label class="col-xs-6"><%= m_max_access_num %></label>
+            </div>
+        <% } %>
+    <% } %>
+    <% if(show5GMainSsid && wifi5gIsOn){ %>
+        <div class="row">
+            <label class="col-xs-6" data-trans="network_name_ssid1_5g"></label>
+            <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= ssid_5g %></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="max_access_num_ssid1_5g"></label>
+            <label class="col-xs-6"><%= max_access_num_5g %></label>
+        </div>
+        <% if(show5GMultiSsid){ %>
+            <div class="row">
+                <label class="col-xs-6" data-trans="network_name_ssid2_5g"></label>
+                <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= m_ssid_5g %></label>
+            </div>
+            <div class="row">
+                <label class="col-xs-6" data-trans="max_access_num_ssid2_5g"></label>
+                <label class="col-xs-6"><%= m_max_access_num_5g %></label>
+            </div>
+        <% } %>
+    <% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="wifi_range"></label>
+    <label class="col-xs-6" data-trans="<%= wifi_long_mode %>"></label>
+</div>
+<% } %>
+<% if(!isCPE){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="lan_domain"></label>
+    <label class="col-xs-6"><%= lanDomain %></label>
+</div>
+<% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="ip_address"></label>
+    <label class="col-xs-6"><%= ipAddress %></label>
+</div>
+<% if(showMacAddress){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="mac_address"></label>
+    <label class="col-xs-6"><%= macAddress %></label>
+</div>
+<% } %>
+<% if(showIpv4WanIpAddr){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="wan_ip_address"></label>
+    <label class="col-xs-6"><%= wanIpAddress %></label>
+</div>
+<% } %>
+<% if(showIpv6WanIpAddr){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="ipv6_wan_ip_address"></label>
+    <label class="col-xs-6"><%= ipv6WanIpAddress %></label>
+</div>
+<% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="software_version"></label>
+    <label class="col-xs-6"><%= sw_version %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="firmware_version"></label>
+    <label class="col-xs-6"><%= fw_version %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="hardware_version"></label>
+    <label class="col-xs-6"><%= hw_version %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="model_name"></label>
+    <label class="col-xs-6" data-trans="5g_wireless"></label>
+</div>
+<div class="row">
+    <a class="col-xs-6" href="http://www.zte.com.cn" target="_blank">www.zte.com.cn</a>
+</div>
+</script>

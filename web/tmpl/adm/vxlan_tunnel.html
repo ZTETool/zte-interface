@@ -1,0 +1,110 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#vxlan_menu">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='vxlan_tunnel'></h1>
+				<p data-trans='vxlan_tunnel_title_note'></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body margin-top-20">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+					</a>
+				</div>
+				<form id="vxlanTunnelForm" class="margin-top-20">
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="vxlan_switch"></label>
+						<div class="col-xs-7">
+							<div class="row">
+								<div class="col-xs-3">
+									<p class="radiobox" for="vxlanSwitch" data-bind="css:{'radiobox_selected': vxlan_enable() == '1'}">
+										<input type="radio" name="vxlanSwitch" id="vxlanEnable" data-bind="checked: vxlan_enable" value="1">
+									</p>
+									<label for="vxlanEnable" data-trans="enable"></label>
+								</div>
+								<div class="col-xs-3">
+									<p class="radiobox" for="vxlanSwitch" data-bind="css:{'radiobox_selected': vxlan_enable() == '0'}">
+										<input type="radio" name="vxlanSwitch" id="vxlanDisable" data-bind="checked: vxlan_enable" value="0">
+									</p>
+									<label for="vxlanDisable" data-trans="disable">Disable</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div data-bind="visible: vxlan_enable() == '1'">
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="nv_format"></label>
+							<div class="col-xs-5">
+									<select class="form-control" data-transid="nv_format" data-bind="options: types, value: selectedType, optionsText: transOption('nv_format'), optionsValue: 'value', enable:false">
+									</select>
+								</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtIpAddress" data-trans="ip_address"></label>
+							<div class="col-xs-5">
+								<input id="txtIpAddress" name="txtIpAddress" type="text" data-bind="value: ipv4v6_address, valueUpdate: 'keypress'" class="required form-control" maxlength="512"/>
+							</div>
+						</div>					
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtPort" data-trans="port"></label>
+							<div class="col-xs-5">
+								<input id="txtPort" name="txtPort" type="text" data-bind="value: port, valueUpdate: 'keypress'" class="form-control" maxlength="5"/>
+							</div>
+							<label class="col-xs-2">(1~65535)</label>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" for="txtVNI" data-trans="tunnel_vni"></label>
+							<div class="col-xs-5">
+								<input id="txtVNI" name="txtVNI" type="text" data-bind="value: vni, valueUpdate: 'keypress'" class="form-control" maxlength="8"/>
+							</div>
+							<label class="col-xs-2">(1~16777216)</label>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="mec_authentication"></label>
+							<div class="col-xs-7">
+								<div class="row">
+									<div class="col-xs-3">
+										<p class="radiobox" for="vxlanAuth" data-bind="css:{'radiobox_selected': vxlan_auth_enable() == '1'}">
+											<input type="radio" name="vxlanAuth" id="vxlanAuthEnable" data-bind="checked: vxlan_auth_enable" value="1">
+										</p>
+										<label for="vxlanAuthEnable" data-trans="enable"></label>
+									</div>
+									<div class="col-xs-3">
+										<p class="radiobox" for="vxlanAuth" data-bind="css:{'radiobox_selected': vxlan_auth_enable() == '0'}">
+											<input type="radio" name="vxlanAuth" id="vxlanAuthDisable" data-bind="checked: vxlan_auth_enable" value="0">
+										</p>
+										<label for="vxlanAuthDisable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans="apply"/>
+					</div>
+					
+					<div data-bind="visible:vxlan_enable()=='1' && vxlan_auth_enable() == '1'">
+						<label data-trans="vxlan_enable_note1"></label>
+						<label data-trans="vxlan_enable_note2"></label>
+					</div>				
+				</form>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content" style="overflow: hidden;">						         
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

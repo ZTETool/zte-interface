@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>
+        var tempUrl = "m/index.html";
+        var curentHref = window.location.href;
+        if(window.location.href.indexOf("?no_connect") != -1){
+            window.location.href = tempUrl + curentHref.slice(curentHref.indexOf("?no_connect"));
+        } else if(window.location.href.indexOf("?flow_beyond") != -1){
+            window.location.href = tempUrl + curentHref.slice(curentHref.indexOf("?flow_beyond")) ;
+        } else if(window.location.href.indexOf("?fota_upgrade") != -1){
+            window.location.href = tempUrl + curentHref.slice(curentHref.indexOf("?fota_upgrade"));
+        } else {
+            window.location.href = tempUrl;
+        }
+    </script>
+</head>
+<body >
+</body>
+</html>

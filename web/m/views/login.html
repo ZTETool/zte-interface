@@ -1,0 +1,33 @@
+<div class="login-top">
+    <div class="logo-center">
+        <img src="img/logo.png?v=1622612890852" alt=""/>
+    </div>
+</div>
+<div data-role="main" class="ui-content">
+<form id="formLogin">
+    <div id="lockContainer">
+        <span data-trans="password_error_account_lock"></span> <span id="leftUnlockTime"></span>
+    </div>
+    <label for="password" class="ui-hidden-accessible"></label>
+    <input name="password" id="password" class="required" autocomplete="off" type="password" maxlength="32">
+    <div data-bind="visible:hasSave">
+        <input id="savePassword" type="checkbox" value="1"/>
+        <label id="savePasswordLabel" for="savePassword" data-trans="save_password"></label>
+    </div>
+    <a id="loginBtn" type="button" data-trans="login" class="ui-btn ui-corner-all ui-shadow"></a>
+</form>
+<div class="side-center" data-bind="visible:showLanguage">
+    <select id="language" class="marginright10" data-bind="options: languages, value: currentLan, optionsText: 'text', optionsValue: 'value', event:{ change: langChangeHandler}"></select>
+</div>
+<div class="margin-top-20 side-center">
+    <a href="javascript:void(0);" style="text-decoration: none;" data-trans="pc_version" onclick="confirmToPCView();"></a> | <span data-trans="mobile_version"></span>
+</div>
+
+</div>
+<div class="margin-top-20 margin-left-20 margin-right-20 side-center margin-bottom-15">
+    <span data-trans='copyright'></span>
+	<br/>
+    <a href="https://opensource.ztedevices.com" target="_blank" rel="noopener noreferrer" data-trans="open_source_licenses"></a>&nbsp; <span data-trans="vertical_bar" data-bind="visible:hasGDPR"></span> &nbsp;<a id="privacy_a" href="https://www.ztedevices.com/en/Privacy-Policy/ZTESmartRouterPrivacyPolicy" target="_blank" rel="noopener noreferrer" data-trans="privacy_policy" class="extendLink" data-bind="visible:hasGDPR"></a>
+</div>
+
+

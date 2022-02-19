@@ -1,0 +1,315 @@
+<div id="innerContainerNoSim">
+    <div id="nosim_control" class="row" style="background-color:rgba(red,green,blue,0)">
+		<div id="noSimcard_control" class="col-xs-5 text-left" data-bind="visible: supportModeChange">
+			<label data-trans="current_mode"></label>
+			<span id="opmode"></span>
+			<input id="change" type="button" class="btn btn-primary" data-trans="change" data-bind="click: showOpModeWindow, visible: isLoggedIn, enable: enableFlag" />
+		</div>
+		<div class="col-xs-2 text-center line-height-30 margin-top-15">
+			<span data-trans="pc_version"></span>
+			<span>|</span>
+			<span><a href="m/index.html" data-trans="mobile_version" class="mobile_version_link"></a></span>
+		</div>	
+		<div class="col-xs-5" style="position: relative;">
+        </div>
+    </div>
+    <div class="row form-group" id="div-nosimcard">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+
+    <!--div data-bind="visible: !isHomePage()" class="col-xs-1 margin-top-15">
+        <a href="#home">
+            <img alt="" src="img/ic_back.png?v=1622612890852">
+        </a>
+    </div-->
+    <div class="col-xs-11 colorWhite">
+        <div class="content" data-bind="visible:page()==pageState.NO_SIM" style="padding:140px 0px 0 350px;">
+			<img src="./img/img_nosim.png?v=1622612890852">
+            <div class="font18" data-trans="no_sim_card_message" style="margin-left: -55px;"></div>
+        </div>
+        <form id="frmPIN" data-bind="visible:page()==pageState.WAIT_PIN"  style="padding:140px 0px 0 250px;">
+            <div class="form-body">
+                <div class="content">
+                    <div class="prompt">
+                        <p data-trans="enter_pin"></p>
+
+                        <p class="important-prompt" data-bind="visible:pinNumber()>1">
+                            <span data-trans="attempts_left"></span> <span data-bind='text:pinNumber'></span>
+                        </p>
+
+                        <p class="important-prompt" data-bind="visible:pinNumber()==1" data-trans="last_enter_pin"></p>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-1 side-right" for='txtPIN' data-trans='pin'></label>
+
+                        <div class="col-xs-6">
+                            <input id='txtPIN' autocomplete="off" name="txtPIN" type="password" class="required form-control noSimInput"
+                                   maxlength='8' data-bind="value:PIN, valueUpdate: 'keypress'"/>
+                        </div>
+                    </div>
+                    <div class="form-buttons" style="text-align:left;margin-left:54px;">
+                        <input id="btnPinApply" class="btn btn-white" type="submit" data-trans="apply"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form id="frmPUK" data-bind="visible:page()==pageState.WAIT_PUK" style="padding:100px 0px 0 240px;">
+            <div class="form-body">
+                <div class="content">
+                    <div class="prompt">
+                        <p data-trans="enter_puk"></p>
+
+                        <p class="important-prompt" data-bind="visible:pukNumber()>1">
+                            <span data-trans="attempts_left"></span> <span data-bind='text:pukNumber'></span>
+                        </p>
+
+                        <p class="important-prompt" data-bind="visible:pukNumber()==1" data-trans="last_enter_puk"></p>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-3 side-right" for='txtPUK' data-trans='puk'></label>
+
+                        <div class="col-xs-6">
+                            <input id='txtPUK' autocomplete="off" name="txtPUK" type="password" class="required form-control noSimInput"
+                                   maxlength='8'
+                                   data-bind="value:PUK, valueUpdate: 'afterkeydown'"/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-3 side-right" for='txtNewPIN' data-trans='new_pin'></label>
+
+                        <div class="col-xs-6">
+                            <input id='txtNewPIN' autocomplete="off" name="txtNewPIN" type="password" class="required form-control noSimInput"
+                                   maxlength='8'
+                                   data-bind="value:newPIN, valueUpdate: 'afterkeydown'"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-3 side-right" for='txtConfirmPIN' data-trans='confirm_pin'></label>
+
+                        <div class="col-xs-6">
+                            <input id='txtConfirmPIN' autocomplete="off" name="txtConfirmPIN" type="password"
+                                   class="required form-control noSimInput"
+                                   maxlength='8' data-bind="value:confirmPIN, valueUpdate: 'afterkeydown'"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="form-buttons" style="text-align:left;margin-left:160px;">
+                        <input id="btnPUKApply" class="btn btn-white" type="submit" data-trans="apply"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="content" data-bind="visible:page()==pageState.PUK_LOCKED">
+            <div class="colorRed font18" data-trans="no_sim_card_message"></div>
+        </div>
+    </div>
+</div>
+
+<div data-bind="visible: isHomePage" class="row label-font-normal text-center margin-top-42" style="background-color: white;">
+    <div class="col-xs-6 text-center  margin-top-26">
+        <div class="row">
+            <div class="col-xs-1"></div>
+			<div class="col-xs-3">           
+                <a href="#station_info">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_devices.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content-2" style="white-space:nowrap;" data-trans="station_info"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-3">
+                <a href="#wifi_main">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_wifi.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="wifi_wireless_settings"></span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xs-3" data-bind="visible: oom_temp_pro==0">
+                <a href="#sms">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_sms.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="sms"></span>
+                    </div>
+                </a>
+            </div>
+               		
+            <div class="col-xs-1"></div>
+        </div>
+		<div class="row margin-top-42">
+            <div class="col-xs-1"></div>			
+           
+			<div class="col-xs-3" data-bind="visible: oom_temp_pro==0">
+                <a href="#phonebook" >
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_phonebook.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content" data-trans="phonebook"></span>
+                    </div>
+                </a>
+            </div>	
+            <div class="col-xs-3">
+                <a href="#sleep_mode">
+                    <div class="col-xs-12 text-center">
+                        <img src="img/ic_home_set.png?v=1622612890852" alt=""/>
+                        <span class="center-block margin-top-5 icon-content-2" data-trans="advanced_settings"></span>
+                    </div>
+                </a>
+            </div>       		
+            <div class="col-xs-1"></div>
+        </div>
+    </div>
+    <div class="col-xs-6" style="border-left: 1px dashed #d3d3d3">
+        <div class="col-xs-12 text-center margin-bottom-20">
+			<span class="label label-primary info-title" data-trans="device_info" style="border-radius: 17.5px;font-size:20px"></span>
+			<span class="arrow-down absolute-center"></span>
+        </div>
+        <div class="row text-left">
+            <label class="col-xs-6" data-trans="sim_serial_number"></label>
+            <label class="col-xs-6" data-bind="text: simSerialNumber"></label>
+        </div>
+        <div class="row text-left">
+            <label class="col-xs-6" data-trans="imei"></label>
+            <label class="col-xs-6" data-bind="text: imei"></label>
+        </div>
+        <div class="row text-left">
+            <label class="col-xs-6" data-trans="imsi"></label>
+            <label class="col-xs-6" data-bind="text: imsi"></label>
+        </div>
+        <div class="row text-left" style="display:none">
+            <label class="col-xs-6" data-trans="signal_strength_label"></label>
+            <label class="col-xs-6" id="fresh_signal_strength"></label>
+        </div>
+        <div class="row text-left">
+            <a href="javascript: void(0)" class="col-xs-5 line-height-30 arrow-right cursorhand" data-trans="detail_info" id="showDetailInfo" tabindex="0"></a>
+        </div>
+
+        <div class="row margin-top-10">
+			<div class="col-xs-3" id="h_qrcode_dhcp" data-bind="visible: showQrCode()">
+				<div style="margin-left:-15px">
+					<img src="./img/blacktrans.png?v=1622612890852" width="111" id="qrcode_img_dhcp" data-bind="attr: {src: qrcodeSrc}"/>
+				</div>
+				<span data-trans="24g_wifi" style="white-space:nowrap;"></span>
+			</div>
+			<div class="col-xs-3" id="h_qrcode_5g_dhcp" data-bind="visible: showQrCode_5g()">
+				<div style="margin-left:-15px">
+					<img src="./img/blacktrans.png?v=1622612890852" width="111" id="qrcode_img_5g_dhcp" data-bind="attr: {src: qrcodeSrc_5g}"/>
+				</div>
+				<span data-trans="5g_wifi" style="white-space:nowrap;"></span>
+			</div>
+        </div>
+    </div>
+</div>
+
+</div>
+<script type="text/x-jquery-tmpl" id="detailInfoTmpl">
+<div class="row">
+    <label class="col-xs-6" data-trans="sim_serial_number"></label>
+    <label class="col-xs-6"><%= simSerialNumber %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="imei"></label>
+    <label class="col-xs-6"><%= imei %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="imsi"></label>
+    <label class="col-xs-6"><%= imsi %></label>
+</div>
+<div class="row" style="display:none">
+    <label class="col-xs-6" data-trans="signal_strength_label"></label>
+    <label class="col-xs-6" id="popoverSignalTxt"><%= signal %></label>
+</div>
+<% if(hasWifi){ %>
+    <% if(show24GMainSsid){ %>
+        <div class="row">
+            <label class="col-xs-6" data-trans="max_access_num"></label>
+            <label class="col-xs-6"><%= max_access_num %></label>
+        </div>
+        <div class="row">
+            <label class="col-xs-6" data-trans="network_name_ssid1"></label>
+            <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= ssid %></label>
+        </div>
+        <% if(showMultiSsid){ %>
+            <div class="row">
+                <label class="col-xs-6" data-trans="network_name_ssid2"></label>
+                <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= m_ssid %></label>
+            </div>
+            <div class="row hide">
+                <label class="col-xs-6" data-trans="max_access_num_ssid2"></label>
+                <label class="col-xs-6"><%= m_max_access_num %></label>
+            </div>
+        <% } %>
+    <% } %>
+    <% if(show5GMainSsid){ %>
+        <div class="row">
+            <label class="col-xs-6" data-trans="network_name_ssid1_5g"></label>
+            <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= ssid_5g %></label>
+        </div>
+        <div class="row hide">
+            <label class="col-xs-6" data-trans="max_access_num_ssid1_5g"></label>
+            <label class="col-xs-6"><%= max_access_num_5g %></label>
+        </div>
+        <% if(showMultiSsid){ %>
+            <div class="row">
+                <label class="col-xs-6" data-trans="network_name_ssid2_5g"></label>
+                <label class="col-xs-6" style="word-wrap: break-word; word-break: break-all;"><%= m_ssid_5g %></label>
+            </div>
+            <div class="row hide">
+                <label class="col-xs-6" data-trans="max_access_num_ssid2_5g"></label>
+                <label class="col-xs-6"><%= m_max_access_num_5g %></label>
+            </div>
+        <% } %>
+    <% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="wifi_range"></label>
+    <label class="col-xs-6" data-trans="<%= wifi_long_mode %>"></label>
+</div>
+<% } %>
+<% if(!isCPE){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="lan_domain"></label>
+    <label class="col-xs-6"><%= lanDomain %></label>
+</div>
+<% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="ip_address"></label>
+    <label class="col-xs-6"><%= ipAddress %></label>
+</div>
+<% if(showMacAddress){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="mac_address"></label>
+    <label class="col-xs-6"><%= macAddress %></label>
+</div>
+<% } %>
+<% if(showIpv4WanIpAddr){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="wan_ip_address"></label>
+    <label class="col-xs-6"><%= wanIpAddress %></label>
+</div>
+<% } %>
+<% if(showIpv6WanIpAddr){ %>
+<div class="row">
+    <label class="col-xs-6" data-trans="ipv6_wan_ip_address"></label>
+    <label class="col-xs-6"><%= ipv6WanIpAddress %></label>
+</div>
+<% } %>
+<div class="row">
+    <label class="col-xs-6" data-trans="software_version"></label>
+    <label class="col-xs-6"><%= sw_version %></label>
+</div>
+<div class="row hide">
+    <label class="col-xs-6" data-trans="firmware_version"></label>
+    <label class="col-xs-6"><%= fw_version %></label>
+</div>
+<div class="row hide">
+    <label class="col-xs-6" data-trans="hardware_version"></label>
+    <label class="col-xs-6"><%= hw_version %></label>
+</div>
+<div class="row">
+    <label class="col-xs-6" data-trans="model_name"></label>
+    <label class="col-xs-6" data-trans="5g_wireless"></label>
+</div>
+<div class="row">
+    <a class="col-xs-6" href="http://www.zte.com.cn" target="_blank">www.zte.com.cn</a>
+</div>
+</script>

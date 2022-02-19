@@ -1,0 +1,73 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#voip_setting">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='sip_account_details'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body margin-top-20">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+					</a>
+				</div>
+<form id="voioUserDetailsForm">
+    <div class="form-body">
+			<div class="content">
+				<div class="row form-group">
+					<label class="col-xs-3 side-right" for="voip_account_display_account1" data-trans="display_name"></label>
+					<div class="col-xs-6">
+						<input id="voip_account_display_account1" name="voip_account_display_account1" type="text" data-bind="value: displayName" class="required form-control" maxlength="32"/>
+					</div>
+				</div>
+                <div class="row form-group">
+                    <label class="col-xs-3 side-right" for="voip_account_account1" data-trans="user_name"></label>
+                    <div class="col-xs-6">
+                        <input id="voip_account_account1" name="voip_account_account1" type="text" data-bind="value: userName" class="required form-control" maxlength="128"/>
+                    </div>
+                </div>
+				<div class="row form-group">
+					<label class="col-xs-3 side-right" for="auth_username2" data-trans="authorized_user_name"></label>
+					<div class="col-xs-6">
+						<input id="auth_username2" name="voip_account_auth2" type="text" data-bind="value: authorizedUserName" class="required form-control" maxlength="128"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-xs-3 side-right" for="voip_account_password2" data-trans="authorized_password"></label>
+					<div class="col-xs-6">
+						 <input id="voip_account_password2" name="voip_account_password2" type="password" data-bind="value: authorizedPassword" class="required form-control" maxlength="32"/>
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-xs-3 side-right" for="hvoip_state" data-trans="voip_register_status"></label>
+					<div class="col-xs-6">
+						<span id="hvoip_state" data-bind="text: registerStatusTrans"></span>
+					</div>
+				</div>
+			</div> 
+			<div class="form-buttons">
+				<input type="submit" class="btn btn-primary "  data-trans="apply"/>
+			</div>
+		   <div class="form-note">
+				<div class="notes-title">&nbsp;</div>
+				<ul class="notes-content">
+					<li data-trans="connect_note"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</form>
+			</div>
+    	</div>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/home" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="connection_settings"></h1>
+</div>
+
+<div role="main" class="ui-content jqm-content" style="font-weight: bold;">
+    <div class="side-center margin-top-3em margin-bottom-2em" id="connection_status_div">
+        <div id="connection_img"><img id="img_connection" src="./img/disconnected.png?v=1622612890852" height="140"></div>
+        <div id="connection_status"></div>
+        <div id="connection_desc" style="font-size: 0.8em; font-weight: normal"></div>
+    </div>
+    <div class="line-height-2em">
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_mode"></div>
+            <div class="ui-block-b" id="apnMode"></div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_currentApn"></div>
+            <div class="ui-block-b" id="profileName"></div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_pdp_type"></div>
+            <div class="ui-block-b" id="pdpType"></div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn"></div>
+            <div class="ui-block-b" id="apn"></div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_authentication"></div>
+            <div class="ui-block-b" id="authType"></div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_user_name"></div>
+            <div class="ui-block-b" id="user"></div>
+        </div>
+        <div class="ui-grid-a" id="password_div">
+            <div class="ui-block-a side-right padding-right-2em" data-trans="apn_password"></div>
+            <div class="ui-block-b ui-link" id="pwd_mask"></div>
+            <div class="ui-block-b ui-link" id="pwd" style="display: none;"></div>
+        </div>
+    </div>
+</div>
+
+<div class="margin-top-3em">
+    <a href="#/network/mode" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+        <div class="btn-title" data-trans="connect_mode"></div>
+        <div class="btn-sub-desc" id="connection_mode"></div>
+    </a>
+</div>

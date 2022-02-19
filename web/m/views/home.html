@@ -1,0 +1,88 @@
+<div data-role="header">
+    <h1 style="margin-top: 10px;margin-bottom: 10px;"><img class="vertical-middle" src="img/logo_zte.png?v=1622612890852" alt=""/></h1>
+    <a id="logout" style="margin-top: 16px;" href="#" class="ui-btn-right ui-btn ui-btn-icon-notext ui-corner-all ui-nodisc-icon ui-icon-logout">Logout</a>
+</div>
+<div data-role="main" class="ui-content" id="home_container">
+    <ul data-role="listview" class="ui-nodisc-icon ui-alt-icon" style="padding-top: 0">
+        <li><a href="#/network/view">
+            <div>
+                <div class="ui-block-a" style="width: 30%;">
+                    <div id="signal_div" class="signal0"></div>
+                    <div id="battery_div" style="display: none;"><img width="70" src="./img/battery_three.png?v=1622612890852"></div>
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <h2 data-trans="connection_settings" style="font-size: 1.2em;"></h2>
+                    <p>
+                        <span id="network_type"></span>&nbsp;
+                        <span id="networkOperator"></span>&nbsp;
+                        <span id="roaming"></span>
+                    </p>
+                </div>
+            </div>
+        </a></li>
+        <li><a id="trafficGo" href="#">
+            <div>
+                <div class="ui-block-a" style="width: 30%;">
+                    <img width="70" src="./img/flow_icon.png?v=1622612890852" style="margin-top: 10px;">
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <h2 data-trans="traffic_statistics" style="font-size: 1.2em;"></h2>
+                    <div style="font-weight: normal"></span><span id="speed_down"></span>&darr; <span id="speed_up"></span>&uarr;</div>
+                    <div id="traffic_div" style="display: none; font-weight: normal">
+                        <div id="traffic_data_div" style="display: none;"><span id="data_used"></span>/<span id="data_total"></span></div>
+                        <div id="traffic_time_div" style="display: none;"><span id="time_used"></span>/<span id="time_total"></span></div>
+                    </div>
+                </div>
+            </div>
+        </a></li>
+        <li><a href="#/wifi/view">
+            <div>
+                <div class="ui-block-a" style="width: 30%;">
+                    <img width="70" src="./img/wifi_icon.png?v=1622612890852">
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <h2 data-trans="wifi_hotspot" style="font-size: 1.2em;"></h2>
+                    <p id="wireless_size"></p>
+                </div>
+            </div>
+        </a></li>
+        <li data-bind="visible:oom_temp_pro==0"><a href="#/sms/list">
+            <div>
+                <div class="ui-block-a" style="width: 30%;">
+                    <img id="smsIcon" width="70" src="./img/message_icon.png?v=1622612890852">
+                    <div style="display: none;" id="smsNewCount" class="home-sms-count"></div>
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <h2 style="font-size: 1.2em;" data-trans="sms"></h2>
+                    <p>
+                        <!--<span id="sms_unread" style="color: red;"></span>-->
+                        <!--<span>|</span>-->
+                        <span id="sms_used"></span>
+                    </p>
+                </div>
+            </div>
+        </a></li>
+        <li><a href="#/others/view">
+            <div>
+                <div class="ui-block-a" style="width: 30%;">
+                    <img width="70" src="./img/setting_icon.png?v=1622612890852">
+                    <div style="display: none;" id="newVersionTips" class="version-update-tips"></div>
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <h2 data-trans="other_settings" style="font-size: 1.2em;"></h2>
+                    <p><span data-trans="login_pwd"></span></p>
+                        <!--<span data-trans="device_led"></span></p>-->
+                </div>
+            </div>
+        </a></li>
+    </ul>
+</div>
+
+<div class="margin-top-20 side-center">
+    <a href="javascript:void(0);" style="text-decoration: none;" data-trans="pc_version" onclick="confirmToPCView();"></a> | <span data-trans="mobile_version"></span>
+</div>
+<div class="margin-top-20 margin-left-20 margin-right-20 side-center margin-bottom-15">
+    <span data-trans='copyright'></span>
+	<br/>
+    <a href="https://opensource.ztedevices.com" target="_blank" rel="noopener noreferrer" data-trans="open_source_licenses"></a>&nbsp; <span data-trans="vertical_bar" data-bind="visible:hasGDPR"></span> &nbsp;<a id="privacy_a" href="https://www.ztedevices.com/en/Privacy-Policy/ZTESmartRouterPrivacyPolicy" target="_blank" rel="noopener noreferrer" data-trans="privacy_policy" class="extendLink" data-bind="visible:hasGDPR"></a>
+</div>

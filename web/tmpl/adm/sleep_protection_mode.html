@@ -1,0 +1,78 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='sleep_protection_mode'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="dialog_div">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<form id="frmSleepProtection">
+				<div class="content">
+					<div class="row form-group">
+						<label class="col-xs-4 side-right" data-trans="sleep_protection_mode"></label>
+						<div class="col-xs-6">
+							<div class="row">
+								<div class="col-xs-4">
+									<input type="radio" name="sleepProtectionGrp" id="sleepProtectionEnable" data-bind="checked: sleepProtectionEnable" value="1"/>
+									<label for="sleepProtectionEnable" data-trans="on"></label>
+								</div>
+								<div class="col-xs-4">
+									<input type="radio" name="sleepProtectionGrp" id="sleepProtectionDisable" data-bind="checked: sleepProtectionEnable" value="0"/>
+									<label for="sleepProtectionDisable" data-trans="off"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+						<div class="col-xs-4">
+							<span data-trans="tsw_timer_off"></span>
+						</div>
+						<div class="col-xs-8">
+							<div>
+								<input class="required" type="text" style="width: 30px;" name="openH" id="openH" data-bind="value: openH" min="0" max="23" maxlength="2">:
+								<input class="required" type="text" style="width: 30px;" name="openM" id="openM" data-bind="value: openM" min="0" max="59" maxlength="2">
+							</div>
+						</div>
+						<div class="col-xs-8 col-md-offset-3" id="openErrorDiv"></div>
+					</div>
+					<div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+						<div class="col-xs-4">
+							<span data-trans="tsw_timer_on"></span>
+						</div>
+						<div class="col-xs-8">
+							<input class="required" type="text" style="width: 30px;" name="closeH" id="closeH" data-bind="value: closeH" min="0" max="23" maxlength="2">:
+							<input class="required" type="text" style="width: 30px;" name="closeM" id="closeM" data-bind="value: closeM" min="0" max="59" maxlength="2">
+						</div>
+						<div class="col-xs-8 col-md-offset-3" id="closeErrorDiv"></div>
+					</div>
+
+					<div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+						<div class="col-xs-4"></div>
+						<div class="col-xs-8 label-absolute">
+							<p id="nightModeBtn" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected': nightMode()=='1'}, click: setNightMode" manualControl="true">
+								<input type="checkbox" id="nightMode" value="1" data-bind="checked:nightMode()=='1'"/>
+							</p>
+							<label for="nightMode" style="display: inline" data-trans="night_mode_note" class="update_inline floatleft lineheight25"></label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-buttons">
+					<input type="submit" class="btn btn-primary" data-trans="apply"/>
+				</div>
+				<div>
+					<label data-trans="sleep_protection_mode_label"></label>
+				</div>
+            </form>
+        </div>
+    </div>
+</div>

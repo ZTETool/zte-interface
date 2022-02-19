@@ -1,0 +1,377 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title form-title-multi">
+                <h1 data-trans='wifi_wireless_settings'></h1>
+                <p data-trans="wifi_main_sub_title"></p>
+            </div>
+        </div>
+    </div>
+<div class="row">
+<div class="col-xs-1 margin-top-15">
+
+</div>
+<div class="col-xs-11">
+
+<div class="form-body">
+	<div class="row meun-nav-new">
+        <a href="#home">
+            <img alt="" src="img/ic_settings_wifi_blue.png?v=1622612890852">
+        </a>
+    </div>
+	<form id="frmWifiSwitch" role="form">
+        <div class="content margin-top-20">
+            <div class="row form-group" data-bind="visible: hasWifiSwitch">
+                <label class="col-xs-4 side-right" data-trans="wifi_switch"></label>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '1'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_enable"
+									   data-bind="checked: wifi_enable" value="1"/>
+							</p>
+                            <label for="wifi_switch_enable" data-trans="enable"></label>
+                        </div>
+                        <div class="col-xs-4">
+							<p class="radiobox" for="wifi_switch" data-bind="css:{'radiobox_selected': wifi_enable() == '0'}">
+								<input type="radio" name="wifi_switch" id="wifi_switch_disable"
+									   data-bind="checked: wifi_enable" value="0"/>
+							</p>
+                            <label for="wifi_switch_disable" data-trans="disable"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--div class="row form-group" data-bind="visible: wifi_enable() == '1' && hasMultiSSID && hasGuestSSIDControl">
+				<label class="col-xs-4 side-right" data-trans=""></label>
+				<div class="col-xs-6">
+                    <p class="checkbox" data-bind="css:{'checkbox_selected': lan_sec_ssid_control() == '0'}">
+						<input id="allowAccessCheckbox" name="allowAccessCheckbox" type="checkbox" data-bind="checked: lan_sec_ssid_control() == '0'" value="1"/>
+					</p>
+					<label data-trans="allow_guest_ssid"></label>
+				</div>
+			</div-->
+            
+            <div class="form-buttons">
+                <input id="wifi_switch_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+                <!--input id="wifi_switch_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("switch");}' data-trans='cancel'/-->
+            </div>
+        </div>
+    </form>
+
+    <ul class="nav nav-tabs nav-justified margin-top-20 margin-bottom-20" role="tablist" data-bind="visible: isShowSSIDInfoDiv">
+        <li><a href="#wifi_main" data-trans="wifi_main_ssid"></a></li>
+		<li class="active"><a href="#wifi_guest" data-trans="wifi_guest_ssid"></a></li>
+        <li><a href="#wps" data-trans="wps"></a></li>
+        <li><a href="#wifi_advance" data-trans="wifi_advance"></a></li>
+        <li><a href="#ap_station" data-trans="ap_station"></a></li>
+        <!--li><a href="#wifi_mac_filter" data-trans="wifi_mac_filter"></a></li-->
+    </ul>
+
+	<div data-bind="visible: isShowSSIDInfoDiv">
+		<form id="frmGuestSSIDSwitch">
+			<div class="content">
+				<div class="row form-group">
+					<label class="col-xs-4 side-right" data-trans="access_Point_switch"></label>
+					<div class="col-xs-6">
+						<div class="row">
+							<div class="col-xs-4">
+								<p class="radiobox" for="serverGrp" data-bind="css:{'radiobox_selected': accessPoint24gEnable() == '1'}">
+									<input type="radio" name="serverGrp" id="ap24gEnable" data-bind="checked: accessPoint24gEnable" value="1"/>
+								</p>
+								<label for="ap24gEnable" data-trans="enable"></label>
+							</div>
+							<div class="col-xs-4">
+								<p class="radiobox" for="serverGrp" data-bind="css:{'radiobox_selected': accessPoint24gEnable() == '0'}">
+									<input type="radio" name="serverGrp" id="ap24gDisable" data-bind="checked: accessPoint24gEnable" value="0"/>
+								</p>
+								<label for="ap24gDisable" data-trans="disable"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row form-group" data-bind="visible: wifi_enable() == '1' && accessPoint24gEnable()== '1' && hasMultiSSID && hasGuestSSIDControl">
+					<label class="col-xs-4 side-right" data-trans=""></label>
+					<div class="col-xs-6">
+						<p class="checkbox" data-bind="css:{'checkbox_selected': lan_sec_ssid_control() == '0'}">
+							<input id="allowAccessCheckbox" name="allowAccessCheckbox" type="checkbox" data-bind="checked: lan_sec_ssid_control() == '0'" value="1"/>
+						</p>
+						<label data-trans="allow_guest_ssid"></label>
+					</div>
+				</div>
+			</div>
+			<div class="form-buttons">
+                <input id="frmGuestSSIDSwitch_apply" type="submit" class="btn btn-primary" data-trans='apply'/> 
+            </div>
+        </form>
+	
+	
+        <form id="frmSSID2" data-bind="visible:accessPoint24gEnable()== '1' && originAccessPoint24gEnable()=='1'">
+            <div class="form-title">
+                <h2 data-trans="wifi_guest_24g"></h2>
+            </div>
+            <div class="content">
+				<!--div class="row form-group">
+					<label class="col-xs-4 side-right" data-trans="access_Point_switch"></label>
+					<div class="col-xs-6">
+						<div class="row">
+							<div class="col-xs-4">
+								<input type="radio" name="serverGrp" id="ap24gEnable" data-bind="checked: accessPoint24gEnable" value="1"/>
+								<label for="ap24gEnable" data-trans="enable"></label>
+							</div>
+							<div class="col-xs-4">
+								<input type="radio" name="serverGrp" id="ap24gDisable" data-bind="checked: accessPoint24gEnable" value="0"/>
+								<label for="ap24gDisable" data-trans="disable"></label>
+							</div>
+						</div>
+					</div>
+				</div-->
+				<div data-bind="visible: accessPoint24gEnable()=='1' && originAccessPoint24gEnable()=='1'">
+				<div class="row form-group">
+                    <label class="col-xs-4 side-right" for="m_ssid" data-trans="network_name"></label>
+
+                    <div class="col-xs-6">
+                        <input type="text" name="m_ssid" data-bind="value: m_ssid" id="m_ssid" class="required form-control" maxlength="32"/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-4 side-right"></label>
+                    <div class="col-xs-8 label-absolute">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': m_broadcast() == '0'}">
+                            <input id="mBroadcastCheckbox" name="mBroadcastCheckbox" type="checkbox" data-bind="checked: m_broadcast() == '0'" value="1"/>
+                        </p>
+                        <label data-trans="wifi_broadcast_desc"></label>
+                    </div>
+                </div>
+                <div class="row form-group" data-bind="visible: showIsolated">
+                    <label class="col-xs-4"></label>
+                    <div class="col-xs-8">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': m_apIsolation() == 1}">
+                            <input id="mApIsolatedCheckbox" name="mApIsolatedCheckbox" type="checkbox" data-bind="checked: m_apIsolation() == 1" value="1"/>
+                        </p>
+                        <label data-trans="wifi_isolated_desc"></label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-4 side-right" for='m_mode' data-trans='security_mode'></label>
+                    <div class="col-xs-6">
+                        <select data-transid='security_mode' id="m_mode" class="form-control"
+                                data-bind="options: m_modes, value: m_selectedMode, optionsText: transOption('security_mode'), optionsValue: 'value', event:{change: securityModeChangeHandler}"></select>
+                    </div>
+                </div>
+                <div id="passwordContainer" class="row form-group" data-bind='visible: m_selectedMode() != "OPEN"'>
+                    <label class="col-xs-4 side-right" for='m_pass' data-trans='pass_phrase'></label>
+
+                    <div class="col-xs-6">
+                        <input id='m_pass' name="m_pass" type="password" data-bind="value: m_passPhrase,visible:!m_showPassword()" class="required form-control floatleft margintop5"
+                               minlength='8' maxlength='63'/>
+                        <input id='m_passShow' name="m_passShow" type="text" data-bind="value: m_passPhrase,visible:m_showPassword()" class="required form-control floatleft margintop5"
+                               minlength='8' maxlength='63'/>
+                        <div class="margin-top-10">
+                            <p class="checkbox floatleft margintop10 marginleft5 marginright5" data-bind="css:{'checkbox_selected': m_showPassword()}, click: m_showPasswordHandler" manualControl="true">
+                                <input id="m_showPassword" type="checkbox" data-bind="checked:m_showPassword"/>
+                            </p>
+                            <label class="floatleft margintop5 lineheight25" data-trans="display_password"></label>
+                        </div>
+                        <div id="m_lblShowPassword" class="clear"></div>
+                    </div>
+					<div class="col-xs-2">
+						<div class="Strength">
+							<div id = "m_passStrength">					
+							</div>
+						</div>
+					</div>
+                </div>
+				<div class="row form-group" data-bind="visible: hasQRImg && false">
+					<label class="col-xs-4 side-right"></label>
+					<div class="col-xs-6">
+						<p class="checkbox floatleft margintop10 marginright5" data-bind="css:{'checkbox_selected': m_showQrCode()}, click: m_showQrCodeHandler" manualControl="true">
+							<input id="m_showQrCode" type="checkbox" data-bind="checked:m_showQrCode"/>
+						</p>
+						<label class="floatleft margintop5 lineheight25" data-trans="display_qrcode" for="m_showQrCode"></label>
+						<div id="m_lblShowQRCode" class="clear"></div>
+					</div>
+				</div>
+				<div class="row form-group" data-bind="visible: m_showQrCode() && hasQRImg">
+					<label class="col-xs-4 side-right"></label>
+					<div class="col-xs-6">
+						<img src="" data-bind="attr: {src: m_qrcode_ssid1}" width="128" alt=""/>
+					</div>
+				</div>
+				<div class="row form-group">
+                    <label class="col-xs-4 side-right" for="m_activeTime" data-trans="guest_wifi_active_time"></label>
+
+                    <div class="col-xs-6">
+                        <select name="m_activeTime" id="m_activeTime" class="form-control"  data-transid='guest_wifi_active_time'
+                                data-bind="options: m_activeTimeModes, value: m_selectedActiveTime, optionsText: transOption('guest_wifi_active_time'), optionsValue: 'value'"></select>
+                    </div>
+                </div>
+				<div class="row form-group" data-bind="visible:m_selectedActiveTime()!='0'">
+                    <label class="col-xs-4 side-right"></label>
+
+                    <div class="col-xs-6">
+                        <label data-trans="guest_wifi_active_time_remind"></label>
+						<label data-bind="text:m_guestWiFiLeftTime"></label>
+                    </div>
+                </div>
+                <div class="row form-group hide">
+                    <label class="col-xs-4 side-right" for="m_maxStation" data-trans="max_station_number"></label>
+
+                    <div class="col-xs-6">
+                        <select name="m_maxStation" id="m_maxStation" class="form-control"
+                                data-bind="options: m_maxStations, value: m_selectedStation, optionsText: 'text', optionsValue: 'value'"></select>
+                    </div>
+                </div>
+				<div class="row form-group">
+                    <label class="col-xs-4 side-right" for="m_maxStation" data-trans="wifi_num"></label>
+
+                    <div class="col-xs-6">
+                        <label data-bind="text:m_CurrentUser"></label>
+                    </div>
+                </div>
+				</div>
+            </div>
+            <div class="form-buttons">
+                <input id="ssid2_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+                <!--input id="ssid2_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("ssid2");}' data-trans='cancel'/-->
+            </div>
+        </form>
+        <form id="frmSSID2_5g" data-bind="visible: hasWifiDoubleChip">	
+        <!-- <form id="frmSSID2_5g" data-bind="visible: false">     -->
+			<div class="form-title">
+                <h2 data-trans="wifi_guest_5g"></h2>
+            </div>
+            <div class="content">
+				<div class="row form-group">
+					<label class="col-xs-4 side-right" data-trans="access_Point_switch"></label>
+					<div class="col-xs-6">
+						<div class="row">
+							<div class="col-xs-4">
+								<input type="radio" name="serverGrp" id="ap50gEnable" data-bind="checked: accessPoint50gEnable" value="1"/>
+								<label for="ap50gEnable" data-trans="enable"></label>
+							</div>
+							<div class="col-xs-4">
+								<input type="radio" name="serverGrp" id="ap50gDisable" data-bind="checked: accessPoint50gEnable" value="0"/>
+								<label for="ap50gDisable" data-trans="disable"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div data-bind="visible: accessPoint50gEnable()=='1' && originAccessPoint50gEnable()=='1'">
+				<div class="row form-group">
+                    <label class="col-xs-4 side-right" for="m_ssid_5g" data-trans="network_name"></label>
+                    <div class="col-xs-6">
+                        <input type="text" name="m_ssid_5g" data-bind="value: m_ssid_5g" id="m_ssid_5g" class="required form-control" maxlength="32"/>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-4 side-right"></label>
+                    <div class="col-xs-8 label-absolute">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': m_broadcast_5g() == '0'}">
+                            <input id="mBroadcastCheckbox_5g" name="mBroadcastCheckbox_5g" type="checkbox" data-bind="checked: m_broadcast_5g() == '0'" value="1"/>
+                        </p>
+                        <label data-trans="wifi_broadcast_desc"></label>
+                    </div>
+                </div>
+                <div class="row form-group" data-bind="visible: showIsolated">
+                    <label class="col-xs-4"></label>
+                    <div class="col-xs-8">
+                        <p class="checkbox" data-bind="css:{'checkbox_selected': m_apIsolation_5g() == 1}">
+                            <input id="mApIsolatedCheckbox_5g" name="mApIsolatedCheckbox_5g" type="checkbox" data-bind="checked: m_apIsolation_5g() == 1" value="1"/>
+                        </p>
+                        <label data-trans="wifi_isolated_desc"></label>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-4 side-right" for='m_mode' data-trans='security_mode'></label>
+                    <div class="col-xs-6">
+                        <select data-transid='security_mode' id="m_mode_5g" class="form-control"
+                                data-bind="options: m_modes_5g, value: m_selectedMode_5g, optionsText: transOption('security_mode'), optionsValue: 'value', event:{change: securityModeChangeHandler_5g}"></select>
+                    </div>
+                </div>
+                <div id="passwordContainer_5g" class="row form-group" data-bind='visible: m_selectedMode_5g() != "OPEN"'>
+                    <label class="col-xs-4 side-right" for='m_pass' data-trans='pass_phrase'></label>
+
+                    <div class="col-xs-6">
+                        <input id='m_pass_5g' name="m_pass_5g" type="password" data-bind="value: m_passPhrase_5g,visible:!m_showPassword_5g()" class="required form-control floatleft margintop5"
+                               minlength='8' maxlength='63'/>
+                        <input id='m_passShow_5g' name="m_passShow_5g" type="text" data-bind="value: m_passPhrase_5g,visible:m_showPassword_5g()" class="required form-control floatleft margintop5"
+                               minlength='8' maxlength='63'/>
+                        <div class="margin-top-10">
+                            <p class="checkbox floatleft margintop10 marginleft5 marginright5" data-bind="css:{'checkbox_selected': m_showPassword_5g()}, click: m_showPasswordHandler_5g" manualControl="true">
+                                <input id="m_showPassword_5g" type="checkbox" data-bind="checked:m_showPassword_5g"/>
+                            </p>
+                            <label class="floatleft margintop5 lineheight25" data-trans="display_password"></label>
+                        </div>
+                        <div id="m_lblShowPassword_5g" class="clear"></div>
+                    </div>
+					<div class="col-xs-2">
+						<div class="Strength">
+							<div id="m_passStrength_5G">					
+							</div>
+						</div>
+					</div>
+                </div>
+				<div class="row form-group" data-bind="visible: hasQRImg">
+					<label class="col-xs-4 side-right"></label>
+					<div class="col-xs-6">
+						<p class="checkbox floatleft margintop10 marginright5" data-bind="css:{'checkbox_selected': m_showQrCode_5g()}, click: m_showQrCodeHandler_5g" manualControl="true">
+							<input id="m_showQrCode_5g" type="checkbox" data-bind="checked:m_showQrCode_5g"/>
+						</p>
+						<label class="floatleft margintop5 lineheight25" data-trans="display_qrcode" for="m_showQrCode_5g"></label>
+						<div id="m_lblShowQRCode_5g" class="clear"></div>
+					</div>
+				</div>
+				<div class="row form-group" data-bind="visible: m_showQrCode_5g() && hasQRImg">
+					<label class="col-xs-4 side-right"></label>
+					<div class="col-xs-6">
+						<img src="" data-bind="attr: {src: m_qrcode_ssid1_5g}" width="128" alt=""/>
+					</div>
+				</div>
+                <div class="row form-group hide">
+                    <label class="col-xs-4 side-right" for="m_maxStation_5g" data-trans="max_station_number"></label>
+
+                    <div class="col-xs-6">
+                        <select name="m_maxStation_5g" id="m_maxStation_5g" class="form-control"
+                                data-bind="options: m_maxStations_5g, value: m_selectedStation_5g, optionsText: 'text', optionsValue: 'value'"></select>
+                    </div>
+                </div>
+				</div>
+            </div>
+            <div class="form-buttons">
+                <input id="ssid2_apply_5g" type="submit" class="btn btn-primary" data-trans='apply'/>
+                <!--input id="ssid2_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("ssid2");}' data-trans='cancel'/-->
+            </div>
+        </form>
+        <div class="form-note">
+            <div class="notes-title">&nbsp;</div>
+            <ul class="notes-content">
+                <li data-trans="wifi_basic_note_multi_ssid_switch"></li>
+                <li data-trans="wifi_basic_note_network_name"></li>
+                <!--<li data-trans="wifi_basic_note_network_name_input"></li>-->
+                <li data-trans="wifi_basic_note_broadcast"></li>
+                <li data-trans="wifi_basic_note_security_mode"></li>
+                <li class="no-style">
+                    <ul>
+                        <li data-trans="wifi_basic_note_no_encryption"></li>
+                        <li data-trans="wifi_basic_note_wpa_psk_aes"></li>
+                        <li data-trans="wifi_basic_note_wpa_psk"></li>
+                    </ul>
+                </li>
+                <li data-trans="wifi_basic_note_pass_phrase"></li>
+                <li data-trans="wifi_basic_note_display_password"></li>
+                <li data-trans="wifi_basic_note_max_station_number" class="hide"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>

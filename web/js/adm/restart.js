@@ -1,0 +1,2 @@
+define(["jquery","knockout","config/config","service","underscore"],function(n,r,t,e,i){function o(){this.restart=function(){showConfirm("restart_confirm",function(){showLoading("restarting"),e.restart({},function(n){n&&"success"==n.result?successOverlay():errorOverlay()},n.noop)})}}function s(){var t=new o;r.applyBindings(t,n("#container")[0]),n("#frmRestart").validate({submitHandler:function(){t.restart()}})}return{init:s}});
+//# sourceMappingURL=../../sourcemaps/adm/restart.js.map

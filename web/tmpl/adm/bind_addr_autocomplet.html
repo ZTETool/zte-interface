@@ -1,0 +1,110 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#station_info">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='bind_ip_mac'></h1>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-xs-1 margin-top-15">
+    </div>
+    <div class="col-xs-11">
+
+<div class="form-body margin-top-20">
+    <div data-bind="visible:isShowStaticAddressDiv">
+        <form id="bindMACIPContentFrm">
+            <div class="form-title">
+                <h2 data-trans="bind_ip_mac"></h2>
+            </div>
+            <div class="content">
+                <div class="row form-group">
+                    <label class="col-xs-3 side-right" for="hostName" data-trans="host_name"></label>
+                    <div class="col-xs-6">
+                        <input type="text" name="hostName" id="hostName" data-bind="value: hostName" class="required form-control" maxlength="32"/>
+                    </div>
+                    <div class="col-xs-9 col-md-offset-3" id="hostNameLabel"></div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-3 side-right" for="txtIpAddress" data-trans="mac_address"></label>
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <input type="text" name="txtMacAddress" id="txtMacAddress" data-bind="value: macAddress" class="required form-control" maxlength="20"/>
+                            </div>
+                            <label class="col-xs-4" data-trans="macExam" id="macExamLabel"></label>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-md-offset-3" id="macErrorDiv"></div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-xs-3 side-right" for="txtIpAddress" data-trans="ip_address"></label>
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <input type="text" name="txtIpAddress" id="txtIpAddress" data-bind="value: ipAddress" class="required form-control" maxlength="15"/>
+                            </div>
+                            <label class="col-xs-4" data-trans="ipExam" id="ipExamLabel"></label>
+                        </div>
+                    </div>
+                    <div class="col-xs-9 col-md-offset-3" id="ipErrorDiv"></div>
+                </div>
+                <div class="row form-group hide">
+                    <label class="col-xs-3 side-right" for="txtDomainName" data-trans="domain_name"></label>
+                    <div class="col-xs-6">
+                        <input type="text" name="txtDomainName" id="txtDomainName" data-bind="value: domainName,disable:showDomainName() == '0'" class="form-control" maxlength="32"/>
+                    </div>
+                    <div class="col-xs-9 col-md-offset-3" id="domainErrorDiv"></div>
+                </div>
+
+                <div class="row form-group">
+                    <label class="col-xs-3"></label>
+                    <div class="col-xs-8 label-absolute">
+                        <p id="domainBtn" manualControl="true" class="checkbox" data-bind="css:{'checkbox_selected': showDomainName() == '1'}, click: setDomainNameVisible">
+                            <input id="showDomainCheckbox" name="showDomainCheckbox" type="checkbox" data-bind="checked: showDomainName() == '1'" value="1"/>
+                        </p>
+                        <label data-trans="show_domain_name"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-buttons">
+                <input type="submit" class="btn btn-primary" data-trans="apply"/>
+            </div>
+            <div class="form-note">
+                <div class="notes-title">&nbsp;</div>
+                <ul class="notes-content">
+                    <li data-trans="bind_ip_note_all"></li>
+                    <li data-trans="bind_ip_note_switch"></li>
+                    <li data-trans="bind_ip_note_hostname"></li>
+                    <li data-trans="bind_ip_note_macaddr"></li>
+                    <li data-trans="bind_ip_note_ipaddr"></li>
+                </ul>
+            </div>
+        </form>
+        <form id="bindMACIPListFrm">
+            <div class="form-title">
+                <h2 data-trans="bind_ipMac_list"></h2>
+            </div>
+            <div class="content">
+                <div id="staticAddress" class="fixTableScroll" data-bind="simpleGrid: gridTemplate"></div>
+            </div>
+            <div class="form-buttons">
+                <div class="row form-group">
+                    <span class="col-xs-8 side-right bind-tips" data-trans="bind_restart_tips"></span>
+                    <div class="col-xs-4">
+                        <input type="button" class="btn btn-primary margin-right-20" data-trans="restart_button" data-bind="click: restart"/>
+                        <input type="submit" class="btn btn-primary" data-trans="delete" data-bind="enable: gridTemplate.checkedCount() > 0"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+</div>

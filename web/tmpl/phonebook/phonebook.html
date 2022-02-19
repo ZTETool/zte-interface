@@ -1,0 +1,215 @@
+<div id="innerContainer">
+<div class="row header-row">
+    <div class="col-xs-1">
+        <a href="#home" data-bind="visible: pageState() == 0">
+            <img src="img/ic_back.png?v=1622612890852" alt=""/>
+        </a>
+        <a href="javascript: void(0)" data-bind="visible: pageState() != 0, click: clear">
+            <img src="img/ic_back.png?v=1622612890852" alt=""/>
+        </a>
+    </div>
+    <div class="col-xs-11">
+        <div class="form-title">
+            <div data-bind="visible: pageState()==1 || pageState()==2 || pageState()==3,attr:{ bookid : index}">
+                <h1 data-bind='attr:{"data-trans":transEditAreaTitle}'></h1>
+            </div>
+            <div data-bind="visible: pageState()==0">
+                <h1>
+                    <span data-trans="phonebook"></span>
+                    <span data-bind='text: phoneBookCapacity'></span>
+                    <span id="simUsed" data-bind="visible:false,text:capacity().simUsed"></span>
+                    <span id="deviceUsed" data-bind="visible:false,text:capacity().deviceUsed"></span>
+                    <span id="simCapacity" data-bind="visible:false,text:capacity().simCapacity"></span>
+                    <span id="deviceCapacity" data-bind="visible:false,text:capacity().deviceCapacity"></span>
+                </h1>
+            </div>
+            <div data-bind="visible: pageState()==4">
+                <h1 data-trans="new_message"></h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-1 margin-top-15">
+    </div>
+    <div class="col-xs-11">
+        <form id="frmPhoneBook" class="margin-top-20">
+            <div class="row meun-nav-new">
+                <a href="#home">
+                    <img alt="" src="img/ic_settings_phonebook_blue.png?v=1622612890852">
+                </a>
+            </div>
+            <div id="editArea" data-bind="visible: pageState()==1 || pageState()==2 || pageState()==3,attr:{ bookid : index}">
+                <!--h1 class="form-title header-bottom" data-bind='attr:{"data-trans":transEditAreaTitle}'></h1-->
+                <div class="content">
+                    <div class="row form-group">
+                        <label class="col-xs-3 side-right" data-trans='save_location'></label>
+                        <div class="col-xs-6">
+                            <select data-transid='save_location' id="selLocation" class="form-control"
+                                    data-bind="visible:pageState()<=2,options: locations, value: selectedLocation, optionsText: transOption('save_location'), optionsValue: 'value'"></select>
+                            <label class="label-content"
+                                   data-bind="visible:pageState()==3,text:locationTransText,attr:{'data-trans':locationTrans}"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible:pageState()<=2">
+                        <label class="col-xs-3 side-right" for="txtName" data-trans="name"></label>
+                        <div class="col-xs-6">
+                            <input data-bind="value: name, valueUpdate: 'afterkeydown',attr:{maxlength:nameMaxLength}"
+                                   type="text" name="txtName" id="txtName" class="required form-control" maxlength="22"/>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible:pageState()==3">
+                        <label class="col-xs-3 side-right" data-trans="name"></label>
+                        <div class="col-xs-6">
+                            <label class="label-content" data-bind="text:name"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible:pageState()<=2">
+                        <label class="col-xs-3 side-right" for="txtMobile" data-trans="mobile_phone_number"></label>
+                        <div class="col-xs-6">
+                        <input type="text" id="txtMobile" name="txtMobile" class="required form-control"
+                               data-bind="value: mobile_phone_number,valueUpdate: 'afterkeydown',attr:{maxlength:mobileMaxLength}"/>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind="visible:pageState()==3">
+                        <label class="col-xs-3 side-right" for="txtMobile" data-trans="mobile_phone_number"></label>
+                        <div class="col-xs-6">
+                            <label class="label-content" data-bind="text:mobile_phone_number"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind='visible: selectedLocation() != "0"'>
+                        <label class="col-xs-3 side-right" for="txtHomeNumber" data-trans="home_phone_number"></label>
+                        <div class="col-xs-6">
+                            <input type="text" id="txtHomeNumber" name="txtHomeNumber" maxlength="40" class="form-control"
+                                   data-bind="visible:pageState()<=2,value: home_phone_number"/>
+                            <label class="label-content" data-bind="visible:pageState()==3,text:home_phone_number"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind='visible: selectedLocation() != "0"'>
+                        <label class="col-xs-3 side-right" for="txtOfficeNumber" data-trans="office_phone_number"></label>
+                        <div class="col-xs-6">
+                            <input type="text" id="txtOfficeNumber" name="txtOfficeNumber" class="form-control"
+                                   data-bind="visible:pageState()<=2,value: office_phone_number" maxlength="40"/>
+                            <label class="label-content" data-bind="visible:pageState()==3,text:office_phone_number"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind='visible: selectedLocation() != "0"'>
+                        <label class="col-xs-3 side-right" for="txtMail" data-trans="mail"></label>
+                        <div class="col-xs-6">
+                            <input type="text" id="txtMail" name="txtMail" data-bind="visible:pageState()<=2,value: mail" class="form-control"
+                                   maxlength="30"/>
+                            <label class="label-content" data-bind="visible:pageState()==3,text:mail"></label>
+                        </div>
+                    </div>
+                    <div class="row form-group" data-bind='visible: selectedLocation() != "0"'>
+                        <label class="col-xs-3 side-right" data-trans='group'></label>
+                        <div class="col-xs-6">
+                            <select data-transid='group' id="group" class="form-control"
+                                    data-bind="visible:pageState()<=2,options: groups, value: selectedGroup, optionsText: transOption('group'), optionsValue: 'value'"></select>
+                            <label data-bind="visible:pageState()==3,text:groupTransText,attr:{'data-trans':groupTrans}"
+                                   class="label-content"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <input type="button" class="btn btn-primary" data-trans='edit' data-bind="visible:pageState()==3,click:openEditPage"/>
+                    <input type="button" class="btn btn-primary" data-trans='delete' data-bind="visible:pageState()==3,click:deleteBook"/>
+                    <input type="submit" class="btn btn-primary" data-trans='save' data-bind="visible:pageState()<=2"/>
+                    <input type="button" class="btn btn-primary" data-trans='send_sms'
+                           data-bind="visible:pageState()==3 && hasSms(),click:openSendMessagePage, enable:checkHasSIMCard(false)"/>
+                    <!--input type="button" class="btn btn-default" data-bind='click: clear' data-trans='back'/-->
+                </div>
+            </div>
+            <div data-bind="visible: pageState()==0">
+                <!--h1 class="form-title header-bottom">
+                    <span data-trans="phonebook"></span>
+                    <span data-bind='text: phoneBookCapacity'></span>
+                    <span id="simUsed" data-bind="visible:false,text:capacity().simUsed"></span>
+                    <span id="deviceUsed" data-bind="visible:false,text:capacity().deviceUsed"></span>
+                    <span id="simCapacity" data-bind="visible:false,text:capacity().simCapacity"></span>
+                    <span id="deviceCapacity" data-bind="visible:false,text:capacity().deviceCapacity"></span>
+                </h1-->
+                <div class="row form-group paddingright10 paddingtop10">
+                    <div class="col-xs-6">
+                        <input type="button" data-trans="new" class="btn btn-primary" data-bind="click: openNewPage,enable:!initFail()"/>
+                        <input type="button" data-trans="send_sms" class="btn btn-primary"
+                               data-bind="visible: hasSms(), click: openSendMessagePage,enable:canSend(),css:{'disabled':!canSend()}"/>
+                        <!--<input type="button" data-trans="edit" class="btn"-->
+                        <!--data-bind="click: openEditPage ,enable:hasData(),css:{'disabled':!hasData()"/>-->
+                        <input type="button" data-trans="delete" class="btn btn-primary"
+                               data-bind="click: deleteBooks ,enable:hasChecked(),css:{'disabled':!hasChecked()}"/>
+                        <input type="button" data-trans="delete_all" class="btn btn-primary"
+                               data-bind="click: deleteAllBooks ,enable:hasData(),css:{'disabled':!hasData()}"/>
+                        <!--<input type="button" data-trans="view" class="btn"-->
+                        <!--data-bind="click: openViewPage,,enable:hasData(),css:{'disabled':!hasData()"/>-->
+                    </div>
+                    <div class='col-xs-6 text-right positionrelative'>
+                        <div class="row">
+                            <div class='col-xs-6'>
+                                <div class='ko-grid-search'>
+                                    <img src='./img/search.png?v=1622612890852'>
+                                    <input type='text' id='ko_grid_search_txt' class='ko-grid-search-txt-default width102 noDefaultFocus form-control'
+                                           data-bind="value:gridTemplate.searchKey,valueUpdate: 'afterkeydown',click:searchTextClick,event:{blur:searchTextBlur}"
+                                           autocomplete='off' data-trans='search' maxlength="40"/>
+                                    <img id="clearSearchKey" class='cursor-pointer' src='./img/delete.png?v=1622612890852' data-bind='click:clearSearchKey'/>
+                                </div>
+                            </div>
+                            <div class='col-xs-6'>
+                                <select name="selectedFilterGroup" id="selectedFilterGroup" class="form-control" data-bind="value: selectedFilterGroup, event: {change: selectedFilterGroupChangeHandler}">
+                                    <option value="all" data-trans="group_all"></option>
+                                    <option value="common" data-trans="group_common"></option>
+                                    <option value="family" data-trans="group_family"></option>
+                                    <option value="friend" data-trans="group_friend"></option>
+                                    <option value="colleague" data-trans="group_colleague"></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clear'></div>
+                </div>
+                <div id="books" data-bind="simpleGrid: gridTemplate"></div>
+            </div>
+        </form>
+        <form id="frmSendMsg">
+            <div id="sendMessage" data-bind="visible: pageState()==4">
+                <!--h1 class="form-title header-bottom" data-trans="new_message"></h1-->
+                <div class="content">
+                    <div class="row form-group">
+                        <label class="col-xs-2 side-right" data-trans='send_numbers'></label>
+                        <div class="col-xs-10">
+                                <input type="text" class="required hide" value="test"/>
+                                <div id="chosenUserList">
+                                    <select id="chosenUserSelect" multiple class="chzn-select-deselect width540"  data-bind="event:{change: draftListenerEvent}"></select>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-2 side-right" data-trans='contents'></label>
+                        <div class="col-xs-10">
+                            <textarea id="txtSmsContent" name="txtSmsContent" class="form-control"
+                                      data-bind="value:messageContent,valueUpdate: 'afterkeydown'" style="width: 545px; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-xs-2 side-right"></label>
+                        <div class="col-xs-10">
+                                <div class="row form-group">
+                                    <div class="col-xs-8">
+                                        <span id="msgCount" class="paddingleft10" data-bind="text:messageCount"></span>
+                                        <span class="error-msg" data-bind="visible:showErrorInfo"
+                                                              data-trans="sms_contact_required"></span>
+                                    </div>
+                                    <div class="col-xs-4 side-right">
+                                        <input type="button" data-trans="send" class="btn btn-primary" data-bind="click:sendMessage"/>
+                                        <!--span class="paddingright10"><input type="button" data-trans="back" class="btn btn-default" data-bind="click:clear"/></span-->
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </form>
+    </div>
+</div>
+</div>

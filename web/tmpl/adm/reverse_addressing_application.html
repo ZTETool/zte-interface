@@ -1,0 +1,195 @@
+<div id="innerContainer">
+	<div class="row header-row">
+		<div class="col-xs-1">
+			<a href="#mec_coordination_menu">
+				<img alt="" src="img/ic_back.png?v=1622612890852">
+			</a>
+		</div>
+		<div class="col-xs-11">
+			<div class="form-title">
+				<h1 data-trans="reverse_addressing_application"></h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-1 margin-top-15">
+		</div>
+		<div class="col-xs-11">
+			<div class="form-body margin-top-20">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+					</a>
+				</div>
+			</div>
+			<div class="content">
+				<form id="MecAesFrm" role="form">
+					<div class="form-body">
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="reverse_addressing"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<p class="radiobox" for="mecAesSwitchGrp"
+											data-bind="css:{'radiobox_selected': mecAesEnable() == '1'}">
+											<input type="radio" name="mecAesSwitchGrp" id="mecAesSwitchEnable"
+												data-bind="checked: mecAesEnable" value="1" />
+										</p>
+										<label for="mecAesSwitchEnable" data-trans="on"></label>
+									</div>
+									<div class="col-xs-4">
+										<p class="radiobox" for="mecAesSwitchGrp"
+											data-bind="css:{'radiobox_selected': mecAesEnable() == '0'}">
+											<input type="radio" name="mecAesSwitchGrp" id="mecAesSwitchDisable"
+												data-bind="checked: mecAesEnable" value="0" />
+										</p>
+										<label for="mecAesSwitchDisable" data-trans="off"></label>
+									</div>
+								</div>
+							</div>
+						</div>						
+						<div class="row form-group" data-bind="visible: mecAesEnable() == '1'">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_status"
+								for="txtMecAesAliveStatus"></label>
+							<div class="col-xs-4">
+								<label id="txtMecAesStatus" name="txtMecAesAliveStatus"
+									data-bind="text: mecAesStatus"></label>
+							</div>
+						</div>
+						<div class="form-title" data-bind="visible: mecAesEnable() == '1'">
+							<h2 data-trans="mec_connection"></h2>
+						</div>
+						<div data-bind="visible:mecAesEnable()==1">
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_url" for="txtMecAesUrl"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesUrl" name="txtMecAesUrl" type="text"
+										data-bind="value: mecAesUrl" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_port"
+									for="txtMecAesPort"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesPort" name="txtMecAesPort" type="text"
+										data-bind="value: mecAesPort" class="form-control" />
+								</div>
+								<label class="col-xs-2">(1~65535)</label>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_username"
+									for="txtMecAesUsername"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesUsername" name="txtMecAesUsername" type="text"
+										data-bind="value: mecAesUsername" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_password"
+									for="txtMecAesPassword"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesPassword" name="txtMecAesPassword" type="password"
+										data-bind="value: mecAesPassword" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_groupid"
+									for="txtMecAesGroupid"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesGroupid" name="txtMecAesGroupid" type="text"
+										data-bind="value: mecAesGroupid" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_alivePeriod"
+									for="txtMecAesAlivePeriod"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesAlivePeriod" name="txtMecAesAlivePeriod" type="text"
+										data-bind="value: mecAesAlivePeriod" class="form-control" />
+								</div>
+								<label class="col-xs-1" data-trans="second"
+									style="padding-left:0px;padding-top:8px;"></label>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_tls_en"></label>
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-4">
+											<p class="radiobox" for="mecAesTlsEnGrp"
+												data-bind="css:{'radiobox_selected': mecAesTlsEn() == '1'}">
+												<input type="radio" name="mecAesTlsEnGrp" id="mecAesTlsEnEnable"
+													data-bind="checked: mecAesTlsEn" value="1" />
+											</p>
+											<label for="mecAesTlsEnEnable" data-trans="enable"></label>
+										</div>
+										<div class="col-xs-4">
+											<p class="radiobox" for="mecAesTlsEnGrp"
+												data-bind="css:{'radiobox_selected': mecAesTlsEn() == '0'}">
+												<input type="radio" name="mecAesTlsEnGrp" id="mecAesTlsEnDisable"
+													data-bind="checked: mecAesTlsEn" value="0" />
+											</p>
+											<label for="mecAesTlsEnDisable" data-trans="disable"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_key" for="txtMecAesKey"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesKey" name="txtMecAesKey" type="password"
+										data-bind="value: mecAesKey" class="required form-control" minlenth="1"
+										maxlength="64" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_iv" for="txtMecAesIv"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAesIv" name="txtMecAesIv" type="password" data-bind="value: mecAesIv"
+										class="required form-control" minlenth="1" maxlength="64" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_sim_num" for="txtMecSimNum"></label>
+								<div class="col-xs-4">
+									<input id="txtMecSimNum" name="txtMecSimNum" type="text"
+										data-bind="value: mecSimNum" class="required form-control" minlenth="1"
+										maxlength="64" />
+								</div>
+							</div>
+						</div>
+						<!--div class="form-title" data-bind="visible: mecAesEnable() == '1'">
+							<h2 data-trans="mec_authentication"></h2>
+						</div>
+						<div data-bind="visible:mecAesEnable()==1">
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_username"
+									for="txtMecAuthUsername"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAuthUsername" name="txtMecAuthUsername" type="text"
+										data-bind="value: mecAuthUsername" class="form-control" />
+								</div>
+							</div>
+							<div class="row form-group">
+								<label class="col-xs-4 side-right" data-trans="mec_aes_password"
+									for="txtMecAuthPassword"></label>
+								<div class="col-xs-4">
+									<input id="txtMecAuthPassword" name="txtMecAuthPassword" type="password"
+										data-bind="value: mecAuthPassword" class="form-control" />
+								</div>
+							</div>
+						</div-->
+						<div class="form-buttons">
+							<input type="submit" class="btn btn-primary" data-trans='apply' />
+						</div>
+						<div class="form-note">
+							<div class="notes-title">&nbsp;</div>
+							<ul class="notes-content">
+								<li data-trans="mec_note"></li>               
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

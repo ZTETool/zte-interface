@@ -1,0 +1,51 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='advanced_settings'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li><a href="#sleep_mode" data-trans="sleep_mode"></a></li>
+                <li><a href="#router_setting" data-trans="router_setting"></a></li>
+                <li data-bind="visible: wanMode != 'LTE_BRIDGE'"><a href="#firewall" data-trans="firewall"></a></li>
+                <li class="active"><a href="#ota_update" data-trans="update_settings"></a></li>
+                <li><a href="#others" data-trans="others"></a></li>
+            </ul>
+<div class="form-body">
+    <h3 class="form-title" data-trans="update_info"></h3>
+	<div class="content">
+		<iframe id="fileUploadIframe" name="fileUploadIframe" scrolling="no" frameborder="0" width="0" height="0" style="height:0px;width:0px;"></iframe>
+		<form method="post" name="UploadFirmware" id="UploadFirmware" action="/cgi-bin/upload.cgi" enctype="multipart/form-data" target="fileUploadIframe">
+			<input id="fileField" name="filename" maxlength="200" type="file"/>
+			<div class="form-buttons">
+				<input data-trans="update_skip_btn" type="button" class="btn btn-primary" onclick="fileUploadSubmitClickHandler();" />
+			</div>
+			<div class="clear"></div>
+		</form>
+		
+		<form method="post" name="form_update" id="form_update" action="/cgi-bin/upload.write" target="doaction" > 
+			<input type="hidden" id="update" name="update" value="firmwarewirte" >
+		</form>
+		<iframe id="doaction" name="doaction" width="0px" height="0px" style="display:none"></iframe>
+	</div>
+	<div class="form-note">
+		<div class="notes-title">&nbsp;</div>
+		<ul class="notes-content">
+			<li data-trans="upgrad_note"></li>
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+</div>

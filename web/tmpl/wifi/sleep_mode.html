@@ -1,0 +1,269 @@
+<div id="innerContainer">
+<div class="row header-row">
+    <div class="col-xs-1">
+        <a href="#home">
+            <img alt="" src="img/ic_back.png?v=1622612890852">
+        </a>
+    </div>
+    <div class="col-xs-11">
+        <div class="form-title">
+            <h1 data-trans='advanced_settings'></h1>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-1 margin-top-15">
+    </div>
+    <div class="col-xs-11">
+        <div class="form-body margin-top-20">
+            <div class="row meun-nav-new">
+                <a href="#home">
+                    <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                </a>
+            </div>
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li class="active"><a href="#sleep_mode" data-trans="sleep_mode"></a></li>
+                <li><a href="#router_setting" data-trans="router_setting"></a></li>
+                <li><a href="#firewall" data-trans="firewall"></a></li>
+                <li><a href="#ota_update" data-trans="update_settings"></a></li>
+                <li><a href="#others" data-trans="others"></a></li>
+            </ul>
+
+            <form id="frmSleepProtection">
+                <div class="form-body">
+                    <h3 class="form-title" data-trans="led_light_setting"></h3>
+                    <div class="content">
+                        <div class="row form-group">
+                            <label class="col-xs-4 side-right" data-trans="led_light_setting"></label>
+                            <div class="col-xs-6">
+                                <div class="row">
+									<div class="col-xs-4" style="white-space:nowrap;">
+										<p class="radiobox" for="sleepProtectionGrp" data-bind="css:{'radiobox_selected': sleepProtectionEnable() == '0'}">
+											<input type="radio" name="sleepProtectionGrp" id="sleepProtectionDisable" data-bind="checked: sleepProtectionEnable" value="0"/>
+										</p>
+                                        <label for="sleepProtectionDisable" data-trans="always_on"></label>
+                                    </div>
+                                    <div class="col-xs-4" style="white-space:nowrap;">
+										<p class="radiobox" for="sleepProtectionGrp" data-bind="css:{'radiobox_selected': sleepProtectionEnable() == '1'}">
+											<input type="radio" name="sleepProtectionGrp" id="sleepProtectionEnable" data-bind="checked: sleepProtectionEnable" value="1"/>
+										</p>
+                                        <label for="sleepProtectionEnable" data-trans="always_off"></label>
+                                    </div>                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+                            <div class="col-xs-4">
+                                <span data-trans="scheduled_time"></span>
+                            </div>
+                            <div class="col-xs-8">
+                                <div>
+                                    <input class="required" type="text" style="width: 30px;" name="openH" id="openH_led" data-bind="value: openH_led" min="0" max="23" maxlength="2">:
+                                    <input class="required" type="text" style="width: 30px;" name="openM" id="openM_led" data-bind="value: openM_led" min="0" max="59" maxlength="2"> — 
+                                    <input class="required" type="text" style="width: 30px;" name="closeH" id="closeH_led" data-bind="value: closeH_led" min="0" max="23" maxlength="2">:
+                                    <input class="required" type="text" style="width: 30px;" name="closeM" id="closeM_led" data-bind="value: closeM_led" min="0" max="59" maxlength="2">
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-md-offset-3" id="openErrorDiv_led"></div>
+                        </div>
+                        <!--<div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+                            <div class="col-xs-4">
+                                <span data-trans="tsw_timer_on"></span>
+                            </div>
+                            <div class="col-xs-8">
+                                <input class="required" type="text" style="width: 30px;" name="closeH" id="closeH" data-bind="value: closeH" min="0" max="23" maxlength="2">:
+                                <input class="required" type="text" style="width: 30px;" name="closeM" id="closeM" data-bind="value: closeM" min="0" max="59" maxlength="2">
+                            </div>
+                            <div class="col-xs-8 col-md-offset-3" id="closeErrorDiv"></div>
+                        </div>-->
+
+                        <div class="row form-group" data-bind="visible: sleepProtectionEnable() == '1'">
+                            <div class="col-xs-8">
+								<p id="nightModeBtn" class="checkbox floatleft margintop5 checkboxToggle hide" data-bind="css:{'checkbox_selected': nightMode()=='1'}, click: setNightMode" manualControl="true">
+                                    <input type="checkbox" id="nightMode" value="1" data-bind="checked:nightMode()=='1'"/>
+                                </p>
+                                <label for="nightMode" style="display: inline" data-trans="night_mode_note" class="update_inline floatleft lineheight25"></label>
+							</div>
+                            <div class="col-xs-4 label-absolute">                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="form-buttons">
+					<input type="submit" class="btn btn-primary" data-trans="apply"/>
+				</div>
+				<!--<div>
+					<label data-trans="sleep_protection_mode_label"></label>
+				</div>-->
+            </form>
+			
+			<div class="form-note">
+				<div class="notes-title">&nbsp;</div>
+				<ul class="notes-content">
+					<li data-trans="sleep_protection_note"></li>               
+				</ul>
+			</div>
+			
+            <!--hide wifi range settings until sw implements it-->
+            <form id='wifiRangeForm' class="margin-top-20 hide">
+                <div class="content">
+                    <div class="row">
+                        <label class="col-xs-3" data-trans='wifi_range'></label>
+                        <div class="col-xs-8">
+							<p class="radiobox" for="rangeGroup" data-bind="css:{'radiobox_selected': wifiRangeMode() == 'short_mode'}">
+								<input type="radio" name="rangeGroup" id='short_mode' value="short_mode" data-bind="checked: wifiRangeMode" />
+							</p>
+                            <label data-bind="visible: !isCPE" for='short_mode' data-trans='wifi_short_mode'></label>
+                            <label data-bind="visible: isCPE" for='short_mode' data-trans='wifi_des_short_mode'></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-xs-3"></label>
+                        <div class="col-xs-8">
+							<p class="radiobox" for="rangeGroup" data-bind="css:{'radiobox_selected': wifiRangeMode() == 'medium_mode'}">
+								<input type="radio" name="rangeGroup" id='medium_mode'  value="medium_mode" data-bind="checked: wifiRangeMode" />
+							</p>
+                            <label for='medium_mode' data-trans='wifi_medium_mode'></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-xs-3"></label>
+                        <div class="col-xs-8">
+							<p class="radiobox" for="rangeGroup" data-bind="css:{'radiobox_selected': wifiRangeMode() == 'long_mode'}">
+								<input type="radio" name="rangeGroup" id='long_mode'  value="long_mode" data-bind="checked: wifiRangeMode" />
+							</p>
+                            <label for='long_mode' data-trans='wifi_long_mode'></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" class="btn btn-primary" data-trans='apply'/>
+                </div>
+                <div class="form-note">
+                    <div class="notes-title">&nbsp;</div>
+                    <ul class="notes-content">
+                        <li data-trans="wifi_range_note_range"></li>
+                        <li class="no-style">
+                            <ul data-bind="visible: !isCPE">
+                                <li data-trans="wifi_range_note_short"></li>
+                                <li data-trans="wifi_range_note_medium"></li>
+                                <li data-trans="wifi_range_note_long"></li>
+                            </ul>
+                            <ul data-bind="visible: isCPE">
+                                <li data-trans="wifi_range_note_short_cpe"></li>
+                                <li data-trans="wifi_range_note_medium_cpe"></li>
+                                <li data-trans="wifi_range_note_long_cpe"></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+            <form id="frmTsw" data-bind="visible: showTSWDiv">
+                <div class="form-body">
+                    <h3 class="form-title" data-trans="time_sleep_wake_up"></h3>
+                    <div class="content">
+                        <div class="row form-group">
+                            <label class="col-xs-4 side-right" data-trans="tsw_settings"></label>
+                            <div class="col-xs-6">
+                                <div class="row">
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="tswGrp" data-bind="css:{'radiobox_selected': openEnable() == '1'}">
+											<input type="radio" name="tswGrp" id="tswEnable" data-bind="checked: openEnable" value="1"/>
+										</p>
+                                        <label for="tswEnable" data-trans="enable"></label>
+                                    </div>
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="tswGrp" data-bind="css:{'radiobox_selected': openEnable() == '0'}">
+											<input type="radio" name="tswGrp" id="tswDisable" data-bind="checked: openEnable" value="0"/>
+										</p>
+                                        <label for="tswDisable" data-trans="disable"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group" data-bind="visible: openEnable() == '1'">
+                            <div class="col-xs-4">
+                                <span data-trans="tsw_timer_on"></span>
+                            </div>
+                            <div class="col-xs-8">
+                                <div>
+                                    <input class="required" type="text" style="width: 30px;" name="openH" id="openH" data-bind="value: openH" min="0" max="23" maxlength="2">:
+                                    <input class="required" type="text" style="width: 30px;" name="openM" id="openM" data-bind="value: openM" min="0" max="59" maxlength="2">
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-md-offset-3" id="openErrorDiv"></div>
+                        </div>
+                        <div class="row form-group" data-bind="visible: openEnable() == '1'">
+                            <div class="col-xs-4">
+                                <span data-trans="tsw_timer_off"></span>
+                            </div>
+                            <div class="col-xs-8">
+                                <input class="required" type="text" style="width: 30px;" name="closeH" id="closeH" data-bind="value: closeH" min="0" max="23" maxlength="2">:
+                                <input class="required" type="text" style="width: 30px;" name="closeM" id="closeM" data-bind="value: closeM" min="0" max="59" maxlength="2">
+                            </div>
+                            <div class="col-xs-9 col-md-offset-3" id="closeErrorDiv"></div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <input type="submit" class="btn btn-primary" data-trans="apply"/>
+                    </div>
+                    <div class="form-note">
+                        <div class="notes-title">&nbsp;</div>
+                        <ul class="notes-content">
+                            <li data-trans="tsw_note"></li>
+                            <li data-trans="tsw_note_on"></li>
+                            <li data-trans="tsw_note_off"></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+            <form id='sleepModeForm' data-bind="visible: showSleepDiv">
+                <h3 class="form-title" data-trans='wifi_sleep'></h3>
+                <div class="content">
+                    <div class="row">
+                        <label class="col-xs-3" for='mode' data-trans='sleep_time'></label>
+                        <div class="col-xs-4">
+                        <select data-transid='sleep_mode' id="mode" data-bind="options: modes, value: selectedMode, optionsText: transOption('sleep_mode'), optionsValue: 'value'" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" class="btn btn-primary" data-trans='apply'/>
+                </div>
+                <div class="form-note">
+                    <div class="notes-title">&nbsp;</div>
+                    <ul class="notes-content">
+                        <li data-trans="wifi_sleep_note_info"></li>
+                    </ul>
+                </div>
+            </form>
+            <form id='autoPowerSaveForm' data-bind="visible: showAutoPowerSave">
+                <div class="content">
+                    <div class="row">
+                        <label class="col-xs-3" data-trans='wifi_auto_power_save'></label>
+                        <div class="col-xs-8">
+							<p class="radiobox" for="autoPowerSaveGroup" data-bind="css:{'radiobox_selected': autoPowerSaveMode() == '0'}">
+								<input type="radio" name="autoPowerSaveGroup" id='auto_power_save_off_mode'  value="0" data-bind="checked: autoPowerSaveMode" />
+							</p>
+                            <label for='auto_power_save_off_mode' data-trans='disable'></label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-xs-3"></label>
+                        <div class="col-xs-8">
+							<p class="radiobox" for="autoPowerSaveGroup" data-bind="css:{'radiobox_selected': autoPowerSaveMode() == '1'}">
+								<input type="radio" name="autoPowerSaveGroup" id='auto_power_save_on_mode' value="1" data-bind="checked: autoPowerSaveMode" />
+							</p>
+                            <label data-bind="visible: !isCPE" for='auto_power_save_on_mode' data-trans='enable'></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" class="btn btn-primary" data-trans='apply'/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

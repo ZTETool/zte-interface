@@ -1,0 +1,94 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#voip_setting">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='sip_server'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="form-body margin-top-20">
+				<div class="row meun-nav-new">
+					<a href="#home">
+						<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+					</a>
+				</div>
+<form id="voipSettingsForm">
+<div class="form-body">
+    <div class="content">
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" for="register_server_address" data-trans="register_server_address"></label>
+				<div class="col-xs-6">
+					<input id="register_server_address" name="register_server_address" type="text" data-bind="value: sipRegisterServer" class="form-control required" maxlength="63"/>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" for="register_server_port" data-trans="register_server_port"></label>
+				<div class="col-xs-6">
+					<input id="register_server_port" name="register_server_port"  type="text" data-bind="value: sipDomain" class="form-control required" maxlength="63"/>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" for="proxy_server_address" data-trans="proxy_server_address"></label>
+				<div class="col-xs-6">
+					<input id="proxy_server_address" name="proxy_server_address"  type="text" data-bind="value: sipRealm" class="form-control required" maxlength="63"/>
+				</div>
+			</div>
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" for="proxy_server_port" data-trans="proxy_server_port"></label>
+				<div class="col-xs-6">
+					<input id="proxy_server_port" name="proxy_server_port"  type="text" data-bind="value: voipSipProxyServer" class="form-control required" maxlength="63"/>
+				</div>
+			</div>
+		<div class="row form-group">
+			<label class="col-xs-3 side-right" data-trans='outbound_mode'></label>
+			<div class="col-xs-6">
+				<p class="radiobox" for="outbound_enable" data-bind="css:{'radiobox_selected': outboundEnable() == '1'}">
+					<input type="radio" name="outbound_enable" id="outbound_enable" data-bind="checked: outboundEnable, event: {click: changeOutboundSwitchHandler}" value="1"/>
+				</p>
+				<label for="outbound_enable" data-trans="enable"></label>
+				<p class="radiobox" for="outbound_enable" data-bind="css:{'radiobox_selected': outboundEnable() == '0'}">
+					<input type="radio" name="outbound_enable" id="outbound_disable"
+						   data-bind="checked: outboundEnable, event: {click: changeOutboundSwitchHandler}" value="0"/>
+				</p>
+				<label for="outbound_disable" data-trans="disable"></label>
+            </div>
+		</div>
+		<div data-bind="visible:showOutboundDiv">
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" data-trans='outbound_server'></label>
+				<div class="col-xs-6">
+                    <input type="text" name="outbound_server" data-bind="value: outboundServer" id="outbound_server" class="form-control required" maxlength="63"/>
+                </div>
+			</div>
+			
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" data-trans='outbound_port'></label>
+				<div class="col-xs-9">
+					<div class="row">
+						<div class="col-xs-8">
+							<input type="text" name="outbound_port" data-bind="value: outboundPort" id="outbound_port" class="form-control required" maxlength="63"/>
+						</div>
+						<label id="outbound_port_label" class="col-xs-4">[1,65535]</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="form-buttons">
+		<input type="submit" data-bind="" class="btn btn-primary" data-trans="apply"/>
+	</div>
+</div>
+</form>
+			</div>
+    	</div>
+	</div>
+</div>

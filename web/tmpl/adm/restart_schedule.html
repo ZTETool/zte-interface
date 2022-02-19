@@ -1,0 +1,159 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="restart_schedule"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <form id="enableRebootFrm">
+                <div class="form-body margin-top-20">
+					<div class="row meun-nav-new">
+						<a href="#home">
+							<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+						</a>
+					</div>
+                    <div class="content paddingleft10">
+                        <div class="row form-group">
+                            <div class="col-xs-6">
+                                <div class="paddingleft20 col-xs-12 lineheight25">
+                                    <p id="rebootBtn" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected': isAllowedReboot()=='1'}, click: setAllowedReboot" manualControl="true">
+                                        <input type="checkbox" id="isAllowedReboot" value="1" data-bind="checked:isAllowedReboot()=='1'"/>
+                                    </p>
+                                    <label for="isAllowedReboot" data-trans="enable_reboot_switch" class="floatleft lineheight25 paddingleft10"></label>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="paddingleft10 col-xs-12 lineheight25">
+                                    <label data-trans="local_current_time" class="floatleft lineheight25"></label>
+                                    <span data-bind="text: currentTime"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-bind="visible: enableReboot" class="content borderStyle">
+                        <div class="row form-group">
+                            <div class="col-xs-12">
+                                <label for="isAllowedReboot" data-trans="enable_reboot_byweek" class="col-xs-7 floatleft lineheight25"></label>
+                                <p id="reboot_by_week" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected': isRebootMode()=='1'}, click: setRebootByWeek" manualControl="true">
+                                    <input type="checkbox" id="rebootByWeek" value="0" data-bind="checked:isRebootMode()=='1'"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-xs-6">
+                                <div class="col-xs-5 padding-left-right-0">
+                                    <label for="weekTimeHour" data-trans="time" class="margintop5 padding-right-0 col-xs-4"></label>
+                                    <div class="col-xs-8">
+                                        <input id='weekTimeHour' name="weekTimeHour" type="text" data-bind="value: weekHour"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                        :
+                                        <input id='weekTimeMinutes' name="weekTimeMinutes" type="text" data-bind="value: weekMinutes"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                    </div>
+                                    <div id="weekTimeError"></div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <label for="weekTimeHour" data-trans="interval_hours" class="margintop5 lineheight25 col-xs-8"></label>
+                                    <div class="col-xs-4">
+                                        <input id='intervalHourWeek' name="intervalHourWeek" type="text" data-bind="value: intervalHour_week"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                    </div>
+                                    <div id="weekIntervalError"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6"><!--增加周的选择-->
+                                <label style="margin-top: 2px;" data-trans="week" class="col-xs-3"></label>
+                                <div class="col-xs-9 paddingright5">
+                                    <table id="weekTable">
+                                        <tbody>
+                                        <tr>
+                                            <td data-val="1"><a data-trans="mon" href="javascript:void(0);">Mon</a></td>
+                                            <td data-val="2"><a data-trans="tues" href="javascript:void(0);">Tue</a>
+                                            </td>
+                                            <td data-val="3"><a data-trans="wed" href="javascript:void(0);">Wed</a>
+                                            </td>
+                                            <td data-val="4"><a data-trans="thur" href="javascript:void(0);">Thu</a>
+                                            </td>
+                                            <td data-val="5"><a data-trans="fri" href="javascript:void(0);">Fri</a>
+                                            </td>
+                                            <td data-val="6"><a data-trans="sat" href="javascript:void(0);">Sat</a>
+                                            </td>
+                                            <td data-val="0"><a data-trans="sun" href="javascript:void(0);">Sun</a></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="visible: enableReboot()" class="content borderStyle margin-top-20">
+                        <div class="row form-group">
+                            <div class="col-xs-12">
+                                <label for="isAllowedReboot" data-trans="enable_reboot_bymonth" class="col-xs-7 floatleft lineheight25"></label>
+                                <p id="reboot_by_month" class="checkbox floatleft margintop5 checkboxToggle" data-bind="css:{'checkbox_selected': isRebootMode()=='2'}, click: setRebootByMonth" manualControl="true">
+                                    <input type="checkbox" id="rebootByMonth" value="0" data-bind="checked:isRebootMode()=='2'"/>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-xs-6">
+                                <div class="col-xs-5 padding-left-right-0">
+                                    <label for="monthTimeHour" data-trans="time" class="margintop5 floatleft padding-right-0 col-xs-4"></label>
+                                    <div class="col-xs-8">
+                                        <input id='monthTimeHour' name="monthTimeHour" type="text" data-bind="value: monthHour"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                        :
+                                        <input id='monthTimeMinutes' name="monthTimeMinutes" type="text" data-bind="value: monthMinutes"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                    </div>
+                                    <div id="intervalTimeError"></div>
+                                </div>
+                                <div class="col-xs-7">
+                                    <label for="weekTimeHour" data-trans="interval_hours" class="margintop5 lineheight25 col-xs-8"></label>
+                                    <div class="col-xs-4">
+                                        <input id='intervalHourDay' name="intervalHourDay" type="text" data-bind="value: intervalHour_day"
+                                               class="required rangeInput width30 marginleft5" maxlength="2"/>
+                                    </div>
+                                    <div id="dayIntervalError"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6"><!--增加月份里的日期选择-->
+                                <label data-trans="interval_date" class="col-xs-3 padding-left-right-0"></label>
+                                <div class="col-xs-9 paddingright5">
+                                    <select id="intervalSelect" class="form-control" data-bind="options: intervalDay, value: currentIntervals, optionsText: 'text', optionsValue: 'value'"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons margin-top-20">
+                        <input type="submit" class="btn btn-primary" data-trans="apply"/>
+                    </div>
+                    <div class="form-note">
+                        <div class="notes-title">&nbsp;</div>
+                        <ul class="notes-content">
+                            <li data-trans="restart_schedule_note_rules"></li>	
+                            <li data-trans="restart_schedule_note_time"></li>
+                            <li data-trans="restart_schedule_note_week"></li>
+                            <li data-trans="restart_schedule_note_interval_hour"></li>
+                            <li data-trans="restart_schedule_note_interval"></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/home" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="wireless_hotspot"></h1>
+</div>
+
+<ul id="wifiList" class="menu-list" data-role="listview">
+    <!--li>
+        <a href="#/wifi/wifi_setting" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+            <div class="btn-title middle" data-trans="configure_hotspot"></div>
+        </a>
+    </li-->
+	<li>
+        <a href="#/wifi/wifi_main" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+            <div class="btn-title middle" data-trans="wifi_main_ssid"></div>
+        </a>
+    </li>
+	<li>
+        <a href="#/wifi/wifi_guest" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+            <div class="btn-title middle" data-trans="wifi_guest_ssid"></div>
+        </a>
+    </li>
+    <li>
+        <a href="#popupCoverage" data-rel="popup" data-transition="pop" data-position-to="window" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+            <div class="btn-title" data-trans="wifi_range"></div>
+            <div id="rangeMode" class="btn-sub-desc"></div>
+        </a>
+    </li>
+    <li>
+        <a href="#/wifi/wps" class="ui-btn side-left ui-corner-all ui-nodisc-icon ui-alt-icon ui-icon-carat-r ui-btn-icon-right">
+            <div class="btn-title middle">WPS</div>
+        </a>
+    </li>
+</ul>
+<h4 class="padding-left-5 ui-bar ui-bar-a" style="margin-bottom: 0;" data-trans="station_info"></h4>
+<ul id="attachedDevices" data-role="listview" class="menu-list margin-bottom-1em">
+
+</ul>
+
+<div data-role="popup" id="popupCoverage" style="min-width: 300px;max-width: 450px;" data-dismissible="false">
+    <fieldset style="margin-bottom: 0;" data-role="controlgroup" data-iconpos="right">
+        <legend data-trans="wifi_range"></legend>
+        <div class="margin-left-16">
+            <span data-trans="modify_need_login"></span>
+        </div>
+        <hr/>
+        <input name="rangeGroup" id="shortMode" value="short_mode" type="radio">
+        <label for="shortMode" data-trans="wifi_short_mode"></label>
+        <input name="rangeGroup" id="mediumMode" value="medium_mode" type="radio">
+        <label for="mediumMode" data-trans="wifi_medium_mode"></label>
+        <input name="rangeGroup" id="longMode" value="long_mode" type="radio">
+        <label style="margin-top: 0;border-radius: 0;" for="longMode" data-trans="wifi_long_mode"></label>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#" class="ui-btn" id="coverageCancel" data-trans="cancel"></a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" class="ui-btn" id="coverageOK" data-trans="ok"></a>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<div data-role="popup" id="popupEditName" style="max-width: 400px;" data-dismissible="false">
+    <form id="frmName">
+        <fieldset style="margin-bottom: 0;" data-role="controlgroup" data-iconpos="right">
+            <legend data-trans="modify_device_name"></legend>
+            <hr/>
+            <div style="margin: 20px;">
+                <label class="ui-hidden-accessible" for="newName"></label>
+                <input id="newName" maxlength="20" type="text" class="required"/>
+                <input id="macAddress" type="hidden"/>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" class="ui-btn" id="editCancel" data-rel="back" data-trans="cancel"></a>
+                </div>
+                <div class="ui-block-b">
+                    <!--<a href="#" class="ui-btn" id="editOK" data-trans="ok"></a>-->
+                    <input type="submit" data-trans="ok" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script type="text/x-jquery-tmpl" id="devicesTmpl">
+<% for(var i = 0; i < devices.length; i++){ %>
+    <% var device = devices[i]; %>
+    <li>
+        <a href="#" onclick="devicesUtil.showEditNamePopup('<%- device.hostName %>', '<%- device.macAddress %>');" data-rel="popup" data-transition="pop" data-position-to="window" class="ui-btn side-left ui-corner-all ui-nodisc-icon  ui-alt-icon ui-icon-editname ui-btn-icon-right">
+            <div class="btn-title"><%- device.hostName %></div>
+            <div class="btn-sub-desc"><%- device.macAddress %></div>
+        </a>
+    </li>
+<% } %>
+</script>
+
+
+

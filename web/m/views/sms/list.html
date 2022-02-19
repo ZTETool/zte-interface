@@ -1,0 +1,152 @@
+<div id="sms-list-header" data-role="header" style="overflow:hidden; position: relative" data-position="inline">
+    <div data-role="navbar" style="display: block;" id="sms-header-nav-list" class="in-list">
+        <ul>
+            <li style="padding-left: 1em;">
+                <a href="#/home"
+                   class="sms-header-left-icon ui-btn ui-btn-left ui-alt-icon ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon"
+                   style="display: inline-block">No text</a>
+                <span class="pull-left sms-header-title" style="display: inline-block;" data-trans="sms_messaging"></span>
+            </li>
+            <li style="text-align: right; padding-right: 1em;">
+                <fieldset data-role="controlgroup" data-mini="true">
+                    <label for="select-native-11" data-trans="sms_location"></label>
+                    <select name="select-native-11" id="select-native-11" data-inline="true" onchange="smsEvtHandler.locationChangeHandler(this);">
+                        <option value="1" data-trans="sms_device"></option>
+                        <option value="0" data-trans="sms_sim"></option>
+                    </select>
+                </fieldset>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="navbar" style="display: none;" id="sms-header-nav-delete" class="in-delete">
+        <ul>
+            <li style="padding-left: 1em;">
+                <a href="javascript: void(0)" onclick="smsEvtHandler.backToList()"
+                   class="sms-header-left-icon ui-btn ui-btn-left ui-alt-icon ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon">No text</a>
+                <span class="pull-left sms-header-title" id="sms-header-title" style="display: none;" data-trans="sms_tap_select"></span>
+                <span class="pull-left sms-header-title" id="sms-header-title-selected" style="display: block;"></span>
+            </li>
+            <li style="text-align: right; padding-right: 1em;">
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <label for="check-all" style="display: inline-block;" data-trans="sms_all"></label>
+                    <input type="checkbox" id="check-all" name="check-all" data-inline="true" value="1" onchange="smsEvtHandler.checkAllChangeHandler(this);">
+                </fieldset>
+            </li>
+        </ul>
+    </div>
+
+    <div style="display: none;" id="sms-header-nav-chat" class="in-chat">
+        <a href="javascript: void(0)" onclick="smsEvtHandler.backToList()"
+           class="sms-header-left-icon ui-btn ui-btn-left ui-alt-icon ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon">No text</a>
+        <div class="pull-left" style="line-height: 25px; margin-left: 50px; min-height: 50px;">
+            <span style="font-size: 18px;" id="sms-chat-name"></span><br/>
+            <span style="font-size: 14px; font-weight: normal;" id="sms-chat-number"></span>
+        </div>
+    </div>
+</div><!-- /header -->
+
+<div data-role="main" class="ui-content" id="sms-main-container" style="margin-bottom: 70px;">
+    <form>
+        <div class="sms-list-div in-list" id="sms-list-div" style="display: none;">
+            <ul data-role="listview" class="ui-nodisc-icon ui-alt-icon" id="sms-list-ul">
+
+            </ul>
+        </div>
+
+        <div class="sms-delete-div in-delete" id="sms-delete-div" style="display: none;">
+            <fieldset data-role="controlgroup" id="sms-delete-fieldset">
+
+            </fieldset>
+        </div>
+
+        <div class="sms-chat-div in-chat" id="sms-chat-div" style="display: none;">
+
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false" id="sms-footer">
+            <div style="display: none" id="sms-footer-list" class="in-list">
+                <a href="#" onclick="smsEvtHandler.switchToDeletePage()" class="ui-btn ui-corner-all footer-btn-one-line" data-trans="delete"></a>
+            </div>
+            <div data-role="navbar" style="display: block;" id="sms-footer-delete" class="in-delete">
+                <ul>
+                    <li><a href="#" onclick="smsEvtHandler.cancelHandler()" class="ui-btn ui-corner-all footer-btn-one-line" data-trans="cancel"></a></li>
+                    <li><a id="smsDelete" href="#" onclick="smsEvtHandler.deleteActionHandler()" class="ui-btn ui-corner-all footer-btn-one-line ui-state-disabled" data-trans="delete"></a></li>
+                </ul>
+            </div>
+            <div style="display: none" id="sms-footer-chat" class="in-chat">
+                <a href="#" onclick="smsEvtHandler.deleteChatActionHandler()" class="ui-btn ui-corner-all footer-btn-one-line" data-trans="delete"></a>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/x-jquery-tmpl" id="smsItemTmpl">
+<% for(key in messages){ %>
+    <% var msg = messages[key] %>
+    <% var imgPath = ""; %>
+    <li id="smsListItem<%- msg.msgs[0].number8 %>">
+        <a href="javascript: void(0);" onclick="smsEvtHandler.smsItemClickHandler('<%- msg.msgs[0].number8 %>');">
+            <div class="ui-grid-a">
+                <div class="ui-block-a" style="width: 30%;">
+                    <img width="50" style="margin-top: 5px;" class="sms-icon" src="./img/sms_icon.png?v=1622612890852">
+                    <% if(msg.newCount){ %>
+                    <div class="sms-new-count"><%- msg.newCount %></div>
+                    <% } %>
+                </div>
+                <div class="ui-block-b" style="width: 70%;">
+                    <div class="sms-title">
+                        <div style="float:left;"><span class="sms-user-name"><%- msg.title %></span>(<span class="sms-session-count"><%- msg.count %></span>)</div>
+                        <span style="float:right;font-size:11px;font-weight: normal;margin-top: 5px;" class="sms-latest-time"><%- msg.msgs[0].date %></span>
+                    </div>
+                    <p class="sms-content">
+                        <% if(msg.hasDraft){ %>
+                        <span class="sms-draft-tag">[Draft]</span>
+                        <% } %>
+                        <span><%- msg.msgs[0].content %></span>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </li>
+<% } %>
+</script>
+
+<script type="text/x-jquery-tmpl" id="smsDeleteTmpl">
+<% for(key in messages){ %>
+    <% var msg = messages[key]; %>
+    <% var value = msg.msgs[0].groupId || msg.msgs[0].number8 %>
+    <input type="checkbox" name="contactCheckbox" id="checkbox-<%- msg.msgs[0].number8 %>" data-iconpos="right" value="<%- value %>" onchange="smsEvtHandler.smsCheckboxChangeHandler();"/>
+    <label for="checkbox-<%- msg.msgs[0].number8 %>">
+        <div class="ui-grid-a">
+            <div class="ui-block-a" style="width: 30%;">
+                <img width="50" class="sms-icon" src="./img/sms_icon.png?v=1622612890852">
+                <% if(msg.newCount){ %>
+                    <div class="sms-new-count"><%- msg.newCount %></div>
+                <% } %>
+            </div>
+            <div class="ui-block-b" style="width: 70%;margin-top:5px;">
+                <div class="sms-title">
+                    <span class="sms-user-name"><%- msg.shortTitle %></span>(<span class="sms-session-count"><%- msg.count %></span>)
+                </div>
+                <p class="sms-content">
+                    <% if(msg.hasDraft){ %>
+                    <span class="sms-draft-tag">[Draft]</span>
+                    <% } %>
+                    <%- msg.msgs[0].shortContent %>
+                </p>
+            </div>
+        </div>
+    </label>
+<% } %>
+</script>
+
+<script type="text/x-jquery-tmpl" id="smsChatTmpl">
+<% for(var i = 0; i < messages.length; i++){ %>
+    <% var msg = messages[i]; %>
+    <div class="sms-chat-item chat-<%- msg.position %>">
+        <div class="sms-chat-content"><%- msg.content %></div>
+        <div class="sms-popup"></div>
+        <div class="sms-chat-end"><span class="sms-desc"><%- msg.desc %></span><span class="time"><%- msg.date %></span></div>
+    </div>
+<% } %>
+</script>

@@ -1,0 +1,36 @@
+<div id="divLogo"  class="nosimcard-top">
+    <div class="logo-center">
+        <img src="img/logo.png?v=1622612890852" alt=""/>
+    </div>
+</div>
+<div data-role="main" class="ui-content">
+    <div id="divNoTimes" class="side-center margin-top-20">
+        <img src="img/sad.png?v=1622612890852" alt=""/>
+        <h3 data-trans="network_locked"></h3>
+        <span data-trans="network_locked_zero_times"></span>
+        <a type="button" href="#/home" data-trans="ok" class="margin-top-3em ui-btn ui-corner-all ui-shadow"></a>
+    </div>
+    <form id="frmNetworkLock">
+        <div class="ui-field-contain">
+            <p data-trans="network_locked"></p>
+            <p data-trans="network_locked_explain"></p>
+            <p id="moreLockTime" class="important-prompt">
+                <span data-trans="network_locked_times_explain"></span><span id="unlockTime"></span>
+            </p>
+        </div>
+        <div>
+            <label class="ui-hidden-accessible" for='txtUnlockCode' data-trans='pin'></label>
+            <input id='txtUnlockCode' autocomplete="off" name="txtUnlockCode" type="text" class="required"
+                   maxlength='16'/>
+        </div>
+        <div>
+            <a id="btnUnlockApply" type="button" data-trans="ok" class="ui-btn ui-corner-all ui-shadow"></a>
+            <a type="button" href="#/home" data-trans="skip" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+</div>
+<div id="copyright" class="margin-top-20 side-center">
+    <span data-trans='copyright'></span>
+    <br/>
+    <a href="https://opensource.ztedevices.com" target="_blank" rel="noopener noreferrer" data-trans="open_source_licenses"></a>&nbsp; <span id="split_span" data-trans="vertical_bar"></span> &nbsp;<a id="privacy_a" href="https://www.ztedevices.com/en/Privacy-Policy/ZTESmartRouterPrivacyPolicy" target="_blank" rel="noopener noreferrer" data-trans="privacy_policy" class="extendLink"></a>
+</div>

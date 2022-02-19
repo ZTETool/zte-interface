@@ -1,0 +1,94 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-9">
+            <div class="form-title form-title-multi">
+                <h1 data-trans='suggested_position'></h1>
+                <p data-trans="suggested_position_sub_title"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<div class="row meun-nav-new">
+				<a href="#home">
+					<img alt="" src="img/ic_nav_position.png?v=1622612890852">
+				</a>
+			</div>			
+			<div class="form-body">
+				<form id='detectPositionForm' data-bind="visible:!isDetecting()">
+					<div class="content">							
+						<div class="detect-img">
+							<img src="./img/img_suggested_position.png?v=1622612890852" />
+							<p style="text-align:center" data-trans="suggested_position_detect_now_note"></p>
+						</div>
+						<div class="form-buttons" style="text-align:center">
+							<input type="submit" class="btn btn-primary" data-trans='suggested_position_detect_now' />
+						</div>
+					</div>
+				</form>
+				<form id='detectCancelPositionForm' data-bind="visible:isDetecting()">
+					<div class="content">							
+						<div class="detectProgress-img">
+							<img data-bind="attr:{'src':isDetecting()==true?'./img/img_suggested.gif':''}" />
+							<p style="text-align:center;margin-left:-100px;" data-bind="text:detectingContext"></p>
+						</div>
+						<div class="form-buttons" style="text-align:center">
+							<input type="submit" class="btn btn-primary" data-trans='suggested_position_detect_cancel' />
+						</div>
+					</div>
+				</form>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content" style="overflow: hidden;">
+						<li data-trans="suggested_position_note_perfect"></li>
+						<li data-trans="suggested_position_note_great"></li>
+						<li data-trans="suggested_position_note_good"></li>
+						<li data-trans="suggested_position_note_poor"></li>
+						<li data-trans="suggested_position_note_terrible"></li>
+					</ul>
+				</div>
+			</div>
+
+			<div id="detectRecords_div">
+				<h2 data-trans="suggested_position_detect_records"></h2>
+				<table class="table table-striped table-hover" data-bind="visible: detectRecords().length != 0">
+					<thead>
+						<tr>
+							<th width="60" data-trans="suggested_position_detect_number"></th>
+							<th data-trans="suggested_position_detect_position"></th>
+							<th width="100"></th>
+							<th width="200" data-trans="suggested_position_detect_date"></th>
+							<th width="150" data-trans="suggested_position_detect_result"></th>
+							<th width="150" data-trans="suggested_position_detect_operation"></th>
+						</tr>
+					</thead>
+					<tbody data-bind="foreach:detectRecords">
+						<tr data-bind="css: {odd: $index() % 2 == 0, even: $index() % 2 != 0}">
+							<td data-bind="text: $index()+1"></td>
+							<td>
+								<span data-bind="text: location, attr: {id: 'location_txt_'+index}"></span>
+								<input type="text" data-bind="attr: {id: 'location_input_'+index}" maxlength="20" class="form-control" style="display: none;">
+							</td>
+							<td>
+								<a data-bind="click: $root.editLocationHandler, attr: {id: 'edit_btn_'+index}" class="cursorhand"><img src="./img/ic_edit.png?v=1622612890852" height="25"></a>
+								<a data-bind="click: $root.saveLocationHandler, attr: {id: 'save_btn_'+index}" class="cursorhand" style="display: none;"><img src="./img/save.png?v=1622612890852" height="25"></a>
+								<a data-bind="click: $root.cancelEditLocationHandler, attr: {id: 'cancel_btn_'+index}" class="cursorhand" style="display: none;"><img src="./img/cancel.png?v=1622612890852" height="25"></a>
+							</td>
+							<td data-bind="text: date"></td>
+							<td data-bind="attr: {'data-trans':qualityTrans,'class':qualityColor}"></td>
+							<td><a class="btn btn-primary btn-sm" data-trans="delete" data-bind="click: $root.deleteSingleRecordHandler"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<p data-bind="visible: detectRecords().length == 0" data-trans="suggested_position_detect_no_data"></p>
+			</div>			
+		</div>
+	</div>
+</div>

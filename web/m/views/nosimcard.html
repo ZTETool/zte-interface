@@ -1,0 +1,68 @@
+<div id="divLogo"  class="nosimcard-top">
+    <div class="logo-center">
+        <img src="img/logo.png?v=1622612890852" alt=""/>
+    </div>
+</div>
+<div data-role="main" class="ui-content">
+    <div id="divNoSim" class="side-center margin-top-20">
+        <img src="img/sad.png?v=1622612890852" alt=""/>
+        <h3 data-trans="no_sim_card_message"></h3>
+        <a type="button" href="#/home" data-trans="ok" class="margin-top-3em ui-btn ui-corner-all ui-shadow"></a>
+    </div>
+    <form id="frmPIN">
+        <div class="ui-field-contain">
+            <p data-trans="enter_pin"></p>
+            <p id="morePin" class="important-prompt">
+                <span id="pinError" class="hide" data-trans="pin_error"></span><span data-trans="attempts_left"></span><span id="pinNumber"></span>
+            </p>
+            <p id="lastPin" class="important-prompt" data-trans="last_enter_pin"></p>
+        </div>
+        <div>
+            <label class="ui-hidden-accessible" for='txtPIN' data-trans='pin'></label>
+            <input id='txtPIN' autocomplete="off" name="txtPIN" type="password" class="required"
+                   maxlength='8'/>
+        </div>
+        <div>
+            <a id="btnPinApply" type="button" data-trans="ok" class="ui-btn ui-corner-all ui-shadow"></a>
+            <a type="button" href="#/home" data-trans="skip" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+    <form id="frmPUK">
+        <div>
+            <p data-trans="enter_puk"></p>
+            <p id="morePuk" class="important-prompt">
+                <span id="pukError" class="hide" data-trans="puk_error"></span><span data-trans="attempts_left"></span> <span id="pukNumber"></span>
+            </p>
+            <p id="lastPuk" class="important-prompt" data-trans="last_enter_puk"></p>
+        </div>
+        <div>
+            <label class="ui-hidden-accessible" for='txtPUK' data-trans='puk'></label>
+            <input id='txtPUK' autocomplete="off" name="txtPUK" data-trans="input_puk" type="password" class="required"
+                   maxlength='8'/>
+        </div>
+        <div>
+            <label class="ui-hidden-accessible" for='txtNewPIN' data-trans='new_pin'></label>
+            <input id='txtNewPIN' autocomplete="off" name="txtNewPIN" data-trans="input_new_pin" type="password" class="required"
+                   maxlength='8'/>
+        </div>
+        <div>
+            <label class="ui-hidden-accessible" for='txtConfirmPIN' data-trans='confirm_pin'></label>
+            <input id='txtConfirmPIN' autocomplete="off" name="txtConfirmPIN" data-trans="input_confirm_pin" type="password" class="required"
+                   maxlength='8'/>
+        </div>
+        <div class="ui-field-contain">
+            <a id="btnPUKApply" type="button" data-trans="ok" class="ui-btn ui-corner-all ui-shadow"></a>
+            <a type="button" href="#/home" data-trans="skip" class="ui-btn ui-corner-all ui-shadow"></a>
+        </div>
+    </form>
+    <div id="divPukLock" class="side-center margin-top-20">
+        <img src="img/sad.png?v=1622612890852" alt=""/>
+        <h3 data-trans="no_sim_card_message"></h3>
+        <a type="button" href="#/home" data-trans="ok" class="margin-top-3em ui-btn ui-corner-all ui-shadow"></a>
+    </div>
+</div>
+<div id="copyright" class="margin-top-20 side-center">
+    <span data-trans='copyright'></span>
+    <br/>
+    <a href="https://opensource.ztedevices.com" target="_blank" rel="noopener noreferrer" data-trans="open_source_licenses"></a>&nbsp; <span id="split_span" data-trans="vertical_bar"></span> &nbsp;<a id="privacy_a" href="https://www.ztedevices.com/en/Privacy-Policy/ZTESmartRouterPrivacyPolicy" target="_blank" rel="noopener noreferrer" data-trans="privacy_policy" class="extendLink"></a>
+</div>

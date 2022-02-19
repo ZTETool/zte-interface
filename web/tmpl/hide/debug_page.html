@@ -1,0 +1,544 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#home">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans="debug_page"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+			<form id="antSwitchForm" >
+				<div class="form-body margin-top-20">
+					<div class="row meun-nav-new">
+						<a href="#home">
+							<img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+						</a>
+					</div>
+					 <div class="row form-group">
+						<div class="form-title">
+							<h2 data-trans="network_band_selection"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="4G_band"></label>
+							<div class="col-xs-5">	
+								<select transid='auto_select_frequency_type_4G' id="frequencyType" class="form-control" data-bind="options: frequencyTypes4G, value: selectedFrequencyType4G, optionsText: transOption('auto_select_frequency_type_4G'), optionsValue: 'value'"></select>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveBand4G' data-trans='apply'/>
+						</div>
+						
+						<div class="form-title">
+							<h2 data-trans="lpm_online_control"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="lpm_online_control"></label>
+							<div class="col-xs-5">	
+								<select id="onlineLpmType" class="form-control" data-bind="value: selectedOnlineLpm">
+									<option data-trans="online" value="ONLINE"></option>
+									<option data-trans="lpm" value="LOW_POWER"></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveOnlineLpm' data-trans='apply'/>
+						</div>
+					 
+						<div class="form-title">
+							<h2 data-trans="ims_switch"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="ims_switch"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="imsSwitchGrp" id="imsSwitchEnable" data-bind="checked: imsSwitchSetting" value="1"/>
+										<label for="imsSwitchEnable" data-trans="enable"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="imsSwitchGrp" id="imsSwitchDisable" data-bind="checked: imsSwitchSetting" value="0"/>
+										<label for="imsSwitchDisable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveIMS' data-trans='apply'/>
+						</div>
+						
+						<div class="form-title">
+							<h2 data-trans="voice_switch"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="voice_switch"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="voiceSwitchGrp" id="voiceSwitchEnable" data-bind="checked: voiceSwitchSetting" value="1"/>
+										<label for="voiceSwitchEnable" data-trans="enable"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="voiceSwitchGrp" id="voiceSwitchDisable" data-bind="checked: voiceSwitchSetting" value="0"/>
+										<label for="voiceSwitchDisable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveVOICE' data-trans='apply'/>
+						</div>
+						
+						<div class="form-title">
+							<h2 data-trans="wlan_test_tputs_set"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="tputs_ip"></label>
+							<div class="col-xs-5">
+								<input id="tputsIp" name="tputsIp" type="text" data-bind="value: tputsIp" class="required form-control">							
+							</div>
+						</div>
+						
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="tputs_mode"></label>
+							<div class="col-xs-5">	
+								<select id="tputsModeType" class="form-control" data-bind="value: selectedTputsMode">
+									<option data-trans="tputs_mode_tcp" value="tcp"></option>
+									<option data-trans="tputs_mode_udp" value="udp"></option>
+									<option data-trans="tputs_mode_stop" value="stop"></option>
+								</select>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveWlanTputs' data-trans='apply'/>
+						</div>
+						
+						<div class="form-title">
+							<h2 data-trans="nr5g_band_lock"></h2>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="nr5g_band_lock"></label>
+							<div id="nr5gDiv" class="col-xs-6">
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand1" value="1"/>
+									<label for="nr5gBand1" data-trans="nr5gBand1"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand2" value="2"/>
+									<label for="nr5gBand2" data-trans="nr5gBand2"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand3" value="3"/>
+									<label for="nr5gBand3" data-trans="nr5gBand3"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand5" value="5"/>
+									<label for="nr5gBand5" data-trans="nr5gBand5"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand7" value="7"/>
+									<label for="nr5gBand7" data-trans="nr5gBand7"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand8" value="8"/>
+									<label for="nr5gBand8" data-trans="nr5gBand8"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand20" value="20"/>
+									<label for="nr5gBand20" data-trans="nr5gBand20"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand28" value="28"/>
+									<label for="nr5gBand28" data-trans="nr5gBand28"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand38" value="38"/>
+									<label for="nr5gBand38" data-trans="nr5gBand38"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand41" value="41"/>
+									<label for="nr5gBand41" data-trans="nr5gBand41"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand50" value="50"/>
+									<label for="nr5gBand50" data-trans="nr5gBand50"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand51" value="51"/>
+									<label for="nr5gBand51" data-trans="nr5gBand51"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand66" value="66"/>
+									<label for="nr5gBand66" data-trans="nr5gBand66"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand70" value="70"/>
+									<label for="nr5gBand70" data-trans="nr5gBand70"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand71" value="71"/>
+									<label for="nr5gBand71" data-trans="nr5gBand71"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand74" value="74"/>
+									<label for="nr5gBand74" data-trans="nr5gBand74"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand75" value="75"/>
+									<label for="nr5gBand75" data-trans="nr5gBand75"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand76" value="76"/>
+									<label for="nr5gBand76" data-trans="nr5gBand76"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand77" value="77"/>
+									<label for="nr5gBand77" data-trans="nr5gBand77"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand78" value="78"/>
+									<label for="nr5gBand78" data-trans="nr5gBand78"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand79" value="79"/>
+									<label for="nr5gBand79" data-trans="nr5gBand79"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand80" value="80"/>
+									<label for="nr5gBand80" data-trans="nr5gBand80"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand81" value="81"/>
+									<label for="nr5gBand81" data-trans="nr5gBand81"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand82" value="82"/>
+									<label for="nr5gBand82" data-trans="nr5gBand82"></label>						
+								</div>
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand83" value="83"/>
+									<label for="nr5gBand83" data-trans="nr5gBand83"></label>						
+								</div>	
+								<div class="row">																		
+									<input type="checkbox" id="nr5gBand84" value="84"/>
+									<label for="nr5gBand84" data-trans="nr5gBand84"></label>						
+								</div>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input type="button" class="btn btn-primary" data-bind='click: saveNr5g' data-trans='apply'/>
+						</div>
+					</div>
+
+					<div class="form-title">
+						<h2 data-trans="antenna_state_set"></h2>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="antenna_name"></label>
+						<div class="col-xs-5">
+							<select id="selectedAntennaName" class="form-control" data-bind="value: selectedAntennaName">
+								<option data-trans="antenna_N77_N78" value="6"></option>
+								<option data-trans="antenna_N79" value="8"></option>
+							</select>
+						</div>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="antenna_state"></label>
+						<div class="col-xs-5">
+							<select id="selectedAntennaState" class="form-control" data-bind="value: selectedAntennaState">
+								<option data-trans="direction_1" value="1"></option>
+								<option data-trans="direction_2" value="2"></option>
+								<option data-trans="direction_3" value="3"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="button" class="btn btn-primary" data-bind='click: saveAntennaState' data-trans='apply'/>
+					</div>	
+
+					<div class="form-title">
+						<h2 data-trans="wan_mbn_mode_set"></h2>
+					</div>
+					<div class="row form-group">
+						<label class="col-xs-3 side-right" data-trans="mbn_mode"></label>
+						<div class="col-xs-6">
+							<div class="row">
+								<div class="col-xs-4">
+									<input type="radio" name="mbnModeGrp" id="mbnModeEnable" data-bind="checked: mbnModeSetting" value="7"/>
+									<label for="mbnModeEnable" data-trans="enable"></label>
+								</div>
+								<div class="col-xs-4">
+									<input type="radio" name="mbnModeGrp" id="mbnModeDisable" data-bind="checked:mbnModeSetting" value="0"/>
+									<label for="mbnModeDisable" data-trans="disable"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="button" class="btn btn-primary" data-bind='click: saveMbnMode' data-trans='apply'/>
+					</div>						
+				</div>
+			</form>
+			
+			<div class="form-title">
+				<h2 data-trans="mqtt_mec_aes_set"></h2>
+			</div>
+			<form id="MecAesFrm" role="form">	
+				<div class="form-body">
+					<div class="row form-group">
+						<label class="col-xs-4 side-right" data-trans="mec_aes_switch"></label>
+						<div class="col-xs-6">
+							<div class="row">
+								<div class="col-xs-4">
+									<input type="radio" name="mecAesSwitchGrp" id="mecAesSwitchEnable" data-bind="checked: mecAesEnable" value="1"/>
+									<label for="mecAesSwitchEnable" data-trans="on"></label>
+								</div>
+								<div class="col-xs-4">
+									<input type="radio" name="mecAesSwitchGrp" id="mecAesSwitchDisable" data-bind="checked: mecAesEnable" value="0"/>
+									<label for="mecAesSwitchDisable" data-trans="off"></label>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div data-bind="visible:mecAesEnable()==1">
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_url" for="txtMecAesUrl"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesUrl" name="txtMecAesUrl" type="text" data-bind="value: mecAesUrl" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_port" for="txtMecAesPort"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesPort" name="txtMecAesPort" type="text" data-bind="value: mecAesPort" class="form-control"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_username" for="txtMecAesUsername"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesUsername" name="txtMecAesUsername" type="text" data-bind="value: mecAesUsername" class="form-control"/>
+							</div>
+						</div>		
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_password" for="txtMecAesPassword"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesPassword" name="txtMecAesPassword" type="text" data-bind="value: mecAesPassword" class="form-control"/>
+							</div>
+						</div>	
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_groupid" for="txtMecAesGroupid"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesGroupid" name="txtMecAesGroupid" type="text" data-bind="value: mecAesGroupid" class="form-control"/>
+							</div>
+						</div>	
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_alivePeriod" for="txtMecAesAlivePeriod"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesAlivePeriod" name="txtMecAesAlivePeriod" type="text" data-bind="value: mecAesAlivePeriod" class="form-control"/>								
+							</div>
+							<label class="col-xs-1" data-trans="second" style="padding-left:0px;padding-top:8px;"></label>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_status" for="txtMecAesAliveStatus"></label>
+							<div class="col-xs-4">
+								<label id="txtMecAesStatus" name="txtMecAesAliveStatus" data-bind="text: mecAesStatus"></label>
+							</div>
+						</div>					
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_tls_en"></label>
+							<div class="col-xs-6">
+								<div class="row">
+									<div class="col-xs-4">
+										<input type="radio" name="mecAesTlsEnGrp" id="mecAesTlsEnEnable" data-bind="checked: mecAesTlsEn" value="1"/>
+										<label for="mecAesTlsEnEnable" data-trans="enable"></label>
+									</div>
+									<div class="col-xs-4">
+										<input type="radio" name="mecAesTlsEnGrp" id="mecAesTlsEnDisable" data-bind="checked: mecAesTlsEn" value="0"/>
+										<label for="mecAesTlsEnDisable" data-trans="disable"></label>
+									</div>
+								</div>
+							</div>
+						</div>					
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_key" for="txtMecAesKey"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesKey" name="txtMecAesKey" type="text" data-bind="value: mecAesKey" class="required form-control" minlenth="1" maxlength="64"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_aes_iv" for="txtMecAesIv"></label>
+							<div class="col-xs-4">
+								<input id="txtMecAesIv" name="txtMecAesIv" type="text" data-bind="value: mecAesIv" class="required form-control" minlenth="1" maxlength="64"/>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-xs-4 side-right" data-trans="mec_sim_num" for="txtMecSimNum"></label>
+							<div class="col-xs-4">
+								<input id="txtMecSimNum" name="txtMecSimNum" type="text" data-bind="value: mecSimNum" class="required form-control" minlenth="1" maxlength="64"/>
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans='apply'/>
+					</div>
+				</div>
+			</form>	
+			
+			<div class="form-title">
+				<h2 data-trans="ps_no_service_restart_set"></h2>
+			</div>
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" data-trans="restart_switch"></label>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<input type="radio" name="psRestartGrp" id="psRestartEnable" data-bind="checked: psRestartSetting" value="1"/>
+							<label for="psRestartEnable" data-trans="enable"></label>
+						</div>
+						<div class="col-xs-4">
+							<input type="radio" name="psRestartGrp" id="psRestartDisable" data-bind="checked:psRestartSetting" value="0"/>
+							<label for="psRestartDisable" data-trans="disable"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-buttons">
+				<input type="button" class="btn btn-primary" data-bind='click: savePsRestart' data-trans='apply'/>
+			</div>
+			
+			<div class="form-title">
+				<h2 data-trans="watch_dog_setting"></h2>
+			</div>
+			<form id="watchDogSettingForm" data-bind="css: {'margin-top-20': isDataCard}">
+				<div class="form-body">
+						<div class="content">
+							<div class="row form-group">
+								<label class="col-xs-3 side-right" data-trans="watch_dog"></label>
+								<div class="col-xs-5">
+									<div class="row">
+										<div class="col-xs-5">
+											<p class="radiobox" for="watchDogGrp" data-bind="css:{'radiobox_selected': watchDogSetting() == '1'}">
+												<input type="radio" name="watchDogGrp" id="watchDogEnable" data-bind="checked: watchDogSetting" value="1"/>
+											</p>
+											<label for="watchDogEnable" data-trans="enable"></label>
+										</div>
+										<div class="col-xs-5">
+											<p class="radiobox" for="watchDogGrp" data-bind="css:{'radiobox_selected': watchDogSetting() == '0'}">
+												<input type="radio" name="watchDogGrp" id="watchDogDisable" data-bind="checked: watchDogSetting" value="0"/>
+											</p>
+											<label for="watchDogDisable" data-trans="disable"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+								<label class="col-xs-3 side-right" for="txtDetectTimeout" data-trans="detectTimeout"></label>
+								<div class="col-xs-4">					
+									<div class="input-group">
+										<input id="txtDetectTimeout" name="txtDetectTimeout" type="text" data-bind="value: net_link_detect_timeout, valueUpdate: 'keypress'" class="required form-control" maxlength="2" min="1" max="30"/>
+										<div data-trans="second" id="timeoutLabel" class="input-group-addon"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+								<label class="col-xs-3 side-right" for="txtPingUrl" data-trans="pingURL"></label>
+								<div class="col-xs-4">
+									<input id="txtPingUrl" name="txtPingUrl" type="text" data-bind="value: pingUrl, valueUpdate: 'keypress'" class="required form-control" maxlength="32"/>
+								</div>
+							</div>
+							<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+								<label class="col-xs-3 side-right" for="txtRebootThreshold" data-trans="reboot_threshold"></label>
+								<div class="col-xs-4">
+									<div class="input-group">
+										<input id="txtRebootThreshold" name="txtRebootThreshold" type="text" data-bind="value: rebootThreshold, valueUpdate: 'keypress'" class="required form-control" maxlength="4"/>
+										<div data-trans="watch_dog_times" id="rebootThresholdLabel" class="input-group-addon"></div>
+									</div>
+								</div>
+							</div>
+							<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+								<label class="col-xs-3 side-right" for="txtTimeInterval" data-trans="time_interval"></label>
+								<div class="col-xs-4">
+									<div class="input-group">
+										<input id="txtTimeInterval" name="txtTimeInterval"  type="text" data-bind="value: timeInterval" class="required form-control" maxlength="8"/>
+										<div data-trans="second" id="leaseLabel" class="input-group-addon"></div>
+									</div>
+								</div>
+								<div class="col-xs-9 col-md-offset-3" id="errorHolder"></div>
+							</div>
+							<div class="row form-group" data-bind='visible: watchDogSetting() == "1"'>
+								<label class="col-xs-3 side-right" for="rebootEnableCheckbox" data-trans="rebootEnable"></label>
+								<div class="col-xs-4">
+									<p class="checkbox checkbox_selected" data-bind="css:{'checkbox_selected': watch_dog_reboot_enable() == '1'}">
+										<input id="rebootEnableCheckbox" name="rebootEnableCheckbox" type="checkbox" data-bind="checked: watch_dog_reboot_enable() == '1'" value="1">
+									</p>
+								</div>
+							</div>
+						</div>
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans="apply"/>
+					</div>
+				</div>
+			</form>
+			
+			<div class="form-title">
+				<h2 data-trans="cell_lock"></h2>
+			</div>
+			<form id="cellLockForm">
+				<div class="form-body">					
+					<div class="content">
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="pci"></label>
+							<div class="col-xs-4">
+								<input id="pciInput" name="pciInput" type="text" data-bind="value: pci_lock, valueUpdate: 'keypress'" class="form-control" maxlength="15">				
+							</div>
+						</div>
+						
+						<div class="row form-group">
+							<label class="col-xs-3 side-right" data-trans="earfcn"></label>
+							<div class="col-xs-4">
+								<input id="earfcnInput" name="earfcnInput" type="text" data-bind="value: earfcn_lock, valueUpdate: 'keypress'" class="form-control" maxlength="15">
+							</div>
+						</div>
+					</div>
+					<div class="form-buttons">
+						<input type="submit" class="btn btn-primary" data-trans="apply"/>
+					</div>
+				</div>
+			</form>
+			
+			<div class="form-title">
+				<h2 data-trans="n79_wlan5g_priority_switch"></h2>
+			</div>
+			<div class="row form-group">
+				<label class="col-xs-3 side-right" data-trans="n79_wlan5g_priority_switch"></label>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<input type="radio" name="n79Wlan5gGrp" id="n79Enable" data-bind="checked: n79Wlan5gPrioritySetting" value="1"/>
+							<label for="n79Enable" data-trans="n79_priority"></label>
+						</div>
+						<div class="col-xs-4">
+							<input type="radio" name="n79Wlan5gGrp" id="wlan5gEnable" data-bind="checked:n79Wlan5gPrioritySetting" value="2"/>
+							<label for="wlan5gEnable" data-trans="wlan5g_priority"></label>
+						</div>
+						<div class="col-xs-4">
+							<input type="radio" name="n79Wlan5gGrp" id="n79Wlan5gDisable" data-bind="checked:n79Wlan5gPrioritySetting" value="0"/>
+							<label for="n79Wlan5gDisable" data-trans="disable"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-buttons">
+				<input type="button" class="btn btn-primary" data-bind='click: saveN79Wlan5gPrioritySetting' data-trans='apply'/>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,82 @@
+<div id="innerContainer">
+    <div class="row header-row">
+        <div class="col-xs-1">
+            <a href="#others">
+                <img alt="" src="img/ic_back.png?v=1622612890852">
+            </a>
+        </div>
+        <div class="col-xs-11">
+            <div class="form-title">
+                <h1 data-trans='voip_settings'></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-1 margin-top-15">
+        </div>
+        <div class="col-xs-11">
+            <div class="form-body margin-top-20">
+                <div class="row meun-nav-new">
+                    <a href="#home">
+                        <img alt="" src="img/ic_settings_settings_blue.png?v=1622612890852">
+                    </a>
+                </div>
+                <form id="voipVoiceSwitchForm" class="hide">
+                    <div class="content">
+                        <div class="row form-group">
+                            <label class="col-xs-3 side-right" data-trans="voip_voice_setting"></label>
+                            <div class="col-xs-6" style="white-space:nowrap;">
+                                <div class="row">
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="voipVoiceGrp" data-bind="css:{'radiobox_selected': voice_work_type() == 'VOICE'}">
+											<input type="radio" name="voipVoiceGrp" id="voiceEnable" data-bind="checked: voice_work_type" value="VOICE"/>
+										</p>
+                                        <label for="voiceEnable" data-trans="cs_or_volte"></label>
+                                    </div>
+                                    <div class="col-xs-4">
+										<p class="radiobox" for="voipVoiceGrp" data-bind="css:{'radiobox_selected': voice_work_type() == 'VOIP'}">
+											<input type="radio" name="voipVoiceGrp" id="voipEnable" data-bind="checked: voice_work_type" value="VOIP"/>
+										</p>
+                                        <label for="voipEnable" data-trans="voip"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <input type="submit" class="btn btn-primary" data-trans="apply"/>
+                    </div>
+                </form>
+				<div class="form-note">
+					<div class="notes-title">&nbsp;</div>
+					<ul class="notes-content">
+						<li data-trans="voip_note"></li>               
+					</ul>
+				</div>
+                <div class="content" data-bind="visible:origin_voice_work_type == 'VOIP'">
+                    <div class="col-xs-4">
+                        <div class="row">
+                            <a href="#user_details">
+                                <div class="line-height-40 arrow-right cursorhand" data-trans="sip_account_details"></div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a href="#voip_settings">
+                                <div class="line-height-40 arrow-right cursorhand" data-trans="sip_server"></div>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a href="#supplement_service">
+                                <div class="line-height-40 arrow-right cursorhand" data-trans="sip_protocol_voip"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+			</div>
+    	</div>
+	</div>
+</div>

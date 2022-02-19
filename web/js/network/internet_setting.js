@@ -1,0 +1,2 @@
+define(["jquery","knockout","config/config","service","underscore"],function(n,e,o,i,t){function c(n){switch(n){case"LTE_BRIDGE":case"PPPOE":window.location.hash="#net_setting";break;case"AUTO_DHCP":case"AUTO_PPPOE":window.location.hash="#net_setting"}}function s(){-1!=o.DEVICE.toLowerCase().indexOf("cpe")&&i.getOpMode({},function(n){c("DHCP"==n.opms_wan_mode||"STATIC"==n.opms_wan_mode?"PPPOE":n.opms_wan_mode)})}return{init:s}});
+//# sourceMappingURL=../../sourcemaps/network/internet_setting.js.map

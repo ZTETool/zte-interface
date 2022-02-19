@@ -1,0 +1,67 @@
+<div class="side-left" data-role="header" data-position="inline">
+    <a href="#/wifi/view" class="ui-btn ui-btn-left ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l">Back</a>
+    <h1 data-trans="wifi_main_ssid"></h1>
+</div>
+
+<div data-role="main" class="ui-content">
+	* <span class="break-word" data-trans="modify_need_login"></span>
+	<form id="frmSSID1_24G5G">
+		<div class="form-title">
+			<h2 data-trans="wifi_basic_24g"></h2>
+		</div>
+		<div class="ui-field-contain">
+			<label for="ssid" data-trans="network_name"></label>		
+			<input type="text" name="ssid" data-bind="value: ssid" id="ssid" class="required form-control" maxlength="32"/>	
+		</div>
+		<div class="ui-field-contain">
+			<label for='securityMode' data-trans='security_mode'></label>
+			<select data-transid='security_mode' id="securityMode" class="form-control"
+					data-bind="options: securityModes, value: selectedSecurityMode, optionsText: transOption('security_mode'), optionsValue: 'value', event:{change: securityModeChangeHandler}"></select>
+
+		</div>
+		<div id="passwordContainer" class="ui-field-contain" data-bind='visible: selectedSecurityMode() != "OPEN"'>
+			<label for="pass" data-trans="pass_phrase"></label>
+            <div class="show-password-container">
+                <input id="pass" name="pass" type="password" class="required" data-bind="value: passPhrase" minlength='8' maxlength='63'/>
+                <div data-for="pass" class="show-password show-password-off"></div>
+            </div>
+		</div>
+		<div class="ui-checkbox" data-bind="visible:wifi5GIsOn">
+			<label id="syn24gAnd5gCheckboxLabel" for="syn24gAnd5gCheckbox" data-iconpos="left" data-trans="wifi_ssid_syn_to5g" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-right ui-checkbox-off"></label>
+			<input class="widget-state" type="checkbox" id="syn24gAnd5gCheckbox" name="syn24gAnd5gCheckbox" value="1" data-bind="checked:syn24gAnd5g() == 1,click:syncTo5GHandler">			
+		</div>
+		<div class="form-buttons hide">
+			<input id="ssid1_apply" type="submit" class="btn btn-primary" data-trans='apply'/>
+			<!--input id="ssid1_cancel" type="button" class="btn-1 " data-bind='click: function(){clear("ssid1");}' data-trans='cancel'/-->
+		</div>
+	<!--/form-->
+
+	<!--form id="frmSSID1_5G"-->
+		<div class="form-title" data-bind="visible:wifi5GIsOn">
+			<h2 data-trans="wifi_basic_5g"></h2>
+		</div>
+		<div id="ssid1_5G_div" data-bind="visible:wifi5GIsOn">			
+			<div class="ui-field-contain">
+				<label for="ssid_5G" data-trans="network_name"></label>
+				<input type="text" name="ssid_5G" data-bind="value: ssid_5G" id="ssid_5G" class="required form-control" maxlength="32"/>
+			</div>
+			<div class="ui-field-contain">
+				<label for='securityMode' data-trans='security_mode'></label>
+				<select data-transid='security_mode' id="securityMode_5G" class="form-control"
+							data-bind="options: securityModes_5G, value: selectedSecurityMode_5G, optionsText: transOption('security_mode'), optionsValue: 'value', event:{change: securityModeChangeHandler_5G}"></select>
+			</div>
+			<div id="passwordContainer_5G" class="ui-field-contain" data-bind='visible: selectedSecurityMode_5G() != "OPEN"'>
+				<label for="pass_5G" data-trans="pass_phrase"></label>
+				<div class="show-password-container">
+					<input id="pass_5G" name="pass_5G" type="password" class="required" data-bind="value: passPhrase_5G" minlength='8' maxlength='63'/>
+					<div data-for="pass_5G" class="show-password show-password-off"></div>
+				</div>	
+			</div>
+		</div>
+		<div class="margin-top-10em">
+			<input id="ssid1_apply_5G" type="submit" class="btn btn-primary" data-trans='apply'/>
+			<!--input id="ssid1_cancel" type="button" class="btn-1 " data-bind='click: function(){clear_5G("ssid1_5G");}' data-trans='cancel'/-->
+		</div>
+	</form>
+
+</div>

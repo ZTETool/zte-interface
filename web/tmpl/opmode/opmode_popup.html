@@ -1,0 +1,142 @@
+<form id="opmode_form">
+	<div class="form-body">
+		<div class="form-title" data-trans="opmode"></div>
+		<div class="content" id="opmode_popup_div1">
+            <div class="row form-group" data-bind="visible: hasLteBridge">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10">
+				<p class="radiobox" for="opMode" data-bind="css:{'radiobox_selected': selectedMode() == 'LTE_BRIDGE'}">
+                    <input type="radio" name="opMode" id="opMode_bridge" data-bind="checked: selectedMode" value="LTE_BRIDGE">
+				</p>
+                    <label for="opMode_bridge" data-trans="opmode_bridge"></label>
+                </div>
+            </div>
+            <div data-bind="visible:selectedMode()=='LTE_BRIDGE'">
+                <div class="row form-group">                    
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10 opmode_popup_border">
+                        <div>
+                            <span class="op_msg help-block" data-trans="opmode_msg4" />
+                        </div>
+                        <div class="col-xs-6" style="white-space:nowrap;">
+							<p class="radiobox" for="opMode2" data-bind="css:{'radiobox_selected': selectedLANWAN() == '0'}">
+								<input type="radio" name="opMode2" id="opMode_LAN_WAN" data-bind="checked: selectedLANWAN" value="0">
+							</p>
+                            <!--<label for="opMode_bridge" data-trans="WAN/LAN1"></label>-->
+                            <img id="loadingImg" src="" data-bind="attr:{'src': selectedLANWAN()=='0'?'img/ic_wan_up_selected.png?v=1622612890852':'img/ic_wan_up_normal.png?v=1622612890852'}" style="width: 120px"/>
+                        </div>
+                        <div class="col-xs-6" style="white-space:nowrap;">
+							<p class="radiobox" for="opMode2" data-bind="css:{'radiobox_selected': selectedLANWAN() == '1'}">
+								<input type="radio" name="opMode2" id="opMode_LAN2" data-bind="checked: selectedLANWAN" value="1" />
+							</p>
+                            <!--<label for="opMode_cable" data-trans="LAN2"></label>-->
+                            <img id="loadingImg" src="" data-bind="attr:{'src': selectedLANWAN()=='1'?'img/ic_wan_down_selected.png?v=1622612890852':'img/ic_wan_down_normal.png?v=1622612890852'}" style="width: 120px"/>
+                        </div>
+                        <div>
+                            <span class="op_msg help-block" data-trans="opmode_msg3" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>                
+		    </div>
+            <div class="row form-group" data-bind="visible: hasPppoe">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10">
+					<p class="radiobox" for="opMode" data-bind="css:{'radiobox_selected': selectedMode() == 'PPPOE'}">
+						<input type="radio" name="opMode" id="opMode_cable" data-bind="checked: selectedMode" value="PPPOE" />
+					</p>
+				    <label for="opMode_cable" data-trans="opmode_cable"></label>
+                </div>
+			</div>
+            <div data-bind="visible:selectedMode()=='PPPOE'">
+                <div class="row form-group">                    
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10 opmode_popup_border">
+                        <div>
+                            <span class="op_msg help-block" data-trans="opmode_msg5" />
+                        </div>
+                        <div class="col-xs-6" style="white-space:nowrap;">
+							<p class="radiobox" for="opMode2_cable" data-bind="css:{'radiobox_selected': selectedLANWAN() == '0'}">
+								<input type="radio" name="opMode2_cable" id="opMode_LAN_WAN_cable" data-bind="checked: selectedLANWAN" value="0">
+							</p>
+                            <!--<label for="opMode_bridge" data-trans="WAN/LAN1"></label>-->
+                            <img id="loadingImg_cable" src="" data-bind="attr:{'src': selectedLANWAN()=='0'?'img/ic_wan_up_selected.png?v=1622612890852':'img/ic_wan_up_normal.png?v=1622612890852'}" style="width: 120px"/>
+                        </div>
+                        <div class="col-xs-6" style="white-space:nowrap;">
+							<p class="radiobox" for="opMode2_cable" data-bind="css:{'radiobox_selected': selectedLANWAN() == '1'}">
+								<input type="radio" name="opMode2_cable" id="opMode_LAN2_cable" data-bind="checked: selectedLANWAN" value="1" />
+							</p>
+                            <!--<label for="opMode_cable" data-trans="LAN2"></label>-->
+                            <img id="loadingImg_cable" src="" data-bind="attr:{'src': selectedLANWAN()=='1'?'img/ic_wan_down_selected.png?v=1622612890852':'img/ic_wan_down_normal.png?v=1622612890852'}" style="width: 120px"/>
+                        </div>
+                        <div>
+                            <span class="op_msg help-block" data-trans="opmode_msg6" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>                
+		    </div>
+			<div class="row form-group" data-bind="visible: hasPpp">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10">
+					<p class="radiobox" for="opMode" data-bind="css:{'radiobox_selected': selectedMode() == 'PPP'}">
+						<input type="radio" name="opMode" id="opMode_gateway" data-bind="checked: selectedMode" value="PPP" />
+					</p>
+                    <label for="opMode_gateway" data-trans="opmode_gateway"></label>
+                </div>
+			</div>
+            <div data-bind="visible:selectedMode()=='PPP'">
+                <div class="row form-group">                    
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10 opmode_popup_border">
+                        <div>
+                            <img id="loadingImg" src="img/ic_wan_plugout.png?v=1622612890852" style="width: 120px"/>
+                        </div>                        
+                        <div>
+                            <span class="op_msg help-block" data-trans="opmode_msg1" />
+                        </div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>                
+		    </div>
+            <div class="row form-group" data-bind="visible: hasAutoOpmode">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10">
+					<p class="radiobox" for="opMode" data-bind="css:{'radiobox_selected': selectedMode() == 'AUTO'}">
+						<input type="radio" name="opMode" id="opMode_auto" data-bind="checked: selectedMode" value="AUTO">
+					</p>
+                    <label for="opMode_auto" data-trans="auto_select"></label>
+                </div>
+            </div>
+            <div class="row form-group" data-bind="visible: hasAutoOpmode && false">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-10">
+					<p class="radiobox" for="opMode" data-bind="css:{'radiobox_selected': selectedMode() == 'AUTO_BACKUP'}">
+						<input type="radio" name="opMode" id="opMode_autobackup" data-bind="checked: selectedMode" value="AUTO_BACKUP">
+					</p>
+                    <label for="opMode_autobackup" data-trans="opmode_autobackup"></label>
+                </div>
+            </div> 
+			<div data-bind="visible:selectedMode()=='AUTO_BACKUP' && false">
+                <div class="row form-group">                    
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10 opmode_popup_border">
+                        <div class="row form-group">
+							<label class="col-xs-5 side-right" for="txtIpAddress" data-trans="ip_address"></label>
+							<div class="col-xs-6">
+								<input id="txtIpAddress" name="txtIpAddress" type="text" data-bind="value: ipAddress, valueUpdate: 'keypress'" class="form-control" maxlength="15">
+							</div>
+						</div>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>                
+		    </div>
+			<div>
+				<span class="op_msg help-block" data-trans="opmode_msg1" />
+			</div>
+			<div class="form-buttons" style="margin-right: 0;">
+				<input type="submit" class="btn btn-default" data-trans="apply" />
+			</div>		
+		</div>		
+	</div>
+</form>

@@ -1,0 +1,2 @@
+call gen-config
+pause

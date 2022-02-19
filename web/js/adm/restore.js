@@ -1,0 +1,2 @@
+define(["jquery","knockout","config/config","service","underscore"],function(n,e,r,o,i){function t(){this.restore=function(){showConfirm("restore_confirm",function(){showLoading("restoring"),o.restoreFactorySettings({},function(n){n&&"success"==n.result?successOverlay():errorOverlay()},n.noop)})}}function s(){var r=new t;e.applyBindings(r,n("#container")[0]),n("#frmRestore").validate({submitHandler:function(){r.restore()}})}return{init:s}});
+//# sourceMappingURL=../../sourcemaps/adm/restore.js.map
